@@ -1,0 +1,94 @@
+/* ===== Shared project detail styles ===== */
+:root{
+    /* default accent (kan bli overridet per prosjekt) */
+    --accent: #3e5b75;
+}
+
+/* kortet på detaljsida */
+.card {
+    padding: 24px;
+    background: var(--card);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* tittel og undertekst */
+.card > h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+}
+.card > p em {
+    color: var(--muted);
+}
+
+/* bullets */
+.card .bullets { list-style:none; padding:0; margin:0 }
+.card .bullets li {
+    margin: 8px 0;
+    position: relative;
+    padding-left: 16px;
+}
+.card .bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* inline stack tags */
+.inline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+.inline-tags li {
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid #e1eaf4;
+    border-radius: 999px;
+    background: #fff;
+}
+
+/* breadcrumb + back link */
+.breadcrumbs { color: var(--muted); font-size: 14px; margin: 6px 0 10px; }
+.breadcrumbs a { color: inherit; text-decoration: none; }
+.back a {
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+}
+.back a:hover { filter: brightness(1.05); }
+
+/* callout / note (valgfritt å bruke i innholdet) */
+.callout {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #f6f9fc;
+    border: 1px solid #e6eef6;
+}
+.note {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* galleri (valgfritt, om du legger inn bilder) */
+.gallery {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 10px;
+}
+.gallery img {
+    border-radius: 12px;
+    border: 1px solid #e6eef6;
+}

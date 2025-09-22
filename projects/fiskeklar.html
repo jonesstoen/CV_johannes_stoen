@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FiskeKlar — Project | Johannes Støen</title>
+    <meta name="description" content="FiskeKlar — maritime weather Android app with GRIB, AIS and MetAlerts." />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/projects/project-detail.css">
+
+</head>
+<body>
+<header class="site-header">
+    <div class="container">
+        <div class="brand">
+            <h1>Johannes Støen</h1>
+            <p class="subtitle">Informatics Student</p>
+        </div>
+        <img class="avatar" src="/portrait.png" alt="Portrait of Johannes Støen" width="140" height="140" />
+        <nav aria-label="Primary">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="work-experience.html">Work Experience</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="page">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / FiskeKlar</nav>
+
+    <section class="card">
+        <h2>FiskeKlar — Maritime Weather</h2>
+        <p><em>Android · Kotlin · Jetpack Compose · MapLibre · Room</em></p>
+        <p>
+            Android-app som kombinerer maritime værdata og fiskelogging. Ledet utviklingen (Team 46, IN2000)
+            med ren MVVM-arkitektur og tydelig lagdeling. Integrerer <strong>GRIB</strong> (vind/bølger),
+            <strong>MetAlerts</strong> (farevarsler) og <strong>AIS</strong> (skipstrafikk). Nominert til
+            <strong>Meteorologisk institutt sin MET-pris 2025</strong>.
+        </p>
+
+        <h3>Highlights</h3>
+        <ul class="bullets">
+            <li>MapLibre-lag for vind, strøm, bølger og polygonvarsler (interaktiv info/tooltip).</li>
+            <li>GRIB-parser med tidssteg + overlay-sliders for threshold/tid.</li>
+            <li>Compose UI, StateFlow via ViewModels, Room for lokal caching.</li>
+            <li>Varsellyd når bruker befinner seg innenfor varselpolygon.</li>
+        </ul>
+
+        <h3>Stack</h3>
+        <ul class="inline-tags">
+            <li>Kotlin</li><li>Jetpack Compose</li><li>MapLibre</li><li>Room</li><li>Coroutines/Flow</li><li>MVVM</li>
+        </ul>
+
+        <p class="back"><a href="projects.html">← Back to Projects</a></p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2025 Johannes Støen</p>
+</footer>
+</body>
+</html>
