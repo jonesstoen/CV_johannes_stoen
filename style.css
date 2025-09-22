@@ -40,42 +40,43 @@ img{ max-width:100%; height:auto; display:block; }
     justify-self:end;
 }
 
-/* --- NAV: én linje (meny venstre, contacts høyre) --- */
-.main-nav{
+/* --- NAV (links + contacts på samme linje) --- */
+.main-nav {
     grid-column: 1 / -1;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    flex-wrap:nowrap;
+    display: flex;
+    justify-content: space-between;  /* venstre/høyre */
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: nowrap;               /* ikke bryt til ny linje */
 }
 
-.main-nav ul{
-    display:flex;
-    gap:16px;
-    list-style:none;
-    margin:10px 0 0;
-    padding:0;
-    flex-wrap:nowrap;
+.main-nav ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin: 0; padding: 0;
 }
 
-.main-nav a{
-    color:#eaf2f9;
-    text-decoration:none;
-    padding:6px 10px;
-    border-radius:8px;
-}
-.main-nav a[aria-current="page"]{ background:rgba(255,255,255,.18); }
-.main-nav a:hover,
-.main-nav a:focus-visible{
-    background:rgba(255,255,255,.12); outline:none;
+.main-nav .nav-links { flex: 1 }   /* skyver contacts til høyre */
+
+.main-nav .contacts-inline {
+    justify-content: flex-end;
 }
 
-/* mobil: stack nav + contacts */
-@media (max-width: 900px){
-    .main-nav{ flex-wrap:wrap; gap:8px }
-    .main-nav ul{ flex-wrap:wrap; gap:12px }
+.main-nav a {
+    color: #eaf2f9;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
 }
+.main-nav a:hover { background: rgba(255,255,255,.12); }
+
+/* mobilvisning: stack alt pent */
+@media (max-width: 760px){
+    .main-nav { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .main-nav ul { flex-wrap: wrap; }
+}
+
 
 /* ===== page wrapper ===== */
 .page{
