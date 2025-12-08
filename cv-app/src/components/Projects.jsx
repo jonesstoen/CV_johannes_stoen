@@ -1,20 +1,21 @@
 const projects = [
     {
-        title: 'MasterMatch – UiO master planner',
+        title: 'FiskeKlar — Maritime Weather',
         description:
-            'Webapp i React/Vite som hjelper studenter å sjekke opptakskrav til masterprogrammer.',
-        tech: ['React', 'Vite', 'JavaScript'],
+            'Android-app som kombinerer maritimt vær og fiskelogging. Kartlag for vind, bølger, strøm, AIS og MetAlerts, bygget med ren MVVM-arkitektur og tydelig lagdeling. Nominert til Meteorologisk institutt sin MET-pris 2025 (Team 46, IN2000).',
+        tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
     },
     {
-        title: 'Fiskeklar – IN2000 weather app',
+        title: 'WorkoutTracker — iOS',
         description:
-            'Android-app for hobbyfiskere med kartlag for vind, bølger, strøm og værvarsler.',
-        tech: ['Kotlin', 'Jetpack Compose', 'MapLibre'],
+            'Treningsapp med kalenderoversikt, økt-detaljer og Apple Health-integrasjon. Støtter både styrke- og kondisjonsøkter, med enkel UDF-inspirert dataflyt og Core Data for lokal lagring.',
+        tech: ['Swift', 'SwiftUI', 'HealthKit', 'Core Data', 'UDF'],
     },
     {
-        title: 'Workout Tracker',
-        description: 'Enkel treningslogg med støtte for styrke- og kondisjonsøkter.',
-        tech: ['React', 'TypeScript'],
+        title: 'UiO Master Match',
+        description:
+            'Nettapp som estimerer opptakspoeng til UiO-mastere basert på emner og karakterer. Semestervis oversikt, karaktervelger, statusfelt og poengsummering, med lagring i LocalStorage og fokus på enkel og rask UI.',
+        tech: ['React', 'Vite', 'Tailwind', 'LocalStorage'],
     },
 ];
 

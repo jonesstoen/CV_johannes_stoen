@@ -1,61 +1,63 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+
+import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Education from './components/Education';
-import Experience from './components/Experience';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Education from './components/Education';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
 
-function App() {
-    const [theme, setTheme] = useState('dark');
+const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
 
-    // Oppdater <html data-theme="..."> slik at CSS-variabler kan bytte tema
+export default function App() {
+    const [activeSection, setActiveSection] = useState('about');
+    const [theme, setTheme] = useState(() => {
+        const stored = localStorage.getItem('cv-theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light' : 'dark';
+    });
+
     useEffect(() => {
         document.documentElement.dataset.theme = theme;
+        localStorage.setItem('cv-theme', theme);
     }, [theme]);
 
-    const toggleTheme = () => {
-        setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-    };
+    useEffect(() => {
+        const onScroll = () => {
+            const scrollY = window.scrollY;
+            const offset = 120;
 
-    const scrollToId = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
+            let current = 'about';
+
+            SECTION_IDS.forEach((id) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const top = el.offsetTop - offset;
+                if (scrollY >= top) current = id;
+            });
+
+            setActiveSection(current);
+        };
+
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     return (
-        <div className={`app app--${theme}`}>
-            <header className="top-nav">
-                <div className="top-nav__inner">
-                    <button
-                        className="top-nav__brand"
-                        onClick={() => scrollToId('about')}
-                    >
-                        Johannes Støen
-                    </button>
-
-                    <nav className="top-nav__links">
-                        <button onClick={() => scrollToId('about')}>Om meg</button>
-                        <button onClick={() => scrollToId('projects')}>Prosjekter</button>
-                        <button onClick={() => scrollToId('experience')}>Erfaring</button>
-                        <button onClick={() => scrollToId('education')}>Utdanning</button>
-                    </nav>
-
-                    <button
-                        className="top-nav__toggle"
-                        onClick={toggleTheme}
-                        aria-label="Bytt tema"
-                    >
-                        {theme === 'dark' ? '☀︎' : '🌙'}
-                    </button>
-                </div>
-            </header>
+        <div className="app">
+            <NavBar
+                activeSection={activeSection}
+                theme={theme}
+                setTheme={setTheme}
+            />
 
             <Hero />
+
             <main>
                 <About />
                 <Education />
@@ -63,9 +65,8 @@ function App() {
                 <Projects />
                 <Skills />
             </main>
+
             <Footer />
         </div>
     );
 }
-
-export default App;

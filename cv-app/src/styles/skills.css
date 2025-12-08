@@ -1,0 +1,9 @@
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+}
+
+.skills h3 {
+    margin-top: 0;
+}
