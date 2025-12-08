@@ -19,7 +19,6 @@ export default function NavBar({ activeSection, theme, setTheme }) {
 
     return (
         <header className="navbar">
-            {/* Venstre side – logo */}
             <button
                 type="button"
                 className="navbar__brand"
@@ -28,7 +27,6 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                 Johannes Støen
             </button>
 
-            {/* Midten – ALLE navigasjonsknapper */}
             <nav className="navbar__links" aria-label="Hovedmeny">
 
                 <button
@@ -76,7 +74,6 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                 </button>
             </nav>
 
-            {/* Høyre side – tema-toggle */}
             <button
                 type="button"
                 className="navbar__toggle"

@@ -5,7 +5,7 @@ function About() {
             <p>
                 Jeg er en strukturert og nysgjerrig utvikler med bakgrunn fra både
                 informatikk og samfunnsvitenskap. Jeg trives best når jeg kan kombinere
-                teknisk arbeid med samarbeid og formidling — enten det er i
+                teknisk arbeid med samarbeid og formidling,  enten det er i
                 gruppeprosjekter, som gruppelærer eller ved å bygge verktøy som faktisk
                 brukes.
             </p>
