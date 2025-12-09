@@ -9,6 +9,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
 
@@ -48,8 +49,37 @@ export default function App() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px',
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-reveal');
+                }
+            });
+        }, observerOptions);
+
+        const sections = document.querySelectorAll('section');
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+
+        return () => {
+            sections.forEach((section) => {
+                observer.unobserve(section);
+            });
+        };
+    }, []);
+
     return (
         <div className="app">
+            <a href="#about" className="skip-to-content">
+                Hopp til hovedinnhold
+            </a>
             <NavBar
                 activeSection={activeSection}
                 theme={theme}
@@ -67,6 +97,7 @@ export default function App() {
             </main>
 
             <Footer />
+            <BackToTop />
         </div>
     );
 }
