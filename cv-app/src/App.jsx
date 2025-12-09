@@ -10,6 +10,8 @@ import Education from './components/Education';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import StructuredData from './components/StructuredData';
+import ScrollProgress from './components/ScrollProgress';
 
 const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
 
@@ -26,6 +28,32 @@ export default function App() {
         document.documentElement.dataset.theme = theme;
         localStorage.setItem('cv-theme', theme);
     }, [theme]);
+
+    useEffect(() => {
+        const handleKeyPress = (e) => {
+            // Only trigger if not typing in an input/textarea
+            if (
+                e.target.tagName === 'INPUT' ||
+                e.target.tagName === 'TEXTAREA' ||
+                e.target.isContentEditable
+            ) {
+                return;
+            }
+
+            // 't' key to toggle theme
+            if (e.key === 't' || e.key === 'T') {
+                setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+            }
+
+            // 'h' key to scroll to top
+            if (e.key === 'h' || e.key === 'H') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [setTheme]);
 
     useEffect(() => {
         const onScroll = () => {
@@ -77,6 +105,8 @@ export default function App() {
 
     return (
         <div className="app">
+            <StructuredData />
+            <ScrollProgress />
             <a href="#about" className="skip-to-content">
                 Hopp til hovedinnhold
             </a>

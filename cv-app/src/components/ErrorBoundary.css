@@ -1,0 +1,77 @@
+.error-boundary {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--bg);
+    color: var(--fg);
+}
+
+.error-boundary__content {
+    max-width: 500px;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1.2rem;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+}
+
+.error-boundary__content h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--fg);
+}
+
+.error-boundary__content p {
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.error-boundary__button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background-color: var(--accent);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.error-boundary__button:hover {
+    background-color: var(--accent);
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.error-boundary__details {
+    margin-top: 1.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.error-boundary__details summary {
+    cursor: pointer;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+.error-boundary__details pre {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    color: var(--fg);
+    border: 1px solid var(--card-border);
+}
+
+html[data-theme='light'] .error-boundary__details pre {
+    background: rgba(0, 0, 0, 0.05);
+}
+

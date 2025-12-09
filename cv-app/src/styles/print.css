@@ -1,0 +1,100 @@
+/* Print stylesheet for CV */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    html,
+    body {
+        background: white !important;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .navbar,
+    .back-to-top,
+    .skip-to-content,
+    .navbar__toggle,
+    .navbar__mobile-toggle {
+        display: none !important;
+    }
+
+    .app {
+        padding: 0 !important;
+    }
+
+    section {
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        box-shadow: none;
+        background: white !important;
+    }
+
+    .hero {
+        margin: 0 0 2rem 0;
+        padding: 0;
+        page-break-after: always;
+    }
+
+    .hero__portrait {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hero__links {
+        display: none;
+    }
+
+    .project-card {
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .project-card__links {
+        display: none;
+    }
+
+    .skill-category {
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: underline;
+    }
+
+    a[href^='http']:after {
+        content: ' (' attr(href) ')';
+        font-size: 0.9em;
+    }
+
+    a[href^='mailto']:after {
+        content: ' (' attr(href) ')';
+        font-size: 0.9em;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    .list li {
+        page-break-inside: avoid;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}
+

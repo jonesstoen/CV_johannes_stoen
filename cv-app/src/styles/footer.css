@@ -5,3 +5,28 @@
     color: var(--muted);
     text-align: center;
 }
+
+.footer__hint {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.footer__hint kbd {
+    display: inline-block;
+    padding: 0.15rem 0.4rem;
+    margin: 0 0.15rem;
+    font-size: 0.7rem;
+    font-family: system-ui, monospace;
+    background-color: var(--chip-bg);
+    color: var(--chip-fg);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 0.3rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+    .footer__hint {
+        display: none;
+    }
+}

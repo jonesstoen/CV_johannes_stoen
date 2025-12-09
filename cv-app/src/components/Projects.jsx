@@ -23,15 +23,58 @@ const projects = [
     },
 ];
 
+import { useState } from 'react';
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 function Projects() {
+    const [tiltedCard, setTiltedCard] = useState(null);
+
+    const handleMouseMove = (e, index) => {
+        const card = e.currentTarget;
+        const linksArea = card.querySelector('.project-card__links');
+        
+        // Check if mouse is over the links area
+        if (linksArea) {
+            const linksRect = linksArea.getBoundingClientRect();
+            const mouseY = e.clientY;
+            
+            // If hovering over links, disable tilt
+            if (mouseY >= linksRect.top && mouseY <= linksRect.bottom) {
+                card.style.transform = 'translateY(-4px)';
+                return;
+            }
+        }
+        
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Reduced tilt intensity (divided by 20 instead of 10)
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        setTiltedCard(index);
+    };
+
+    const handleMouseLeave = (e) => {
+        e.currentTarget.style.transform = '';
+        setTiltedCard(null);
+    };
+
     return (
         <section id="projects">
             <h2>Utvalgte prosjekter</h2>
             <div className="projects">
-                {projects.map((project) => (
-                    <article key={project.title} className="project-card">
+                {projects.map((project, index) => (
+                    <article
+                        key={project.title}
+                        className="project-card"
+                        onMouseMove={(e) => handleMouseMove(e, index)}
+                        onMouseLeave={handleMouseLeave}
+                    >
                         <h3>{project.title}</h3>
                         <p>{project.description}</p>
                         <div className="project-card__tech">

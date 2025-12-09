@@ -11,6 +11,8 @@
     border: 1px solid rgba(31, 41, 55, 0.9);
     transition: transform 0.15s ease, box-shadow 0.2s ease,
     border-color 0.15s ease, background 0.2s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 html[data-theme='light'] .project-card {
@@ -31,6 +33,9 @@ html[data-theme='light'] .project-card {
     gap: 0.6rem;
     margin-top: 1rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .project-card__link {
@@ -45,6 +50,9 @@ html[data-theme='light'] .project-card {
     background-color: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(148, 163, 184, 0.3);
     transition: all 0.15s ease;
+    position: relative;
+    z-index: 11;
+    pointer-events: auto;
 }
 
 .project-card__link-icon {
@@ -72,6 +80,13 @@ html[data-theme='light'] .project-card__link:hover {
     transform: translateY(-4px);
     border-color: var(--accent);
     box-shadow: 0 20px 45px rgba(15, 23, 42, 0.95);
+}
+
+/* 3D tilt effect */
+@media (hover: hover) and (pointer: fine) {
+    .project-card {
+        cursor: pointer;
+    }
 }
 
 .project-card__link:focus-visible {
