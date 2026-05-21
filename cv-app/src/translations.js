@@ -12,6 +12,8 @@ export const t = {
             ariaMenu: 'Åpne meny',
             ariaTheme: 'Bytt tema',
             ariaLang: 'Switch to English',
+            contact: 'Kontakt',
+            ariaContact: 'Gå til Kontakt-seksjon',
         },
         hero: {
             subtitle: 'Informatikkstudent (PROSA)',
@@ -30,8 +32,13 @@ export const t = {
             heading: 'Om meg',
             nowLabel: 'Akkurat nå',
             now: 'Fullfører første år av masteren i informatikk ved UiO. Jobber med egne prosjekter i parallell og er åpen for spennende muligheter.',
+            details: [
+                { key: 'Sted', value: 'Oslo, Norge' },
+                { key: 'Grad', value: 'MSc Informatikk, UiO' },
+                { key: 'Språk', value: 'Norsk · Engelsk' },
+            ],
             p1: 'Jeg er en strukturert og nysgjerrig utvikler med bakgrunn fra både informatikk og samfunnsvitenskap. Jeg trives best når jeg kan kombinere teknisk arbeid med samarbeid og formidling — enten det er i gruppeprosjekter, som gruppelærer eller ved å bygge verktøy som faktisk brukes.',
-            p2: 'De siste årene har jeg jobbet med alt fra Android-apper (FiskeKlar), iOS-treningsapp (WorkoutTracker) og webprosjekter (UiO Master Match) til nettverksprogrammering i C. Jeg har også erfaring fra butikkarbeid og førstegangstjeneste i Forsvaret, noe som har gitt meg god trening i samarbeid, ansvar og å håndtere stress.',
+            p2: 'De siste årene har jeg jobbet med alt fra Android-apper (FiskeKlar), iOS-treningsapp (WorkoutTracker) og webprosjekter (UiO Master Match) til offline-first PWA-er med IndexedDB-caching (Inspector Chalmers) og nettverksprogrammering i C. Jeg har også erfaring fra butikkarbeid og førstegangstjeneste i Forsvaret, noe som har gitt meg god trening i samarbeid, ansvar og å håndtere stress.',
             p3: 'Faglig er jeg spesielt interessert i arkitektur (MVVM/UDF), plattformer, og hvordan man lager gode brukeropplevelser på begrensede flater (mobil og nettbrett).',
         },
         education: {
@@ -102,11 +109,32 @@ export const t = {
         projects: {
             heading: 'Utvalgte prosjekter',
             github: 'GitHub',
-            demo: 'Demo',
-            descriptions: [
-                'Android-app som kombinerer maritimt vær og fiskelogging. Kartlag for vind, bølger, strøm, AIS og MetAlerts, bygget med ren MVVM-arkitektur og tydelig lagdeling. Nominert til Meteorologisk institutt sin MET-pris 2025 (Team 46, IN2000).',
-                'Treningsapp med kalenderoversikt, økt-detaljer og Apple Health-integrasjon. Støtter både styrke- og kondisjonsøkter, med enkel UDF-inspirert dataflyt og Core Data for lokal lagring.',
-                'Nettapp som estimerer opptakspoeng til UiO-mastere basert på emner og karakterer. Semestervis oversikt, karaktervelger, statusfelt og poengsummering, med lagring i LocalStorage og fokus på enkel og rask UI.',
+            demo: 'Prøv det',
+            closeDemo: 'Lukk',
+            problemLabel: 'Utfordring',
+            builtLabel: 'Løsning',
+            outcomeLabel: 'Resultat',
+            cases: [
+                {
+                    problem: 'Fiskere og maritime brukere mangler et mobilverktøy som kombinerer sanntids AIS-sporing, meteorologiske GRIB-data og offline fiskelogg.',
+                    built: 'Android-app med MVVM-arkitektur. Parser GRIB-meteorologidata med NetCDF-Java for vind, bølger og strøm. Sanntids AIS fra BarentsWatch, egendefinert kartstil via MapTiler og offline fiskelogg med bilder.',
+                    outcome: 'Nominert til MET-prisen 2025 for mest kreativ bruk av MET-APIet (Team 46, IN2000).',
+                },
+                {
+                    problem: 'Det finnes ingen enkel iOS-app for treningslogging med integrert analyse og Apple Health-synkronisering.',
+                    built: 'iOS-app med SwiftUI og HealthKit. Sanntids øktsporing, kalendervisning og dashbord med ukentlige og månedlige trender via Charts-rammeverket. Idempotent HealthKit-synkronisering.',
+                    outcome: 'Demonstrerer fullstack Swift/SwiftUI med dataanalyse og lokal persistens på iOS.',
+                },
+                {
+                    problem: 'Masterstudentsøkere ved UiO mangler et enkelt verktøy for å estimere opptakspoeng.',
+                    built: 'React-webapp med karaktervelger, semestervis oversikt og sanntids poengsummering. LocalStorage for persistent lagring.',
+                    outcome: 'Brukt av studenter til å planlegge masteropptak — enkel, rask og tilgjengelig uten innlogging.',
+                },
+                {
+                    problem: 'Skoleinspektører trenger et verktøy som fungerer uten nettilgang og automatisk synkroniserer data når tilkoblingen er tilbake.',
+                    built: 'React PWA med offline-first-arkitektur og IndexedDB-caching via localforage. Inspeksjonsskjemaer køes lokalt og synkroniseres automatisk i bakgrunnen ved reconnect.',
+                    outcome: 'Gruppeprosjekt for DHIS2-plattformen med fullt offline-støtte og sanntidsanalyse av skoledata (IN5320).',
+                },
             ],
         },
         skills: {
@@ -122,14 +150,24 @@ export const t = {
                 },
                 {
                     label: 'Kjennskap',
-                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit'],
+                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
                 },
             ],
+            languagesLabel: 'Språk',
+            languages: ['Norsk (morsmål)', 'Engelsk (flytende)'],
             highlights: 'FiskeKlar nominert til MET-prisen (2025) · Erfaring som gruppelærer · Flere større studentprosjekter med tydelig lagdeling og arkitektur.',
         },
         footer: {
             theme: 'for tema',
             top: 'for toppen',
+        },
+        contact: {
+            heading: 'Ta kontakt',
+            namePlaceholder: 'Navn',
+            emailPlaceholder: 'E-post',
+            messagePlaceholder: 'Melding...',
+            send: 'Send e-post',
+            subtext: 'Åpner i e-postklienten din.',
         },
     },
 
@@ -146,6 +184,8 @@ export const t = {
             ariaMenu: 'Open menu',
             ariaTheme: 'Toggle theme',
             ariaLang: 'Bytt til norsk',
+            contact: 'Contact',
+            ariaContact: 'Go to Contact section',
         },
         hero: {
             subtitle: 'CS Student (PROSA)',
@@ -164,8 +204,13 @@ export const t = {
             heading: 'About me',
             nowLabel: 'Right now',
             now: "Completing the first year of my master's in computer science at UiO. Working on personal projects in parallel and open to interesting opportunities.",
+            details: [
+                { key: 'Location', value: 'Oslo, Norway' },
+                { key: 'Degree', value: 'MSc Computer Science, UiO' },
+                { key: 'Languages', value: 'Norwegian · English' },
+            ],
             p1: "I'm a structured and curious developer with a background in both computer science and social science. I thrive when I can combine technical work with collaboration and communication — whether in group projects, as a teaching assistant, or by building tools that are actually used.",
-            p2: 'In recent years I have worked on everything from Android apps (FiskeKlar), an iOS fitness app (WorkoutTracker) and web projects (UiO Master Match) to network programming in C. I also have experience from retail work and military service, which gave me solid training in teamwork, responsibility and handling pressure.',
+            p2: 'In recent years I have worked on everything from Android apps (FiskeKlar), an iOS fitness app (WorkoutTracker) and web projects (UiO Master Match) to offline-first PWAs with IndexedDB caching (Inspector Chalmers) and network programming in C. I also have experience from retail work and military service, which gave me solid training in teamwork, responsibility and handling pressure.',
             p3: "Professionally I'm especially interested in software architecture (MVVM/UDF), platforms, and how to create good user experiences on constrained surfaces (mobile and tablet).",
         },
         education: {
@@ -236,11 +281,32 @@ export const t = {
         projects: {
             heading: 'Selected Projects',
             github: 'GitHub',
-            demo: 'Demo',
-            descriptions: [
-                'Android app combining maritime weather and fishing logs. Map layers for wind, waves, currents, AIS and MetAlerts, built with clean MVVM architecture and clear layer separation. Nominated for the Norwegian Meteorological Institute MET Prize 2025 (Team 46, IN2000).',
-                'Workout app with a calendar overview, session details and Apple Health integration. Supports both strength and cardio sessions, with a simple UDF-inspired data flow and Core Data for local storage.',
-                "Web app that estimates admission points to UiO master's programmes based on courses and grades. Semester overview, grade selector, status fields and score summary, with LocalStorage persistence and a focus on simple, fast UI.",
+            demo: 'Try it',
+            closeDemo: 'Close',
+            problemLabel: 'Problem',
+            builtLabel: 'Built',
+            outcomeLabel: 'Outcome',
+            cases: [
+                {
+                    problem: 'Fishers and maritime users lack a mobile tool combining real-time AIS vessel tracking, meteorological GRIB data parsing, and offline fishing logs.',
+                    built: 'Android app with MVVM architecture. Parses GRIB meteorological data with NetCDF-Java for wind, waves and currents. Real-time AIS from BarentsWatch, custom MapTiler map styling, and offline catch logging with photos.',
+                    outcome: 'Nominated for the MET Prize 2025 for most creative use of the MET API (Team 46, IN2000).',
+                },
+                {
+                    problem: 'No simple iOS app exists for workout logging with integrated analytics and seamless Apple Health synchronisation.',
+                    built: 'iOS app with SwiftUI and HealthKit. Live session tracking, calendar view, and a dashboard with weekly/monthly trends via the Charts framework. Idempotent HealthKit sync and a PersistenceService abstraction.',
+                    outcome: 'Demonstrates full-stack Swift/SwiftUI with data analytics and local persistence on iOS.',
+                },
+                {
+                    problem: "UiO master's applicants lack a simple tool to estimate their admission points based on their own courses and grades.",
+                    built: 'React web app with a grade selector, semester overview and real-time score summary. LocalStorage for persistent data.',
+                    outcome: "Used by students to plan for master's admission — simple, fast and accessible without login.",
+                },
+                {
+                    problem: 'School inspectors need a tool that works without internet access and automatically syncs data once connectivity is restored.',
+                    built: 'React PWA with offline-first architecture and IndexedDB caching via localforage. Inspection forms are queued locally and pushed automatically in the background on reconnect.',
+                    outcome: 'Group project for the DHIS2 platform with full offline support and real-time school data analytics (IN5320).',
+                },
             ],
         },
         skills: {
@@ -256,14 +322,24 @@ export const t = {
                 },
                 {
                     label: 'Familiar',
-                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit'],
+                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
                 },
             ],
+            languagesLabel: 'Languages',
+            languages: ['Norwegian (native)', 'English (fluent)'],
             highlights: 'FiskeKlar nominated for the MET Prize (2025) · Teaching assistant experience · Multiple large student projects with clear architecture and layer separation.',
         },
         footer: {
             theme: 'for theme',
             top: 'for top',
+        },
+        contact: {
+            heading: 'Get in touch',
+            namePlaceholder: 'Name',
+            emailPlaceholder: 'Email',
+            messagePlaceholder: 'Message...',
+            send: 'Send email',
+            subtext: 'Opens in your email client.',
         },
     },
 };

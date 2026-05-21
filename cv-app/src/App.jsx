@@ -8,13 +8,13 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import StructuredData from './components/StructuredData';
-import ScrollProgress from './components/ScrollProgress';
 import { useLang } from './context/LanguageContext';
 
-const SECTION_IDS = ['about', 'education', 'experience', 'projects'];
+const SECTION_IDS = ['about', 'education', 'experience', 'projects', 'contact'];
 
 export default function App() {
     const { toggle: toggleLang } = useLang();
@@ -90,7 +90,6 @@ export default function App() {
     return (
         <div className="app">
             <StructuredData />
-            <ScrollProgress />
             <a href="#about" className="skip-to-content">
                 Hopp til hovedinnhold
             </a>
@@ -108,6 +107,7 @@ export default function App() {
                 <Experience />
                 <Projects />
                 <Skills />
+                <Contact />
             </main>
 
             <Footer />

@@ -1,101 +1,211 @@
-/* Print stylesheet for CV */
 @media print {
-    * {
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
+    /* Override CSS variables so components render correctly */
+    :root {
+        --bg: white;
+        --fg: #111827;
+        --muted: #4b5563;
+        --card-bg: white;
+        --card-border: #e5e7eb;
+        --accent: #3730a3;
+        --accent-soft: #f0f9ff;
+        --chip-bg: #f3f4f6;
+        --chip-fg: #111827;
     }
 
-    html,
-    body {
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    html, body {
         background: white !important;
-        font-size: 12pt;
+        color: #111827 !important;
+        font-size: 11pt;
         line-height: 1.5;
     }
 
+    /* Hide all UI chrome */
     .navbar,
     .back-to-top,
     .skip-to-content,
-    .navbar__toggle,
-    .navbar__mobile-toggle {
+    .scroll-progress,
+    .hero__status,
+    .hero__link--download,
+    body::before,
+    section::before {
+        display: none !important;
+    }
+
+    #contact,
+    .contact-form {
+        display: none !important;
+    }
+
+    /* Hide section number labels — clean headings only */
+    section h2::before {
         display: none !important;
     }
 
     .app {
         padding: 0 !important;
+        z-index: auto !important;
+    }
+
+    .app > main {
+        margin-top: 0 !important;
+        counter-reset: none;
     }
 
     section {
         page-break-inside: avoid;
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 0;
-        box-shadow: none;
+        margin-bottom: 1.2rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0.8rem 1rem !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 0 !important;
         background: white !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 
+    /* Hero */
     .hero {
-        margin: 0 0 2rem 0;
-        padding: 0;
-        page-break-after: always;
+        margin: 0 0 1.5rem !important;
+        padding: 0 !important;
+        text-align: left !important;
     }
+
+    .hero::before { display: none !important; }
+
+    .hero__inner { display: flex; align-items: flex-start; gap: 1.2rem; }
+    .hero__body { flex: 1; }
 
     .hero__portrait {
-        width: 100px;
-        height: 100px;
+        width: 80px !important;
+        height: 80px !important;
     }
 
     .hero__links {
-        display: none;
+        flex-wrap: wrap;
+        gap: 0.4rem;
     }
 
+    .hero__link {
+        border: 1px solid #e5e7eb !important;
+        background: white !important;
+        color: #111827 !important;
+        font-size: 0.8rem !important;
+        padding: 0.25rem 0.7rem !important;
+    }
+
+    /* Timeline */
+    .timeline__dot {
+        background: #3730a3 !important;
+        border-color: white !important;
+        box-shadow: 0 0 0 2px #3730a3 !important;
+    }
+
+    .timeline__connector {
+        background: #e5e7eb !important;
+    }
+
+    .timeline__period {
+        background: #f3f4f6 !important;
+        border-color: #e5e7eb !important;
+        color: #3730a3 !important;
+    }
+
+    .timeline__title { color: #111827 !important; }
+    .timeline__subtitle { color: #4b5563 !important; }
+    .timeline__bullets { color: #374151 !important; }
+
+    /* About callout */
+    .about__now {
+        background: #f0f9ff !important;
+        border-color: #c7d2fe !important;
+        border-left-color: #3730a3 !important;
+    }
+
+    .about__now-label { color: #3730a3 !important; }
+
+    /* Projects */
     .project-card {
         page-break-inside: avoid;
-        border: 1px solid #ddd;
-        padding: 0.75rem;
-        margin-bottom: 0.75rem;
+        border: 1px solid #e5e7eb !important;
+        background: white !important;
     }
 
-    .project-card__links {
-        display: none;
+    .project-card__banner { display: none !important; }
+    .project-card__links { display: none !important; }
+
+    .tag {
+        background: #f3f4f6 !important;
+        border-color: #e5e7eb !important;
+        color: #374151 !important;
     }
 
+    /* Skills */
     .skill-category {
         page-break-inside: avoid;
-        border: 1px solid #ddd;
-        padding: 0.75rem;
+        border: 1px solid #e5e7eb !important;
+        background: white !important;
+        opacity: 1 !important;
     }
 
-    a {
-        color: black !important;
-        text-decoration: underline;
+    .skill-tag {
+        background: #f3f4f6 !important;
+        border-color: #e5e7eb !important;
+        color: #374151 !important;
     }
 
-    a[href^='http']:after {
+    .skill-group__fill {
+        width: var(--bar-target) !important;
+    }
+    .skill-group__track {
+        background: #e5e7eb !important;
+    }
+
+    /* Links — show URL for external links, skip tel/mailto */
+    a { color: #3730a3 !important; text-decoration: none; }
+
+    a[href^='https']:after {
         content: ' (' attr(href) ')';
-        font-size: 0.9em;
+        font-size: 0.75em;
+        color: #6b7280;
     }
 
-    a[href^='mailto']:after {
-        content: ' (' attr(href) ')';
-        font-size: 0.9em;
+    /* Don't expand hero contact links */
+    .hero__link[href]:after,
+    .hero__link:after { content: none !important; }
+
+    h1, h2, h3 { page-break-after: avoid; }
+
+    .timeline__item { page-break-inside: avoid; }
+
+    /* Education horizontal timeline → vertical for print */
+    .edu-timeline {
+        flex-direction: column !important;
+        overflow: visible !important;
+        gap: 0.75rem !important;
     }
 
-    h1,
-    h2,
-    h3 {
-        page-break-after: avoid;
+    .edu-timeline::before { display: none !important; }
+
+    .edu-timeline__item {
+        padding-right: 0 !important;
+        padding-left: 1.5rem !important;
+        border-left: 2px solid #e5e7eb !important;
+        min-width: unset !important;
+        width: auto !important;
     }
 
-    .list li {
-        page-break-inside: avoid;
+    .edu-timeline__dot {
+        left: -7px !important;
+        top: 4px !important;
     }
 
-    @page {
-        margin: 2cm;
-    }
+    @page { margin: 1.8cm 2cm; }
 }
-
-

@@ -1,29 +1,41 @@
 import { useLang } from '../context/LanguageContext';
 import { t as translations } from '../translations';
 
+const LEVEL_WIDTHS = ['87%', '63%', '40%'];
+
 function Skills() {
     const { lang } = useLang();
     const tr = translations[lang].skills;
 
+    const groups = [
+        ...tr.levels.map((level, i) => ({
+            label: level.label,
+            skills: level.skills,
+            width: LEVEL_WIDTHS[i],
+        })),
+        { label: tr.languagesLabel, skills: tr.languages, width: '100%' },
+    ];
+
     return (
         <section id="skills">
             <h2>{tr.heading}</h2>
-            <div className="skills">
-                {tr.levels.map((level, i) => (
-                    <div key={level.label} className={`skill-category skill-category--level-${i + 1}`}>
-                        <h3>{level.label}</h3>
-                        <div className="skill-tags">
-                            {level.skills.map((skill) => (
-                                <span key={skill} className="skill-tag">{skill}</span>
-                            ))}
+            <div className="skill-groups">
+                {groups.map(({ label, skills, width }) => (
+                    <div key={label} className="skill-group">
+                        <div className="skill-group__header">
+                            <span className="skill-group__label">{label}</span>
+                            <div className="skill-group__track">
+                                <div
+                                    className="skill-group__fill"
+                                    style={{ '--bar-target': width }}
+                                />
+                            </div>
                         </div>
+                        <p className="skill-group__list">{skills.join(' · ')}</p>
                     </div>
                 ))}
-                <div className="skill-category skill-category--highlight">
-                    <h3>Highlights</h3>
-                    <p className="skill-category__highlight-text">{tr.highlights}</p>
-                </div>
             </div>
+            <p className="skills__highlights">{tr.highlights}</p>
         </section>
     );
 }

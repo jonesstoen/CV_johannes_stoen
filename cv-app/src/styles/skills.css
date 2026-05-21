@@ -1,116 +1,93 @@
-.skills {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.2rem;
-}
-
-.skill-category {
-    padding: 1rem;
-    border-radius: 0.8rem;
-    background: rgba(15, 23, 42, 0.4);
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    transition: all 0.2s ease;
-}
-
-.skill-category:hover {
-    background: rgba(15, 23, 42, 0.6);
-    border-color: rgba(148, 163, 184, 0.3);
-    transform: translateY(-2px);
-}
-
-.skill-category h3 {
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    font-size: 1rem;
-    color: var(--fg);
-    font-weight: 600;
-}
-
-.skill-tags {
+.skill-groups {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-direction: column;
 }
 
-.skill-tag {
-    display: inline-block;
-    padding: 0.35rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    background-color: var(--chip-bg);
-    color: var(--chip-fg);
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    transition: all 0.15s ease;
+.skill-group {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
 }
 
-.skill-tag:hover {
-    border-color: var(--accent);
-    transform: translateY(-1px);
+.skill-group:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
-.skill-category--level-1 {
-    border-color: rgba(56, 189, 248, 0.3);
+.skill-group__header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 0.45rem;
 }
 
-.skill-category--level-1 h3 {
+.skill-group__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--accent);
+    white-space: nowrap;
+    width: 7rem;
+    flex-shrink: 0;
 }
 
-.skill-category--level-2 {
-    border-color: rgba(148, 163, 184, 0.2);
+.skill-group__track {
+    flex: 1;
+    height: 4px;
+    background: rgba(148, 163, 184, 0.12);
+    border-radius: 999px;
+    overflow: hidden;
 }
 
-.skill-category--level-3 {
-    border-color: rgba(148, 163, 184, 0.12);
+html[data-theme='light'] .skill-group__track {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.skill-group__fill {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.scroll-reveal .skill-group__fill {
+    width: var(--bar-target);
+}
+
+.skill-group__list {
+    font-size: 0.88rem;
+    color: var(--fg);
+    margin: 0;
+    padding-left: calc(7rem + 1.2rem);
     opacity: 0.85;
+    line-height: 1.5;
 }
 
-.skill-category--level-3 h3 {
+.skills__highlights {
+    margin: 1.2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    font-size: 0.83rem;
     color: var(--muted);
-}
-
-.skill-category__highlight-text {
-    margin: 0;
     line-height: 1.6;
-    font-size: 0.9rem;
 }
 
-.skill-category--highlight {
-    background: linear-gradient(
-        135deg,
-        rgba(56, 189, 248, 0.1),
-        rgba(15, 23, 42, 0.4)
-    );
-    border-color: rgba(56, 189, 248, 0.2);
+html[data-theme='light'] .skills__highlights {
+    border-top-color: rgba(0, 0, 0, 0.06);
 }
 
-.skill-category--highlight p {
-    margin: 0;
-    line-height: 1.6;
-    font-size: 0.9rem;
-}
-
-html[data-theme='light'] .skill-category {
-    background: rgba(255, 255, 255, 0.6);
-    border-color: rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme='light'] .skill-category:hover {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme='light'] .skill-category--highlight {
-    background: linear-gradient(
-        135deg,
-        rgba(56, 189, 248, 0.08),
-        rgba(255, 255, 255, 0.6)
-    );
-    border-color: rgba(56, 189, 248, 0.15);
+html[data-theme='light'] .skill-group {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
 @media (max-width: 640px) {
-    .skills {
-        grid-template-columns: 1fr;
+    .skill-group__list {
+        padding-left: 0;
+        margin-top: 0.3rem;
+    }
+
+    .skill-group__label {
+        width: 6rem;
     }
 }

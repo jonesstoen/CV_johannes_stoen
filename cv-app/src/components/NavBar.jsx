@@ -4,6 +4,7 @@ import {
     RocketLaunchIcon,
     BriefcaseIcon,
     AcademicCapIcon,
+    EnvelopeIcon,
     SunIcon,
     MoonIcon,
     Bars3Icon,
@@ -63,6 +64,7 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                         { id: 'education',  label: tr.education,  icon: AcademicCapIcon,   aria: tr.ariaEducation },
                         { id: 'experience', label: tr.experience, icon: BriefcaseIcon,     aria: tr.ariaExperience },
                         { id: 'projects',   label: tr.projects,   icon: RocketLaunchIcon,  aria: tr.ariaProjects },
+                        { id: 'contact',    label: tr.contact,    icon: EnvelopeIcon,      aria: tr.ariaContact },
                     ].map(({ id, label, icon: Icon, aria }) => (
                         <button
                             key={id}
@@ -75,6 +77,15 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                             <span>{label}</span>
                         </button>
                     ))}
+
+                    <button
+                        type="button"
+                        className="navbar__link navbar__lang-mobile"
+                        onClick={() => { toggleLang(); setIsMobileMenuOpen(false); }}
+                        aria-label={tr.ariaLang}
+                    >
+                        <span>{lang === 'no' ? 'EN — English' : 'NO — Norsk'}</span>
+                    </button>
                 </nav>
 
                 <div className="navbar__controls">
