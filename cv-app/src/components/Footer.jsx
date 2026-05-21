@@ -9,7 +9,7 @@ function Footer() {
         <footer className="footer">
             <p>© {new Date().getFullYear()} Johannes Støen</p>
             <p className="footer__hint">
-                <kbd>T</kbd> {tr.theme} · <kbd>H</kbd> {tr.top} · <kbd>L</kbd> EN/NO
+                <kbd>T</kbd> {tr.theme} · <kbd>H</kbd> {tr.top} · <kbd>L</kbd> EN/NO · <kbd>⌘K</kbd> {tr.cmd}
             </p>
         </footer>
     );

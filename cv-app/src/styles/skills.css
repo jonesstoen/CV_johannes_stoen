@@ -13,6 +13,17 @@
     padding-bottom: 0;
 }
 
+.skill-group--langs .skill-group__header {
+    margin-bottom: 0;
+}
+
+.skill-group__lang-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+}
+
 .skill-group__header {
     display: flex;
     align-items: center;

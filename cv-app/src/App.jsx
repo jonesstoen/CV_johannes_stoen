@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import StructuredData from './components/StructuredData';
+import CommandPalette from './components/CommandPalette';
 import { useLang } from './context/LanguageContext';
 
 const SECTION_IDS = ['about', 'education', 'experience', 'projects', 'contact'];
@@ -19,6 +20,7 @@ const SECTION_IDS = ['about', 'education', 'experience', 'projects', 'contact'];
 export default function App() {
     const { toggle: toggleLang } = useLang();
     const [activeSection, setActiveSection] = useState('about');
+    const [cmdOpen, setCmdOpen] = useState(false);
     const [theme, setTheme] = useState(() => {
         const stored = localStorage.getItem('cv-theme');
         if (stored) return stored;
@@ -32,12 +34,28 @@ export default function App() {
     }, [theme]);
 
     useEffect(() => {
+        const handleMouseMove = (e) => {
+            document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
+            document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
+        };
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    useEffect(() => {
         const handleKeyPress = (e) => {
             if (
                 e.target.tagName === 'INPUT' ||
                 e.target.tagName === 'TEXTAREA' ||
                 e.target.isContentEditable
             ) return;
+
+            if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+                e.preventDefault();
+                setCmdOpen(prev => !prev);
+                return;
+            }
+            if (cmdOpen) return;
 
             if (e.key === 't' || e.key === 'T') {
                 setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -52,7 +70,7 @@ export default function App() {
 
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [toggleLang]);
+    }, [toggleLang, cmdOpen]);
 
     useEffect(() => {
         const onScroll = () => {
@@ -88,30 +106,40 @@ export default function App() {
     }, []);
 
     return (
-        <div className="app">
-            <StructuredData />
-            <a href="#about" className="skip-to-content">
-                Hopp til hovedinnhold
-            </a>
-            <NavBar
-                activeSection={activeSection}
-                theme={theme}
-                setTheme={setTheme}
-            />
+        <>
+            <div className="cursor-glow" aria-hidden="true" />
+            <div className="app">
+                <StructuredData />
+                <a href="#about" className="skip-to-content">
+                    Hopp til hovedinnhold
+                </a>
+                <NavBar
+                    activeSection={activeSection}
+                    theme={theme}
+                    setTheme={setTheme}
+                />
 
-            <Hero />
+                <Hero />
 
-            <main>
-                <About />
-                <Education />
-                <Experience />
-                <Projects />
-                <Skills />
-                <Contact />
-            </main>
+                <main>
+                    <About />
+                    <Education />
+                    <Experience />
+                    <Projects />
+                    <Skills />
+                    <Contact />
+                </main>
 
-            <Footer />
-            <BackToTop />
-        </div>
+                <Footer />
+                <BackToTop />
+            </div>
+            {cmdOpen && (
+                <CommandPalette
+                    theme={theme}
+                    setTheme={setTheme}
+                    onClose={() => setCmdOpen(false)}
+                />
+            )}
+        </>
     );
 }

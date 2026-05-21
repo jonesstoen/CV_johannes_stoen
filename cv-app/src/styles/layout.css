@@ -1,3 +1,27 @@
+.cursor-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+        800px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(129, 140, 248, 0.055),
+        transparent 40%
+    );
+}
+
+html[data-theme='light'] .cursor-glow {
+    background: radial-gradient(
+        600px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(79, 70, 229, 0.04),
+        transparent 40%
+    );
+}
+
+@media (hover: none) {
+    .cursor-glow { display: none; }
+}
+
 .app {
     min-height: 100vh;
     display: flex;
@@ -38,20 +62,30 @@
 
 section {
     counter-increment: section;
-    margin-bottom: 2.5rem;
-    background-color: rgba(15, 23, 42, 0.94);
-    padding: 2rem 2.2rem;
-    border-radius: 1.2rem;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+    margin-bottom: 5rem;
+    padding: 0;
     position: relative;
-    overflow: hidden;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+#contact {
+    padding: 2rem 2.2rem;
+    background-color: rgba(15, 23, 42, 0.94);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 1.2rem;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+}
+
+html[data-theme='light'] #contact {
+    background-color: rgba(255, 255, 255, 0.96);
+    border-color: rgba(209, 213, 219, 0.9);
+    box-shadow: 0 18px 40px rgba(148, 163, 184, 0.4);
 }
 
 section.scroll-reveal {
@@ -77,21 +111,12 @@ section:nth-of-type(5) {
     animation-delay: 0.2s;
 }
 
-html[data-theme='light'] section {
-    background-color: rgba(255, 255, 255, 0.96);
-    border-color: rgba(209, 213, 219, 0.9);
-    box-shadow: 0 18px 40px rgba(148, 163, 184, 0.4);
-}
-
 section h2 {
-    margin: 0 0 1.1rem;
-    font-size: 1.3rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-}
-
-html[data-theme='light'] section h2 {
-    border-bottom-color: rgba(0, 0, 0, 0.07);
+    margin: 0 0 1.5rem;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .about__meta {
@@ -131,8 +156,8 @@ html[data-theme='light'] .about__meta {
     flex-direction: column;
     gap: 0.35rem;
     padding: 0.85rem 1rem 0.85rem 1.1rem;
-    background: var(--accent-soft);
-    border: 1px solid rgba(129, 140, 248, 0.18);
+    background: rgba(129, 140, 248, 0.06);
+    border: 1px solid rgba(129, 140, 248, 0.1);
     border-left: 3px solid var(--accent);
     border-radius: 0 0.6rem 0.6rem 0;
     margin-bottom: 1.2rem;

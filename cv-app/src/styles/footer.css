@@ -17,7 +17,7 @@
     padding: 0.15rem 0.4rem;
     margin: 0 0.15rem;
     font-size: 0.7rem;
-    font-family: system-ui, monospace;
+    font-family: inherit;
     background-color: var(--chip-bg);
     color: var(--chip-fg);
     border: 1px solid rgba(148, 163, 184, 0.3);

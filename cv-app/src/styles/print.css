@@ -85,7 +85,8 @@
 
     .hero__portrait {
         width: 80px !important;
-        height: 80px !important;
+        height: 100px !important;
+        border-radius: 0.5rem !important;
     }
 
     .hero__links {

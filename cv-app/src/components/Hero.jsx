@@ -84,7 +84,7 @@ export default function Hero() {
                 </div>
 
                 <div className="hero__body">
-                    <h1 className="hero__name">Johannes Støen</h1>
+                    <h1 className="hero__name">Johannes <span className="hero__name-accent">Støen</span></h1>
                     <p className="hero__title">
                         {tr.subtitle} ·{' '}
                         <span className="hero__typewriter" aria-live="polite">

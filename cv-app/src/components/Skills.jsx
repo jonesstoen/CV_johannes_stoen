@@ -7,14 +7,11 @@ function Skills() {
     const { lang } = useLang();
     const tr = translations[lang].skills;
 
-    const groups = [
-        ...tr.levels.map((level, i) => ({
-            label: level.label,
-            skills: level.skills,
-            width: LEVEL_WIDTHS[i],
-        })),
-        { label: tr.languagesLabel, skills: tr.languages, width: '100%' },
-    ];
+    const groups = tr.levels.map((level, i) => ({
+        label: level.label,
+        skills: level.skills,
+        width: LEVEL_WIDTHS[i],
+    }));
 
     return (
         <section id="skills">
@@ -34,6 +31,16 @@ function Skills() {
                         <p className="skill-group__list">{skills.join(' · ')}</p>
                     </div>
                 ))}
+                <div className="skill-group skill-group--langs">
+                    <div className="skill-group__header">
+                        <span className="skill-group__label">{tr.languagesLabel}</span>
+                        <div className="skill-group__lang-tags">
+                            {tr.languages.map((lang) => (
+                                <span key={lang} className="tag">{lang}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
             <p className="skills__highlights">{tr.highlights}</p>
         </section>

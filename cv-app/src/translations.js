@@ -111,13 +111,18 @@ export const t = {
             github: 'GitHub',
             demo: 'Prøv det',
             closeDemo: 'Lukk',
+            details: 'Detaljer',
+            ariaDetails: 'Vis detaljer for',
+            ariaClose: 'Lukk prosjektdetaljer',
+            ariaPrev: 'Forrige skjermbilde',
+            ariaNext: 'Neste skjermbilde',
             problemLabel: 'Utfordring',
             builtLabel: 'Løsning',
             outcomeLabel: 'Resultat',
             cases: [
                 {
                     problem: 'Fiskere og maritime brukere mangler et mobilverktøy som kombinerer sanntids AIS-sporing, meteorologiske GRIB-data og offline fiskelogg.',
-                    built: 'Android-app med MVVM-arkitektur. Parser GRIB-meteorologidata med NetCDF-Java for vind, bølger og strøm. Sanntids AIS fra BarentsWatch, egendefinert kartstil via MapTiler og offline fiskelogg med bilder.',
+                    built: 'Android-app med MVVM-arkitektur. Sanntids AIS (BarentsWatch), GRIB-meteorologidata via NetCDF-Java og offline fiskelogg med bilder.',
                     outcome: 'Nominert til MET-prisen 2025 for mest kreativ bruk av MET-APIet (Team 46, IN2000).',
                 },
                 {
@@ -157,9 +162,20 @@ export const t = {
             languages: ['Norsk (morsmål)', 'Engelsk (flytende)'],
             highlights: 'FiskeKlar nominert til MET-prisen (2025) · Erfaring som gruppelærer · Flere større studentprosjekter med tydelig lagdeling og arkitektur.',
         },
+        cmd: {
+            placeholder: 'Søk kommandoer...',
+            navigate: 'Navigasjon',
+            actions: 'Handlinger',
+            themeLight: 'Bytt til lyst tema',
+            themeDark: 'Bytt til mørkt tema',
+            langEn: 'Bytt til engelsk',
+            langNo: 'Bytt til norsk',
+            skills: 'Ferdigheter',
+        },
         footer: {
             theme: 'for tema',
             top: 'for toppen',
+            cmd: 'for kommandoer',
         },
         contact: {
             heading: 'Ta kontakt',
@@ -283,13 +299,18 @@ export const t = {
             github: 'GitHub',
             demo: 'Try it',
             closeDemo: 'Close',
+            details: 'Details',
+            ariaDetails: 'View details for',
+            ariaClose: 'Close project details',
+            ariaPrev: 'Previous screenshot',
+            ariaNext: 'Next screenshot',
             problemLabel: 'Problem',
             builtLabel: 'Built',
             outcomeLabel: 'Outcome',
             cases: [
                 {
                     problem: 'Fishers and maritime users lack a mobile tool combining real-time AIS vessel tracking, meteorological GRIB data parsing, and offline fishing logs.',
-                    built: 'Android app with MVVM architecture. Parses GRIB meteorological data with NetCDF-Java for wind, waves and currents. Real-time AIS from BarentsWatch, custom MapTiler map styling, and offline catch logging with photos.',
+                    built: 'Android app with MVVM architecture. Real-time AIS (BarentsWatch), GRIB weather data via NetCDF-Java and offline catch logging with photos.',
                     outcome: 'Nominated for the MET Prize 2025 for most creative use of the MET API (Team 46, IN2000).',
                 },
                 {
@@ -329,9 +350,20 @@ export const t = {
             languages: ['Norwegian (native)', 'English (fluent)'],
             highlights: 'FiskeKlar nominated for the MET Prize (2025) · Teaching assistant experience · Multiple large student projects with clear architecture and layer separation.',
         },
+        cmd: {
+            placeholder: 'Search commands...',
+            navigate: 'Navigation',
+            actions: 'Actions',
+            themeLight: 'Switch to light theme',
+            themeDark: 'Switch to dark theme',
+            langEn: 'Switch to English',
+            langNo: 'Switch to Norwegian',
+            skills: 'Skills',
+        },
         footer: {
             theme: 'for theme',
-            top: 'for top',
+            top: 'to top',
+            cmd: 'for commands',
         },
         contact: {
             heading: 'Get in touch',

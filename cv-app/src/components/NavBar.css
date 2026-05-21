@@ -4,8 +4,8 @@
     top: 0;
     z-index: 1000;
 
-    width: 100%;
-    margin: 0;
+    width: calc(100% + 3rem);
+    margin: 0 -1.5rem;
     padding: 0;
 
     backdrop-filter: blur(18px) saturate(140%);
@@ -98,6 +98,31 @@ html[data-theme='light'] .navbar__mobile-toggle {
     gap: 0.6rem;
     flex: 1;
     justify-content: center;
+    position: relative;
+}
+
+.navbar__pill {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.85);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.9);
+    transition:
+        left 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.15s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+html[data-theme='light'] .navbar__pill {
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(148, 163, 184, 0.7);
+}
+
+@media (max-width: 768px) {
+    .navbar__pill { display: none; }
 }
 
 .navbar__link {
@@ -109,6 +134,7 @@ html[data-theme='light'] .navbar__mobile-toggle {
     background-color: transparent;
     color: var(--muted);
     cursor: pointer;
+    z-index: 1;
 
     display: inline-flex;
     align-items: center;
@@ -116,15 +142,17 @@ html[data-theme='light'] .navbar__mobile-toggle {
 
     transition:
             color 0.15s ease,
-            background-color 0.12s ease,
-            transform 0.1s ease,
-            box-shadow 0.15s ease;
+            transform 0.1s ease;
 }
 
 .navbar__icon {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
+}
+
+@media (min-width: 769px) {
+    .navbar__link .navbar__icon { display: none; }
 }
 
 
@@ -164,13 +192,6 @@ html[data-theme='light'] .navbar__mobile-toggle {
 
 .navbar__link--active {
     color: var(--fg);
-    background: rgba(15, 23, 42, 0.85);
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.9);
-}
-
-html[data-theme='light'] .navbar__link--active {
-    background: #ffffff;
-    box-shadow: 0 10px 26px rgba(148, 163, 184, 0.7);
 }
 
 .navbar__link--active::after {
@@ -215,6 +236,37 @@ html[data-theme='light'] .navbar__toggle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.navbar__download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.38rem 1rem;
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+    transition: opacity 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+}
+
+.navbar__download:hover,
+.navbar__download:focus-visible {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .navbar__download { display: none; }
 }
 
 .navbar__lang-toggle {
