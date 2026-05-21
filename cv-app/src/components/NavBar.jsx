@@ -10,15 +10,18 @@ import {
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import "./NavBar.css";
+import { useLang } from '../context/LanguageContext';
+import { t as translations } from '../translations';
 
 export default function NavBar({ activeSection, theme, setTheme }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { lang, toggle: toggleLang } = useLang();
+    const tr = translations[lang].nav;
 
     const scrollTo = (id) => {
         const el = document.getElementById(id);
         if (!el) return;
-        const offset = 80;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: y, behavior: "smooth" });
         setIsMobileMenuOpen(false);
     };
@@ -41,7 +44,7 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                     type="button"
                     className="navbar__mobile-toggle"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Åpne meny"
+                    aria-label={tr.ariaMenu}
                     aria-expanded={isMobileMenuOpen}
                 >
                     {isMobileMenuOpen ? (
@@ -51,71 +54,52 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                     )}
                 </button>
 
-                <nav 
-                    className={`navbar__links ${isMobileMenuOpen ? 'navbar__links--open' : ''}`} 
+                <nav
+                    className={`navbar__links ${isMobileMenuOpen ? 'navbar__links--open' : ''}`}
                     aria-label="Hovedmeny"
                 >
-                    <button
-                        type="button"
-                        onClick={() => scrollTo("about")}
-                        className={`navbar__link ${
-                            activeSection === "about" ? "navbar__link--active" : ""
-                        }`}
-                        aria-label="Gå til Om meg-seksjon"
-                    >
-                        <UserIcon className="navbar__icon" aria-hidden="true" />
-                        <span>Om meg</span>
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => scrollTo("education")}
-                        className={`navbar__link ${
-                            activeSection === "education" ? "navbar__link--active" : ""
-                        }`}
-                        aria-label="Gå til Utdanning-seksjon"
-                    >
-                        <AcademicCapIcon className="navbar__icon" aria-hidden="true" />
-                        <span>Utdanning</span>
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => scrollTo("experience")}
-                        className={`navbar__link ${
-                            activeSection === "experience" ? "navbar__link--active" : ""
-                        }`}
-                        aria-label="Gå til Erfaring-seksjon"
-                    >
-                        <BriefcaseIcon className="navbar__icon" aria-hidden="true" />
-                        <span>Erfaring</span>
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => scrollTo("projects")}
-                        className={`navbar__link ${
-                            activeSection === "projects" ? "navbar__link--active" : ""
-                        }`}
-                        aria-label="Gå til Prosjekter-seksjon"
-                    >
-                        <RocketLaunchIcon className="navbar__icon" aria-hidden="true" />
-                        <span>Prosjekter</span>
-                    </button>
+                    {[
+                        { id: 'about',      label: tr.about,      icon: UserIcon,          aria: tr.ariaAbout },
+                        { id: 'education',  label: tr.education,  icon: AcademicCapIcon,   aria: tr.ariaEducation },
+                        { id: 'experience', label: tr.experience, icon: BriefcaseIcon,     aria: tr.ariaExperience },
+                        { id: 'projects',   label: tr.projects,   icon: RocketLaunchIcon,  aria: tr.ariaProjects },
+                    ].map(({ id, label, icon: Icon, aria }) => (
+                        <button
+                            key={id}
+                            type="button"
+                            onClick={() => scrollTo(id)}
+                            className={`navbar__link ${activeSection === id ? 'navbar__link--active' : ''}`}
+                            aria-label={aria}
+                        >
+                            <Icon className="navbar__icon" aria-hidden="true" />
+                            <span>{label}</span>
+                        </button>
+                    ))}
                 </nav>
 
-                <button
-                    type="button"
-                    className="navbar__toggle"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    aria-label="Bytt tema"
-                >
-                    {theme === "dark" ? (
-                        <SunIcon className="navbar__icon" />
-                    ) : (
-                        <MoonIcon className="navbar__icon" />
-                    )}
-                </button>
+                <div className="navbar__controls">
+                    <button
+                        type="button"
+                        className="navbar__lang-toggle"
+                        onClick={toggleLang}
+                        aria-label={tr.ariaLang}
+                    >
+                        {lang === 'no' ? 'EN' : 'NO'}
+                    </button>
+
+                    <button
+                        type="button"
+                        className="navbar__toggle"
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        aria-label={tr.ariaTheme}
+                    >
+                        {theme === "dark" ? (
+                            <SunIcon className="navbar__icon" />
+                        ) : (
+                            <MoonIcon className="navbar__icon" />
+                        )}
+                    </button>
+                </div>
             </div>
         </header>
     );

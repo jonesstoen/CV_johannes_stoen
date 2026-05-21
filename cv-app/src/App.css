@@ -2,6 +2,7 @@
 @import "./styles/layout.css";
 @import "./components/navbar.css";
 @import "./styles/hero.css";
+@import "./styles/timeline.css";
 @import "./styles/projects.css";
 @import "./styles/skills.css";
 @import "./styles/footer.css";

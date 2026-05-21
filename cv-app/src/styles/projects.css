@@ -94,6 +94,26 @@ html[data-theme='light'] .project-card__link:hover {
     outline-offset: 2px;
 }
 
+.project-card__banner {
+    height: 68px;
+    margin: -1.1rem -1.2rem 1.1rem;
+    border-radius: 0.8rem 0.8rem 0 0;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-card__banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
+    pointer-events: none;
+}
+
 .tag {
     display: inline-block;
     padding: 0.18rem 0.7rem;

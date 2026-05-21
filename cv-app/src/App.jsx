@@ -12,10 +12,12 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import StructuredData from './components/StructuredData';
 import ScrollProgress from './components/ScrollProgress';
+import { useLang } from './context/LanguageContext';
 
-const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
+const SECTION_IDS = ['about', 'education', 'experience', 'projects'];
 
 export default function App() {
+    const { toggle: toggleLang } = useLang();
     const [activeSection, setActiveSection] = useState('about');
     const [theme, setTheme] = useState(() => {
         const stored = localStorage.getItem('cv-theme');
@@ -31,44 +33,37 @@ export default function App() {
 
     useEffect(() => {
         const handleKeyPress = (e) => {
-            // Only trigger if not typing in an input/textarea
             if (
                 e.target.tagName === 'INPUT' ||
                 e.target.tagName === 'TEXTAREA' ||
                 e.target.isContentEditable
-            ) {
-                return;
-            }
+            ) return;
 
-            // 't' key to toggle theme
             if (e.key === 't' || e.key === 'T') {
                 setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
             }
-
-            // 'h' key to scroll to top
             if (e.key === 'h' || e.key === 'H') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (e.key === 'l' || e.key === 'L') {
+                toggleLang();
             }
         };
 
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [setTheme]);
+    }, [toggleLang]);
 
     useEffect(() => {
         const onScroll = () => {
             const scrollY = window.scrollY;
             const offset = 120;
-
             let current = 'about';
-
             SECTION_IDS.forEach((id) => {
                 const el = document.getElementById(id);
                 if (!el) return;
-                const top = el.offsetTop - offset;
-                if (scrollY >= top) current = id;
+                if (scrollY >= el.offsetTop - offset) current = id;
             });
-
             setActiveSection(current);
         };
 
@@ -78,29 +73,18 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px',
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-reveal');
-                }
-            });
-        }, observerOptions);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add('scroll-reveal');
+                });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
 
         const sections = document.querySelectorAll('section');
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-
-        return () => {
-            sections.forEach((section) => {
-                observer.unobserve(section);
-            });
-        };
+        sections.forEach((s) => observer.observe(s));
+        return () => sections.forEach((s) => observer.unobserve(s));
     }, []);
 
     return (

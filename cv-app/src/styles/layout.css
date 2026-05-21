@@ -1,9 +1,25 @@
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+html[data-theme='light'] body::before {
+    background-image: radial-gradient(circle, rgba(100, 116, 139, 0.12) 1px, transparent 1px);
+}
+
 .app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 0 1.5rem 4rem;
+    position: relative;
+    z-index: 1;
 }
 
 .skip-to-content {
@@ -31,9 +47,11 @@
     width: 100%;
     max-width: var(--content-width);
     margin: 2.5rem auto 0;
+    counter-reset: section;
 }
 
 section {
+    counter-increment: section;
     margin-bottom: 2.5rem;
     background-color: rgba(15, 23, 42, 0.94);
     padding: 2rem 2.2rem;
@@ -98,6 +116,43 @@ section::before {
 section h2 {
     margin: 0 0 0.8rem;
     font-size: 1.25rem;
+}
+
+.about__now {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem 0.85rem 1.1rem;
+    background: var(--accent-soft);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 0.6rem 0.6rem 0;
+    margin-bottom: 1.2rem;
+}
+
+.about__now-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.about__now p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+section h2::before {
+    content: '0' counter(section) ' ·';
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+    opacity: 0.85;
 }
 
 main p {

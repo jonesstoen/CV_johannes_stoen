@@ -48,6 +48,33 @@
     transform: translateY(-1px);
 }
 
+.skill-category--level-1 {
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.skill-category--level-1 h3 {
+    color: var(--accent);
+}
+
+.skill-category--level-2 {
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.skill-category--level-3 {
+    border-color: rgba(148, 163, 184, 0.12);
+    opacity: 0.85;
+}
+
+.skill-category--level-3 h3 {
+    color: var(--muted);
+}
+
+.skill-category__highlight-text {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
 .skill-category--highlight {
     background: linear-gradient(
         135deg,
