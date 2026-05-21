@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import portrait from "../assets/portrait.png";
+import portrait from "../assets/portrait.jpg";
 import {
     EnvelopeIcon,
     PhoneIcon,
