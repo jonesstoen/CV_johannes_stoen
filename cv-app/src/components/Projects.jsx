@@ -38,7 +38,7 @@ const PROJECT_META = [
         title: 'UiO Master Match',
         tech: ['React', 'Vite', 'Tailwind', 'LocalStorage'],
         githubUrl: 'https://github.com/jonesstoen/uio-master-match',
-        demoUrl: 'https://jonesstoen.github.io/uio-master-match/',
+        demoUrl: 'https://uio-kalkulator.vercel.app/',
         gradient: 'linear-gradient(135deg, #14532d 0%, #15803d 55%, #4ade80 100%)',
         gallery: [],
     },
