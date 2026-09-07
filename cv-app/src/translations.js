@@ -31,13 +31,13 @@ export const t = {
         about: {
             heading: 'Om meg',
             nowLabel: 'Akkurat nå',
-            now: 'Fullfører første år av masteren i informatikk ved UiO. Jobber med egne prosjekter i parallell og er åpen for spennende muligheter.',
+            now: 'Andre år av masteren i informatikk ved UiO. Skriver masteroppgave om hvordan AI-assistenter påvirker koordinering og roller i smidige utviklingsteam. Åpen for interessante muligheter.',
             details: [
                 { key: 'Sted', value: 'Oslo, Norge' },
                 { key: 'Grad', value: 'MSc Informatikk, UiO' },
                 { key: 'Språk', value: 'Norsk · Engelsk' },
             ],
-            p1: 'Jeg er en strukturert og nysgjerrig utvikler med bakgrunn fra både informatikk og samfunnsvitenskap. Jeg trives best når jeg kan kombinere teknisk arbeid med samarbeid og formidling — enten det er i gruppeprosjekter, som gruppelærer eller ved å bygge verktøy som faktisk brukes.',
+            p1: 'Jeg er en strukturert og nysgjerrig utvikler med bakgrunn fra både informatikk og samfunnsvitenskap. Jeg trives best når jeg kan kombinere teknisk arbeid med samarbeid og formidling, enten det er i gruppeprosjekter, som gruppelærer eller ved å bygge verktøy som faktisk brukes.',
             p2: 'De siste årene har jeg jobbet med alt fra Android-apper (FiskeKlar), iOS-treningsapp (WorkoutTracker) og webprosjekter (UiO Master Match) til offline-first PWA-er med IndexedDB-caching (Inspector Chalmers) og nettverksprogrammering i C. Jeg har også erfaring fra butikkarbeid og førstegangstjeneste i Forsvaret, noe som har gitt meg god trening i samarbeid, ansvar og å håndtere stress.',
             p3: 'Faglig er jeg spesielt interessert i arkitektur (MVVM/UDF), plattformer, og hvordan man lager gode brukeropplevelser på begrensede flater (mobil og nettbrett).',
         },
@@ -73,7 +73,8 @@ export const t = {
                 {
                     title: 'Teaching Assistant (IN2031)',
                     org: 'UiO, Institutt for informatikk',
-                    period: 'Aug 2025 – Des 2025',
+                    period: 'Aug 2025 – Des 2025 · Aug 2026 –',
+                    current: true,
                     bullets: [
                         'Ledet ukentlige seminarer og gruppeøvelser for ca. 20 studenter i et programmeringsprosjekt-emne.',
                         'Veiledet team i utvikling av domene-spesifikke språk (DSL) med ANTLR og programvarearkitektur.',
@@ -133,7 +134,7 @@ export const t = {
                 {
                     problem: 'Masterstudentsøkere ved UiO mangler et enkelt verktøy for å estimere opptakspoeng.',
                     built: 'React-webapp med karaktervelger, semestervis oversikt og sanntids poengsummering. LocalStorage for persistent lagring.',
-                    outcome: 'Brukt av studenter til å planlegge masteropptak — enkel, rask og tilgjengelig uten innlogging.',
+                    outcome: 'Brukt av studenter til å planlegge masteropptak. Enkel, rask og tilgjengelig uten innlogging.',
                 },
                 {
                     problem: 'Skoleinspektører trenger et verktøy som fungerer uten nettilgang og automatisk synkroniserer data når tilkoblingen er tilbake.',
@@ -219,13 +220,13 @@ export const t = {
         about: {
             heading: 'About me',
             nowLabel: 'Right now',
-            now: "Completing the first year of my master's in computer science at UiO. Working on personal projects in parallel and open to interesting opportunities.",
+            now: "Second year of my master's in computer science at UiO. Writing my thesis on how AI assistants reshape coordination and roles in agile software development teams. Open to interesting opportunities.",
             details: [
                 { key: 'Location', value: 'Oslo, Norway' },
                 { key: 'Degree', value: 'MSc Computer Science, UiO' },
                 { key: 'Languages', value: 'Norwegian · English' },
             ],
-            p1: "I'm a structured and curious developer with a background in both computer science and social science. I thrive when I can combine technical work with collaboration and communication — whether in group projects, as a teaching assistant, or by building tools that are actually used.",
+            p1: "I'm a structured and curious developer with a background in both computer science and social science. I thrive when I can combine technical work with collaboration and communication, whether in group projects, as a teaching assistant, or by building tools that are actually used.",
             p2: 'In recent years I have worked on everything from Android apps (FiskeKlar), an iOS fitness app (WorkoutTracker) and web projects (UiO Master Match) to offline-first PWAs with IndexedDB caching (Inspector Chalmers) and network programming in C. I also have experience from retail work and military service, which gave me solid training in teamwork, responsibility and handling pressure.',
             p3: "Professionally I'm especially interested in software architecture (MVVM/UDF), platforms, and how to create good user experiences on constrained surfaces (mobile and tablet).",
         },
@@ -261,7 +262,8 @@ export const t = {
                 {
                     title: 'Teaching Assistant (IN2031)',
                     org: 'UiO, Department of Informatics',
-                    period: 'Aug 2025 – Dec 2025',
+                    period: 'Aug 2025 – Dec 2025 · Aug 2026 –',
+                    current: true,
                     bullets: [
                         'Led weekly seminars and group exercises for ~20 students in a programming project course.',
                         'Guided teams in developing domain-specific languages (DSL) with ANTLR and software architecture.',
@@ -321,7 +323,7 @@ export const t = {
                 {
                     problem: "UiO master's applicants lack a simple tool to estimate their admission points based on their own courses and grades.",
                     built: 'React web app with a grade selector, semester overview and real-time score summary. LocalStorage for persistent data.',
-                    outcome: "Used by students to plan for master's admission — simple, fast and accessible without login.",
+                    outcome: "Used by students to plan for master's admission. Simple, fast and accessible without login.",
                 },
                 {
                     problem: 'School inspectors need a tool that works without internet access and automatically syncs data once connectivity is restored.',

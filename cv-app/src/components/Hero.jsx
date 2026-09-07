@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import portrait from "../assets/portrait.jpg";
 import {
     EnvelopeIcon,
@@ -16,31 +16,7 @@ export default function Hero() {
     const { lang } = useLang();
     const tr = translations[lang].hero;
 
-    const [roleIdx, setRoleIdx] = useState(0);
-    const [typedText, setTypedText] = useState('');
-    const [deleting, setDeleting] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
-
-    useEffect(() => {
-        const roles = translations[lang].hero.roles;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            setTypedText(roles[0]);
-            return;
-        }
-        const target = roles[roleIdx % roles.length];
-        let id;
-        if (!deleting && typedText.length < target.length) {
-            id = setTimeout(() => setTypedText(target.slice(0, typedText.length + 1)), 75);
-        } else if (!deleting) {
-            id = setTimeout(() => setDeleting(true), 2200);
-        } else if (typedText.length > 0) {
-            id = setTimeout(() => setTypedText(target.slice(0, typedText.length - 1)), 35);
-        } else {
-            setDeleting(false);
-            setRoleIdx((i) => (i + 1) % roles.length);
-        }
-        return () => clearTimeout(id);
-    }, [typedText, deleting, roleIdx, lang]);
     const [showToast, setShowToast] = useState(false);
     const email = 'jonesstoen@gmail.com';
 
@@ -84,19 +60,10 @@ export default function Hero() {
                 </div>
 
                 <div className="hero__body">
-                    <h1 className="hero__name">Johannes <span className="hero__name-accent">Støen</span></h1>
-                    <p className="hero__title">
-                        {tr.subtitle} ·{' '}
-                        <span className="hero__typewriter" aria-live="polite">
-                            {typedText}
-                            <span className="hero__cursor" aria-hidden="true" />
-                        </span>
-                    </p>
+                    <h1 className="hero__name">Johannes Støen</h1>
+                    <p className="hero__title">{tr.subtitle}</p>
 
-                    <div className="hero__status">
-                        <span className="hero__status-dot" aria-hidden="true" />
-                        {tr.status}
-                    </div>
+                    <p className="hero__status">{tr.status}</p>
 
                     <p className="hero__summary">{tr.summary}</p>
 

@@ -13,11 +13,12 @@ import fkWarning from '../assets/fiskeklar/warning_screen.jpg';
 import fkWeather from '../assets/fiskeklar/wheaterscreen.jpg';
 import fkLog from '../assets/fiskeklar/fiskelogg1.jpg';
 import fkSos from '../assets/fiskeklar/Sosscreen.jpg';
+import uioBanner from '../assets/uiomastermatch/uio_banner.jpg';
 import ProjectModal from './ProjectModal';
 
 const PROJECT_META = [
     {
-        title: 'FiskeKlar — Maritime Weather',
+        title: 'FiskeKlar: Maritime Weather',
         tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
         githubUrl: 'https://github.com/jonesstoen/fiskeklar',
         gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 55%, #818cf8 100%)',
@@ -26,7 +27,7 @@ const PROJECT_META = [
         gallery: [fiskeklarBanner, fkHome, fkWarning, fkWeather, fkLog, fkSos],
     },
     {
-        title: 'WorkoutTracker — iOS',
+        title: 'WorkoutTracker: iOS',
         tech: ['Swift', 'SwiftUI', 'HealthKit', 'Core Data', 'UDF'],
         githubUrl: 'https://github.com/jonesstoen/workout-tracker',
         gradient: 'linear-gradient(135deg, #7c2d12 0%, #c2410c 55%, #fb923c 100%)',
@@ -40,10 +41,12 @@ const PROJECT_META = [
         githubUrl: 'https://github.com/jonesstoen/uio-master-match',
         demoUrl: 'https://uio-kalkulator.vercel.app/',
         gradient: 'linear-gradient(135deg, #14532d 0%, #15803d 55%, #4ade80 100%)',
-        gallery: [],
+        bannerImage: uioBanner,
+        bannerPosition: 'top center',
+        gallery: [uioBanner],
     },
     {
-        title: 'Inspector Chalmers — PWA',
+        title: 'Inspector Chalmers: PWA',
         tech: ['React', 'PWA', 'IndexedDB', 'DHIS2', 'localforage'],
         githubUrl: 'https://github.com/jonesstoen/Chalmers',
         gradient: 'linear-gradient(135deg, #134e4a 0%, #0f766e 55%, #14b8a6 100%)',

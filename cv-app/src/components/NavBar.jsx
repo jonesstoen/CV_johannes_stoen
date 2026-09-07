@@ -113,7 +113,7 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                         onClick={() => { toggleLang(); setIsMobileMenuOpen(false); }}
                         aria-label={tr.ariaLang}
                     >
-                        <span>{lang === 'no' ? 'EN — English' : 'NO — Norsk'}</span>
+                        <span>{lang === 'no' ? 'EN' : 'NO'}</span>
                     </button>
                 </nav>
 

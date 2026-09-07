@@ -1,78 +1,29 @@
 .skill-groups {
     display: flex;
     flex-direction: column;
+    gap: 0.9rem;
 }
 
 .skill-group {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
-}
-
-.skill-group:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.skill-group--langs .skill-group__header {
-    margin-bottom: 0;
-}
-
-.skill-group__lang-tags {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    align-items: center;
-}
-
-.skill-group__header {
-    display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.2rem;
-    margin-bottom: 0.45rem;
 }
 
 .skill-group__label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
     white-space: nowrap;
-    width: 7rem;
+    width: 6.5rem;
     flex-shrink: 0;
+    padding-top: 0.3rem;
 }
 
-.skill-group__track {
-    flex: 1;
-    height: 4px;
-    background: rgba(148, 163, 184, 0.12);
-    border-radius: 999px;
-    overflow: hidden;
-}
-
-html[data-theme='light'] .skill-group__track {
-    background: rgba(0, 0, 0, 0.08);
-}
-
-.skill-group__fill {
-    height: 100%;
-    width: 0;
-    border-radius: 999px;
-    background: var(--accent);
-    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-section.scroll-reveal .skill-group__fill {
-    width: var(--bar-target);
-}
-
-.skill-group__list {
-    font-size: 0.88rem;
-    color: var(--fg);
-    margin: 0;
-    padding-left: calc(7rem + 1.2rem);
-    opacity: 0.85;
-    line-height: 1.5;
+.skill-group__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
 }
 
 .skills__highlights {
@@ -88,17 +39,14 @@ html[data-theme='light'] .skills__highlights {
     border-top-color: rgba(0, 0, 0, 0.06);
 }
 
-html[data-theme='light'] .skill-group {
-    border-bottom-color: rgba(0, 0, 0, 0.06);
-}
-
 @media (max-width: 640px) {
-    .skill-group__list {
-        padding-left: 0;
-        margin-top: 0.3rem;
+    .skill-group {
+        flex-direction: column;
+        gap: 0.4rem;
     }
 
     .skill-group__label {
-        width: 6rem;
+        width: auto;
+        padding-top: 0;
     }
 }
