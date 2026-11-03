@@ -164,7 +164,7 @@ export const t = {
                 },
                 {
                     label: 'Kjennskap',
-                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
+                    skills: ['C', 'AppKit', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
                 },
             ],
             languagesLabel: 'Språk',
@@ -361,7 +361,7 @@ export const t = {
                 },
                 {
                     label: 'Familiar',
-                    skills: ['C', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
+                    skills: ['C', 'AppKit', 'Vite', 'Tailwind', 'REST', 'HTML/CSS', 'HealthKit', 'PWA', 'IndexedDB'],
                 },
             ],
             languagesLabel: 'Languages',

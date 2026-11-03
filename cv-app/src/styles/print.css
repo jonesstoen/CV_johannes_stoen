@@ -6,8 +6,8 @@
         --muted: #4b5563;
         --card-bg: white;
         --card-border: #e5e7eb;
-        --accent: #3730a3;
-        --accent-soft: #f0f9ff;
+        --accent: #b45309;
+        --accent-soft: #fef3c7;
         --chip-bg: #f3f4f6;
         --chip-fg: #111827;
     }
@@ -104,9 +104,9 @@
 
     /* Timeline */
     .timeline__dot {
-        background: #3730a3 !important;
+        background: #b45309 !important;
         border-color: white !important;
-        box-shadow: 0 0 0 2px #3730a3 !important;
+        box-shadow: 0 0 0 2px #b45309 !important;
     }
 
     .timeline__connector {
@@ -116,7 +116,7 @@
     .timeline__period {
         background: #f3f4f6 !important;
         border-color: #e5e7eb !important;
-        color: #3730a3 !important;
+        color: #b45309 !important;
     }
 
     .timeline__title { color: #111827 !important; }
@@ -125,19 +125,29 @@
 
     /* About callout */
     .about__now {
-        background: #f0f9ff !important;
-        border-color: #c7d2fe !important;
-        border-left-color: #3730a3 !important;
+        background: #fafaf9 !important;
+        border-color: #e7e5e4 !important;
+        border-left-color: #b45309 !important;
     }
 
-    .about__now-label { color: #3730a3 !important; }
+    .about__now-label { color: #b45309 !important; }
 
     /* Projects */
     .project-card {
+        display: block !important;
         page-break-inside: avoid;
         border: 1px solid #e5e7eb !important;
         background: white !important;
+        box-shadow: none !important;
+        transform: none !important;
     }
+
+    .projects { gap: 0.5rem !important; }
+
+    .project-card__body { padding: 0.6rem 0.9rem !important; }
+    .project-card h3 { font-size: 1rem !important; }
+    .project-card__summary { font-size: 0.85rem !important; }
+    .project-card__tech { margin-top: 0.4rem !important; }
 
     .project-card__banner { display: none !important; }
     .project-card__links { display: none !important; }
@@ -170,7 +180,7 @@
     }
 
     /* Links — show URL for external links, skip tel/mailto */
-    a { color: #3730a3 !important; text-decoration: none; }
+    a { color: #b45309 !important; text-decoration: none; }
 
     a[href^='https']:after {
         content: ' (' attr(href) ')';
@@ -191,6 +201,8 @@
         flex-direction: column !important;
         overflow: visible !important;
         gap: 0.75rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .edu-timeline::before { display: none !important; }

@@ -80,7 +80,7 @@ html[data-theme='light'] .navbar__brand:hover {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     transition: all 0.15s ease;
 }
 
@@ -91,6 +91,7 @@ html[data-theme='light'] .navbar__brand:hover {
 
 html[data-theme='light'] .navbar__mobile-toggle {
     background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .navbar__links {
@@ -212,7 +213,7 @@ html[data-theme='light'] .navbar__pill {
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     transition:
             border-color 0.15s ease,
             transform 0.12s ease,
@@ -221,6 +222,7 @@ html[data-theme='light'] .navbar__pill {
 
 html[data-theme='light'] .navbar__toggle {
     background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .navbar__toggle:hover,
@@ -278,12 +280,13 @@ html[data-theme='light'] .navbar__toggle {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     transition: border-color 0.15s ease, color 0.15s ease, transform 0.12s ease;
 }
 
 html[data-theme='light'] .navbar__lang-toggle {
     background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .navbar__lang-toggle:hover,
