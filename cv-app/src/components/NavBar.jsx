@@ -48,10 +48,10 @@ export default function NavBar({ activeSection, theme, setTheme }) {
     };
 
     const NAV_LINKS = [
+        { id: 'projects',   label: tr.projects,   icon: RocketLaunchIcon, aria: tr.ariaProjects },
         { id: 'about',      label: tr.about,      icon: UserIcon,         aria: tr.ariaAbout },
         { id: 'education',  label: tr.education,  icon: AcademicCapIcon,  aria: tr.ariaEducation },
         { id: 'experience', label: tr.experience, icon: BriefcaseIcon,    aria: tr.ariaExperience },
-        { id: 'projects',   label: tr.projects,   icon: RocketLaunchIcon, aria: tr.ariaProjects },
         { id: 'contact',    label: tr.contact,    icon: EnvelopeIcon,     aria: tr.ariaContact },
     ];
 

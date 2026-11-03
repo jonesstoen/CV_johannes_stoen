@@ -22,10 +22,10 @@ export default function CommandPalette({ theme, setTheme, onClose }) {
     };
 
     const navItems = [
+        { label: tr.nav.projects,   icon: RocketLaunchIcon,  action: () => scrollTo('projects') },
         { label: tr.nav.about,      icon: UserIcon,          action: () => scrollTo('about') },
         { label: tr.nav.education,  icon: AcademicCapIcon,   action: () => scrollTo('education') },
         { label: tr.nav.experience, icon: BriefcaseIcon,     action: () => scrollTo('experience') },
-        { label: tr.nav.projects,   icon: RocketLaunchIcon,  action: () => scrollTo('projects') },
         { label: tr.cmd.skills,     icon: CodeBracketIcon,   action: () => scrollTo('skills') },
         { label: tr.nav.contact,    icon: EnvelopeIcon,      action: () => scrollTo('contact') },
     ];

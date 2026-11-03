@@ -63,7 +63,10 @@ export default function Hero() {
                     <h1 className="hero__name">Johannes Støen</h1>
                     <p className="hero__title">{tr.subtitle}</p>
 
-                    <p className="hero__status">{tr.status}</p>
+                    <p className="hero__status">
+                        <span className="hero__status-dot" aria-hidden="true" />
+                        {tr.status}
+                    </p>
 
                     <p className="hero__summary">{tr.summary}</p>
 

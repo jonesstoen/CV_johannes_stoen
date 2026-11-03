@@ -20,9 +20,7 @@ function About() {
                 <span className="about__now-label">{tr.nowLabel}</span>
                 <p>{tr.now}</p>
             </div>
-            <p>{tr.p1}</p>
-            <p>{tr.p2}</p>
-            <p>{tr.p3}</p>
+            <p className="about__text">{tr.p1}</p>
         </section>
     );
 }

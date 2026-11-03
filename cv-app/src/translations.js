@@ -16,10 +16,10 @@ export const t = {
             ariaContact: 'Gå til Kontakt-seksjon',
         },
         hero: {
-            subtitle: 'Informatikkstudent (PROSA)',
+            subtitle: 'Masterstudent i informatikk · UiO',
             roles: ['Android-utvikler', 'iOS-utvikler', 'Webutvikler', 'Masterstudent @ UiO'],
             status: 'Åpen for spennende prosjekter og muligheter',
-            summary: 'Masterstudent i informatikk: programmering og systemarkitektur (PROSA) ved UiO. Tidligere bachelor i både informatikk og statsvitenskap. Erfaring som gruppelærer, butikkarbeider og førstegangstjeneste i HMKG. Spesielt interessert i å bygge praktiske løsninger innen web, mobil og plattformøkosystemer.',
+            summary: 'Jeg bygger apper for Android, iOS, macOS og web, og liker best å lage verktøy som folk faktisk bruker. Skriver masteroppgave om hvordan AI-assistenter endrer arbeidet i smidige utviklingsteam.',
             statLabels: ['Prosjekter', 'Plattformer', 'Grader'],
             email: 'E-post',
             phone: 'Telefon',
@@ -37,9 +37,7 @@ export const t = {
                 { key: 'Grad', value: 'MSc Informatikk, UiO' },
                 { key: 'Språk', value: 'Norsk · Engelsk' },
             ],
-            p1: 'Jeg er en strukturert og nysgjerrig utvikler med bakgrunn fra både informatikk og samfunnsvitenskap. Jeg trives best når jeg kan kombinere teknisk arbeid med samarbeid og formidling, enten det er i gruppeprosjekter, som gruppelærer eller ved å bygge verktøy som faktisk brukes.',
-            p2: 'De siste årene har jeg jobbet med alt fra Android-apper (FiskeKlar), iOS-treningsapp (WorkoutTracker) og webprosjekter (UiO Master Match) til offline-first PWA-er med IndexedDB-caching (Inspector Chalmers) og nettverksprogrammering i C. Jeg har også erfaring fra butikkarbeid og førstegangstjeneste i Forsvaret, noe som har gitt meg god trening i samarbeid, ansvar og å håndtere stress.',
-            p3: 'Faglig er jeg spesielt interessert i arkitektur (MVVM/UDF), plattformer, og hvordan man lager gode brukeropplevelser på begrensede flater (mobil og nettbrett).',
+            p1: 'Jeg har bakgrunn fra både informatikk og samfunnsvitenskap, og trives best når teknisk arbeid møter samarbeid og formidling: som gruppelærer, i team, eller når jeg bygger noe som faktisk blir brukt. Faglig er jeg mest opptatt av arkitektur (MVVM/UDF), plattformer og gode brukeropplevelser på små skjermer.',
         },
         education: {
             heading: 'Utdanning',
@@ -122,21 +120,31 @@ export const t = {
             outcomeLabel: 'Resultat',
             cases: [
                 {
+                    summary: 'En flytende ChatGPT- og Claude-chat for macOS som åpnes med Option+Space, og bruker abonnementene du allerede har.',
+                    problem: 'ChatGPT sin macOS-app med det flytende chatvinduet (Option+Space) skal legges ned, og alternativene flytter samtalen til et stort vindu eller krever egen API-betaling.',
+                    built: 'Native macOS-app i Swift med SwiftUI og AppKit. Et flytende NSPanel med global hurtigtast viser chatgpt.com og claude.ai i vedvarende WKWebViews, med kommandopalett, historikk, bokmerker og varsler når svaret er ferdig.',
+                    outcome: 'Bruker abonnementene du allerede har, uten API-nøkler. Alt lagres lokalt, og appen er oversatt til norsk og engelsk.',
+                },
+                {
+                    summary: 'Android-app for fiskere med sanntids AIS-sporing, GRIB-værdata og offline fiskelogg. Nominert til MET-prisen 2025.',
                     problem: 'Fiskere og maritime brukere mangler et mobilverktøy som kombinerer sanntids AIS-sporing, meteorologiske GRIB-data og offline fiskelogg.',
                     built: 'Android-app med MVVM-arkitektur. Sanntids AIS (BarentsWatch), GRIB-meteorologidata via NetCDF-Java og offline fiskelogg med bilder.',
                     outcome: 'Nominert til MET-prisen 2025 for mest kreativ bruk av MET-APIet (Team 46, IN2000).',
                 },
                 {
+                    summary: 'iOS-app for treningslogging med Apple Health-synk, kalender og dashbord med trender over tid.',
                     problem: 'Det finnes ingen enkel iOS-app for treningslogging med integrert analyse og Apple Health-synkronisering.',
                     built: 'iOS-app med SwiftUI og HealthKit. Sanntids øktsporing, kalendervisning og dashbord med ukentlige og månedlige trender via Charts-rammeverket. Idempotent HealthKit-synkronisering.',
                     outcome: 'Demonstrerer fullstack Swift/SwiftUI med dataanalyse og lokal persistens på iOS.',
                 },
                 {
+                    summary: 'Webapp som lar UiO-studenter regne ut opptakspoeng til master og simulere fremtidige karakterer.',
                     problem: 'Masterstudentsøkere ved UiO mangler et enkelt verktøy for å estimere opptakspoeng.',
                     built: 'React-webapp med karaktervelger, semestervis oversikt og sanntids poengsummering. LocalStorage for persistent lagring.',
                     outcome: 'Brukt av studenter til å planlegge masteropptak. Enkel, rask og tilgjengelig uten innlogging.',
                 },
                 {
+                    summary: 'Offline-first PWA for skoleinspektører på DHIS2, som synkroniserer automatisk når nettet er tilbake.',
                     problem: 'Skoleinspektører trenger et verktøy som fungerer uten nettilgang og automatisk synkroniserer data når tilkoblingen er tilbake.',
                     built: 'React PWA med offline-first-arkitektur og IndexedDB-caching via localforage. Inspeksjonsskjemaer køes lokalt og synkroniseres automatisk i bakgrunnen ved reconnect.',
                     outcome: 'Gruppeprosjekt for DHIS2-plattformen med fullt offline-støtte og sanntidsanalyse av skoledata (IN5320).',
@@ -205,10 +213,10 @@ export const t = {
             ariaContact: 'Go to Contact section',
         },
         hero: {
-            subtitle: 'CS Student (PROSA)',
+            subtitle: 'MSc student in Computer Science · UiO',
             roles: ['Android Developer', 'iOS Developer', 'Web Developer', 'MSc Student @ UiO'],
             status: 'Open to interesting projects and opportunities',
-            summary: "Master's student in computer science: programming and system architecture (PROSA) at UiO. Previously earned two bachelor's degrees in computer science and political science. Experience as a teaching assistant, retail worker and military service in HMKG. Particularly interested in building practical solutions in web, mobile and platform ecosystems.",
+            summary: 'I build apps for Android, iOS, macOS and the web, and I like making tools people actually use. Currently writing my thesis on how AI assistants change the work in agile development teams.',
             statLabels: ['Projects', 'Platforms', 'Degrees'],
             email: 'Email',
             phone: 'Phone',
@@ -226,9 +234,7 @@ export const t = {
                 { key: 'Degree', value: 'MSc Computer Science, UiO' },
                 { key: 'Languages', value: 'Norwegian · English' },
             ],
-            p1: "I'm a structured and curious developer with a background in both computer science and social science. I thrive when I can combine technical work with collaboration and communication, whether in group projects, as a teaching assistant, or by building tools that are actually used.",
-            p2: 'In recent years I have worked on everything from Android apps (FiskeKlar), an iOS fitness app (WorkoutTracker) and web projects (UiO Master Match) to offline-first PWAs with IndexedDB caching (Inspector Chalmers) and network programming in C. I also have experience from retail work and military service, which gave me solid training in teamwork, responsibility and handling pressure.',
-            p3: "Professionally I'm especially interested in software architecture (MVVM/UDF), platforms, and how to create good user experiences on constrained surfaces (mobile and tablet).",
+            p1: 'I have a background in both computer science and social science, and I do my best work where technical work meets collaboration and communication: as a teaching assistant, in a team, or when building something people actually use. I am most interested in architecture (MVVM/UDF), platforms and good user experiences on small screens.',
         },
         education: {
             heading: 'Education',
@@ -311,21 +317,31 @@ export const t = {
             outcomeLabel: 'Outcome',
             cases: [
                 {
+                    summary: 'A floating ChatGPT and Claude window for macOS that opens with Option+Space and uses the subscriptions you already have.',
+                    problem: "ChatGPT's macOS app with the floating Option+Space chat window is being retired, and the alternatives either move the conversation to a large window or require separate API billing.",
+                    built: 'Native macOS app in Swift with SwiftUI and AppKit. A floating NSPanel with a global hotkey shows chatgpt.com and claude.ai in persistent WKWebViews, with a command palette, history, bookmarks and notifications when an answer finishes.',
+                    outcome: 'Works with the subscriptions you already have, no API keys. Everything is stored locally, and the app is localised in English and Norwegian.',
+                },
+                {
+                    summary: 'Android app for fishers with real-time AIS tracking, GRIB weather data and an offline catch log. Nominated for the MET Prize 2025.',
                     problem: 'Fishers and maritime users lack a mobile tool combining real-time AIS vessel tracking, meteorological GRIB data parsing, and offline fishing logs.',
                     built: 'Android app with MVVM architecture. Real-time AIS (BarentsWatch), GRIB weather data via NetCDF-Java and offline catch logging with photos.',
                     outcome: 'Nominated for the MET Prize 2025 for most creative use of the MET API (Team 46, IN2000).',
                 },
                 {
+                    summary: 'iOS workout logger with Apple Health sync, a calendar and a dashboard of trends over time.',
                     problem: 'No simple iOS app exists for workout logging with integrated analytics and seamless Apple Health synchronisation.',
                     built: 'iOS app with SwiftUI and HealthKit. Live session tracking, calendar view, and a dashboard with weekly/monthly trends via the Charts framework. Idempotent HealthKit sync and a PersistenceService abstraction.',
                     outcome: 'Demonstrates full-stack Swift/SwiftUI with data analytics and local persistence on iOS.',
                 },
                 {
+                    summary: "Web app that lets UiO students calculate their master's admission points and simulate future grades.",
                     problem: "UiO master's applicants lack a simple tool to estimate their admission points based on their own courses and grades.",
                     built: 'React web app with a grade selector, semester overview and real-time score summary. LocalStorage for persistent data.',
                     outcome: "Used by students to plan for master's admission. Simple, fast and accessible without login.",
                 },
                 {
+                    summary: 'Offline-first PWA for school inspectors on DHIS2 that syncs automatically once the connection returns.',
                     problem: 'School inspectors need a tool that works without internet access and automatically syncs data once connectivity is restored.',
                     built: 'React PWA with offline-first architecture and IndexedDB caching via localforage. Inspection forms are queued locally and pushed automatically in the background on reconnect.',
                     outcome: 'Group project for the DHIS2 platform with full offline support and real-time school data analytics (IN5320).',

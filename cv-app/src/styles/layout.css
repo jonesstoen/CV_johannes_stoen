@@ -150,6 +150,10 @@ main p {
     margin: 0.25rem 0;
 }
 
+.about__text {
+    max-width: 680px;
+}
+
 .list {
     list-style: none;
     padding: 0;

@@ -15,11 +15,11 @@ import StructuredData from './components/StructuredData';
 import CommandPalette from './components/CommandPalette';
 import { useLang } from './context/LanguageContext';
 
-const SECTION_IDS = ['about', 'education', 'experience', 'projects', 'contact'];
+const SECTION_IDS = ['projects', 'about', 'education', 'experience', 'contact'];
 
 export default function App() {
     const { toggle: toggleLang } = useLang();
-    const [activeSection, setActiveSection] = useState('about');
+    const [activeSection, setActiveSection] = useState('projects');
     const [cmdOpen, setCmdOpen] = useState(false);
     const [theme, setTheme] = useState(() => {
         const stored = localStorage.getItem('cv-theme');
@@ -67,7 +67,7 @@ export default function App() {
         const onScroll = () => {
             const scrollY = window.scrollY;
             const offset = 120;
-            let current = 'about';
+            let current = SECTION_IDS[0];
             SECTION_IDS.forEach((id) => {
                 const el = document.getElementById(id);
                 if (!el) return;
@@ -112,10 +112,10 @@ export default function App() {
                 <Hero />
 
                 <main>
+                    <Projects />
                     <About />
                     <Education />
                     <Experience />
-                    <Projects />
                     <Skills />
                     <Contact />
                 </main>

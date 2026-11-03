@@ -14,9 +14,31 @@ import fkWeather from '../assets/fiskeklar/wheaterscreen.jpg';
 import fkLog from '../assets/fiskeklar/fiskelogg1.jpg';
 import fkSos from '../assets/fiskeklar/Sosscreen.jpg';
 import uioBanner from '../assets/uiomastermatch/uio_banner.jpg';
+import mcBanner from '../assets/minichat/minichat_banner.jpg';
+import mcChatgpt from '../assets/minichat/chatgpt.jpg';
+import mcClaude from '../assets/minichat/claude.jpg';
+import mcPalette from '../assets/minichat/palette.jpg';
+import mcHistory from '../assets/minichat/history.jpg';
+import mcStats from '../assets/minichat/stats.jpg';
+import mcSettings from '../assets/minichat/settings.jpg';
+import chBanner from '../assets/chalmers/history_banner.jpg';
+import chOverview from '../assets/chalmers/overview.jpg';
+import chInspection from '../assets/chalmers/inspection.jpg';
+import chInspectionNarrow from '../assets/chalmers/inspection_narrow.jpg';
+import chCharts from '../assets/chalmers/charts.jpg';
+import chCluster from '../assets/chalmers/cluster.jpg';
 import ProjectModal from './ProjectModal';
 
 const PROJECT_META = [
+    {
+        title: 'MiniChat: macOS',
+        tech: ['Swift', 'SwiftUI', 'AppKit', 'WebKit', 'Carbon'],
+        githubUrl: 'https://github.com/jonesstoen/MiniChat',
+        gradient: 'linear-gradient(135deg, #1c1917 0%, #44403c 55%, #a8a29e 100%)',
+        bannerImage: mcBanner,
+        bannerPosition: 'center top',
+        gallery: [mcBanner, mcChatgpt, mcClaude, mcPalette, mcHistory, mcStats, mcSettings],
+    },
     {
         title: 'FiskeKlar: Maritime Weather',
         tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
@@ -32,7 +54,7 @@ const PROJECT_META = [
         githubUrl: 'https://github.com/jonesstoen/workout-tracker',
         gradient: 'linear-gradient(135deg, #7c2d12 0%, #c2410c 55%, #fb923c 100%)',
         bannerImage: workoutBanner,
-        bannerPosition: 'center 56%',
+        bannerPosition: 'center 52%',
         gallery: [workoutBanner, wt5808, wt5809, wt5811, wt5812],
     },
     {
@@ -50,7 +72,9 @@ const PROJECT_META = [
         tech: ['React', 'PWA', 'IndexedDB', 'DHIS2', 'localforage'],
         githubUrl: 'https://github.com/jonesstoen/Chalmers',
         gradient: 'linear-gradient(135deg, #134e4a 0%, #0f766e 55%, #14b8a6 100%)',
-        gallery: [],
+        bannerImage: chBanner,
+        bannerPosition: 'center 40%',
+        gallery: [chBanner, chOverview, chInspection, chInspectionNarrow, chCharts, chCluster],
     },
 ];
 
@@ -65,29 +89,14 @@ function Projects() {
         case: tr.cases[i],
     }));
 
-    const handleMouseMove = (e, i) => {
-        if (demoOpen === i) return;
-        const card = e.currentTarget;
-        const linksArea = card.querySelector('.project-card__links');
-        if (linksArea) {
-            const linksRect = linksArea.getBoundingClientRect();
-            if (e.clientY >= linksRect.top && e.clientY <= linksRect.bottom) {
-                card.style.transform = 'translateY(-4px)';
-                return;
-            }
-        }
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    };
+    const openModal = (i) => setModalOpen(i);
 
-    const handleMouseLeave = (e) => {
-        e.currentTarget.style.transform = '';
+    const handleCardKey = (e, i) => {
+        if (e.target !== e.currentTarget) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(i);
+        }
     };
 
     return (
@@ -97,9 +106,11 @@ function Projects() {
                 {projects.map((project, i) => (
                     <article
                         key={project.title}
-                        className="project-card"
-                        onMouseMove={(e) => handleMouseMove(e, i)}
-                        onMouseLeave={handleMouseLeave}
+                        className={`project-card${i % 2 === 1 ? ' project-card--reverse' : ''}`}
+                        onClick={() => openModal(i)}
+                        onKeyDown={(e) => handleCardKey(e, i)}
+                        tabIndex={0}
+                        aria-label={`${tr.ariaDetails} ${project.title}`}
                     >
                         <div
                             className="project-card__banner"
@@ -112,75 +123,64 @@ function Projects() {
                                     aria-hidden="true"
                                     className="project-card__banner-img"
                                     style={{ objectPosition: project.bannerPosition }}
+                                    loading="lazy"
                                 />
                             )}
                         </div>
-                        <h3>{project.title}</h3>
+                        <div className="project-card__body">
+                            <h3>{project.title}</h3>
+                            <p className="project-card__summary">{project.case.summary}</p>
 
-                        <dl className="project-card__case">
-                            <div className="project-card__case-row">
-                                <dt>{tr.problemLabel}</dt>
-                                <dd>{project.case.problem}</dd>
+                            <div className="project-card__tech">
+                                {project.tech.map((tag) => (
+                                    <span key={tag} className="tag">{tag}</span>
+                                ))}
                             </div>
-                            <div className="project-card__case-row">
-                                <dt>{tr.builtLabel}</dt>
-                                <dd>{project.case.built}</dd>
-                            </div>
-                            <div className="project-card__case-row">
-                                <dt>{tr.outcomeLabel}</dt>
-                                <dd>{project.case.outcome}</dd>
-                            </div>
-                        </dl>
 
-                        <div className="project-card__tech">
-                            {project.tech.map((tag) => (
-                                <span key={tag} className="tag">{tag}</span>
-                            ))}
-                        </div>
-
-                        <div className="project-card__links" onClick={(e) => e.stopPropagation()}>
-                            {project.githubUrl && (
-                                <a
-                                    href={project.githubUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="project-card__link"
-                                    aria-label={`${tr.github}: ${project.title}`}
-                                >
-                                    <CodeBracketIcon className="project-card__link-icon" />
-                                    <span>{tr.github}</span>
-                                </a>
-                            )}
-                            {project.demoUrl && (
+                            <div className="project-card__links" onClick={(e) => e.stopPropagation()}>
+                                {project.githubUrl && (
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="project-card__link"
+                                        aria-label={`${tr.github}: ${project.title}`}
+                                    >
+                                        <CodeBracketIcon className="project-card__link-icon" />
+                                        <span>{tr.github}</span>
+                                    </a>
+                                )}
+                                {project.demoUrl && (
+                                    <button
+                                        type="button"
+                                        className={`project-card__link${demoOpen === i ? ' project-card__link--active' : ''}`}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setDemoOpen(demoOpen === i ? null : i);
+                                        }}
+                                        aria-expanded={demoOpen === i}
+                                    >
+                                        <ArrowTopRightOnSquareIcon className="project-card__link-icon" />
+                                        <span>{demoOpen === i ? tr.closeDemo : tr.demo}</span>
+                                    </button>
+                                )}
                                 <button
                                     type="button"
-                                    className={`project-card__link${demoOpen === i ? ' project-card__link--active' : ''}`}
+                                    className="project-card__link"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setDemoOpen(demoOpen === i ? null : i);
+                                        setModalOpen(i);
                                     }}
-                                    aria-expanded={demoOpen === i}
+                                    aria-label={`${tr.ariaDetails} ${project.title}`}
                                 >
-                                    <ArrowTopRightOnSquareIcon className="project-card__link-icon" />
-                                    <span>{demoOpen === i ? tr.closeDemo : tr.demo}</span>
+                                    <ArrowsPointingOutIcon className="project-card__link-icon" />
+                                    <span>{tr.details}</span>
                                 </button>
-                            )}
-                            <button
-                                type="button"
-                                className="project-card__link"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setModalOpen(i);
-                                }}
-                                aria-label={`${tr.ariaDetails} ${project.title}`}
-                            >
-                                <ArrowsPointingOutIcon className="project-card__link-icon" />
-                                <span>{tr.details}</span>
-                            </button>
+                            </div>
                         </div>
 
                         {demoOpen === i && project.demoUrl && (
-                            <div className="project-card__demo">
+                            <div className="project-card__demo" onClick={(e) => e.stopPropagation()}>
                                 <iframe
                                     src={project.demoUrl}
                                     title={`Demo: ${project.title}`}

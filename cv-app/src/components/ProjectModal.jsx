@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
     XMarkIcon,
     ChevronLeftIcon,
@@ -34,7 +35,7 @@ export default function ProjectModal({ project, translations: tr, onClose }) {
         return () => document.removeEventListener('keydown', handle);
     }, [multipleImages, onClose]);
 
-    return (
+    return createPortal(
         <div
             className="pm-overlay"
             onClick={onClose}
@@ -161,6 +162,7 @@ export default function ProjectModal({ project, translations: tr, onClose }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
