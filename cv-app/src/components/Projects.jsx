@@ -27,9 +27,23 @@ import chInspection from '../assets/chalmers/inspection.webp';
 import chInspectionNarrow from '../assets/chalmers/inspection_narrow.webp';
 import chCharts from '../assets/chalmers/charts.webp';
 import chCluster from '../assets/chalmers/cluster.webp';
+import bloomBanner from '../assets/bloom/bloom_banner.webp';
+import bloomLibrary from '../assets/bloom/library.webp';
+import bloomCollections from '../assets/bloom/collections.webp';
+import bloomSearch from '../assets/bloom/search.webp';
+import bloomSignin from '../assets/bloom/signin.webp';
 import ProjectModal from './ProjectModal';
 
 const PROJECT_META = [
+    {
+        title: 'Bloom: iOS',
+        tech: ['Swift', 'SwiftUI', 'Swift Concurrency', 'OpenAPI', 'Keychain'],
+        githubUrl: 'https://github.com/jonesstoen/bloom',
+        gradient: 'linear-gradient(135deg, #0f172a 0%, #7c3aed 55%, #f472b6 100%)',
+        bannerImage: bloomBanner,
+        bannerPosition: 'center center',
+        gallery: [bloomBanner, bloomLibrary, bloomCollections, bloomSearch, bloomSignin],
+    },
     {
         title: 'MiniChat: macOS',
         tech: ['Swift', 'SwiftUI', 'AppKit', 'WebKit', 'Carbon'],
@@ -42,7 +56,7 @@ const PROJECT_META = [
     {
         title: 'FiskeKlar: Maritime Weather',
         tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
-        githubUrl: 'https://github.com/jonesstoen/fiskeklar',
+        githubUrl: 'https://github.com/jonesstoen/FiskeKlar',
         gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 55%, #818cf8 100%)',
         bannerImage: fiskeklarBanner,
         bannerPosition: 'center center',
@@ -51,7 +65,7 @@ const PROJECT_META = [
     {
         title: 'WorkoutTracker: iOS',
         tech: ['Swift', 'SwiftUI', 'HealthKit', 'Core Data', 'UDF'],
-        githubUrl: 'https://github.com/jonesstoen/workout-tracker',
+        githubUrl: 'https://github.com/jonesstoen/WorkOutTracker',
         gradient: 'linear-gradient(135deg, #7c2d12 0%, #c2410c 55%, #fb923c 100%)',
         bannerImage: workoutBanner,
         bannerPosition: 'center 52%',
@@ -60,7 +74,7 @@ const PROJECT_META = [
     {
         title: 'UiO Master Match',
         tech: ['React', 'Vite', 'Tailwind', 'LocalStorage'],
-        githubUrl: 'https://github.com/jonesstoen/uio-master-match',
+        githubUrl: 'https://github.com/jonesstoen/UIO_kalkulator',
         demoUrl: 'https://uio-kalkulator.vercel.app/',
         gradient: 'linear-gradient(135deg, #14532d 0%, #15803d 55%, #4ade80 100%)',
         bannerImage: uioBanner,

@@ -120,6 +120,12 @@ export const t = {
             outcomeLabel: 'Resultat',
             cases: [
                 {
+                    summary: 'iPhone-app for Immich, en bildetjeneste man drifter selv, som ser ut og føles som Bilder-appen i iOS 26. Jeg bruker den hver dag mot min egen server.',
+                    problem: 'Immich er et populært alternativ til iCloud Bilder som man kjører på egen server, men den offisielle iOS-appen føles ikke som resten av iPhonen. Jeg ville ha en klient som oppfører seg som Apples egen Bilder-app.',
+                    built: 'Native SwiftUI-app delt i Swift-pakker: generert OpenAPI-klient, domenelag med actor-basert tidslinje og bildecache, og et eget virtualisert rutenett. Smart søk (CLIP), minner, kart, personer, Live Photos og sikkerhetskopi i bakgrunnen. Testet på et bibliotek med rundt 13 000 bilder.',
+                    outcome: 'Starter i lesemodus og sletter aldri noe permanent. API-nøkkelen ligger i Keychain, og appen avviser ukryptert trafikk og omdirigeringer til andre servere. Bygget med Claude Code som verktøy: jeg bestemmer hva som lages, tester hver endring på egen iPhone og leser koden.',
+                },
+                {
                     summary: 'En flytende ChatGPT- og Claude-chat for macOS som åpnes med Option+Space, og bruker abonnementene du allerede har.',
                     problem: 'ChatGPT sin macOS-app med det flytende chatvinduet (Option+Space) skal legges ned, og alternativene flytter samtalen til et stort vindu eller krever egen API-betaling.',
                     built: 'Native macOS-app i Swift med SwiftUI og AppKit. Et flytende NSPanel med global hurtigtast viser chatgpt.com og claude.ai i vedvarende WKWebViews, med kommandopalett, historikk, bokmerker og varsler når svaret er ferdig.',
@@ -320,6 +326,12 @@ export const t = {
             builtLabel: 'Built',
             outcomeLabel: 'Outcome',
             cases: [
+                {
+                    summary: 'iPhone app for Immich, a self-hosted photo service, that looks and feels like the Photos app on iOS 26. I use it every day with my own server.',
+                    problem: 'Immich is a popular self-hosted alternative to iCloud Photos, but its official iOS app does not feel like the rest of the iPhone. I wanted a client that behaves like Apple\'s own Photos app.',
+                    built: 'Native SwiftUI app split into Swift packages: a generated OpenAPI client, a domain layer with an actor-based timeline and image cache, and a custom virtualized grid. Smart search (CLIP), memories, map, people, Live Photos and background backup. Tested on a library of about 13,000 photos.',
+                    outcome: 'Starts view-only and never deletes anything permanently. The API key lives in the Keychain, and the app refuses unencrypted traffic and redirects to other servers. Built with Claude Code as a tool: I decide what gets built, test every change on my own iPhone and read the code.',
+                },
                 {
                     summary: 'A floating ChatGPT and Claude window for macOS that opens with Option+Space and uses the subscriptions you already have.',
                     problem: "ChatGPT's macOS app with the floating Option+Space chat window is being retired, and the alternatives either move the conversation to a large window or require separate API billing.",
