@@ -8,7 +8,8 @@ export default function StructuredData() {
             'Masterstudent i informatikk: programmering og systemarkitektur (PROSA) ved UiO. Erfaring med Android, iOS og web-utvikling.',
         email: 'jonesstoen@gmail.com',
         telephone: '+4793859648',
-        url: 'https://jonesstoen.github.io',
+        url: 'https://johannesstoen.no/',
+        image: 'https://johannesstoen.no/og-image.jpg',
         sameAs: [
             'https://github.com/jonesstoen',
             'https://www.linkedin.com/in/johannes-støen-572a83206/',
