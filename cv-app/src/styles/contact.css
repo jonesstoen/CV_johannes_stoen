@@ -103,3 +103,17 @@ html[data-theme='light'] .contact-form__textarea:focus {
         align-items: flex-start;
     }
 }
+
+.contact-form__subtext--sent {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.contact-form__subtext a {
+    color: var(--accent);
+}
+
+.contact-form__submit:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
