@@ -18,7 +18,7 @@ export const t = {
         hero: {
             subtitle: 'Masterstudent i informatikk · UiO',
             roles: ['Android-utvikler', 'iOS-utvikler', 'Webutvikler', 'Masterstudent @ UiO'],
-            status: 'Åpen for spennende prosjekter og muligheter',
+            status: 'Søker fast stilling fra sommeren 2027',
             summary: 'Jeg bygger apper for Android, iOS, macOS og web, og liker best å lage verktøy som folk faktisk bruker. Skriver masteroppgave om hvordan AI-assistenter endrer arbeidet i smidige utviklingsteam.',
             statLabels: ['Prosjekter', 'Plattformer', 'Grader'],
             email: 'E-post',
@@ -215,7 +215,7 @@ export const t = {
         hero: {
             subtitle: 'MSc student in Computer Science · UiO',
             roles: ['Android Developer', 'iOS Developer', 'Web Developer', 'MSc Student @ UiO'],
-            status: 'Open to interesting projects and opportunities',
+            status: 'Looking for a full-time role from summer 2027',
             summary: 'I build apps for Android, iOS, macOS and the web, and I like making tools people actually use. Currently writing my thesis on how AI assistants change the work in agile development teams.',
             statLabels: ['Projects', 'Platforms', 'Degrees'],
             email: 'Email',

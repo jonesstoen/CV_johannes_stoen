@@ -254,6 +254,7 @@ html[data-theme='light'] .navbar__toggle {
     cursor: pointer;
     font-family: inherit;
     letter-spacing: 0.01em;
+    text-decoration: none;
     transition: border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 

@@ -140,15 +140,15 @@ export default function NavBar({ activeSection, theme, setTheme }) {
                         )}
                     </button>
 
-                    <button
-                        type="button"
+                    <a
+                        href="/Johannes_Stoen_CV.pdf"
+                        download
                         className="navbar__download"
-                        onClick={() => window.print()}
                         aria-label={trHero.ariaDownload}
                     >
                         <ArrowDownTrayIcon className="navbar__icon" />
                         <span>{trHero.download}</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>

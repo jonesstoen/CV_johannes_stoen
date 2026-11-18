@@ -115,15 +115,15 @@ export default function Hero() {
                             <span>LinkedIn</span>
                         </a>
 
-                        <button
-                            type="button"
-                            onClick={() => window.print()}
+                        <a
+                            href="/Johannes_Stoen_CV.pdf"
+                            download
                             className="hero__link hero__link--download"
                             aria-label={tr.ariaDownload}
                         >
                             <ArrowDownTrayIcon className="hero__icon" />
                             <span>{tr.download}</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
