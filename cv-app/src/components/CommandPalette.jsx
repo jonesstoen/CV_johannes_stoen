@@ -4,7 +4,7 @@ import {
     EnvelopeIcon, CodeBracketIcon, SunIcon, MoonIcon, GlobeAltIcon,
     MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
-import { useLang } from '../context/LanguageContext';
+import { useLang } from '../context/langContext';
 import { t as translations } from '../translations';
 
 export default function CommandPalette({ theme, setTheme, onClose }) {

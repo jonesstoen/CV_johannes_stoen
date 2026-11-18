@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import StructuredData from './components/StructuredData';
 import CommandPalette from './components/CommandPalette';
-import { useLang } from './context/LanguageContext';
+import { useLang } from './context/langContext';
 
 const SECTION_IDS = ['projects', 'about', 'education', 'experience', 'contact'];
 

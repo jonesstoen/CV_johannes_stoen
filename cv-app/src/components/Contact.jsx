@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLang } from '../context/LanguageContext';
+import { useLang } from '../context/langContext';
 import { t as translations } from '../translations';
 
 // Public Web3Forms key: safe to ship in client code, it can only deliver to the registered inbox.

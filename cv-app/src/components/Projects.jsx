@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon, ArrowsPointingOutIcon } from "@heroicons/react/24/outline";
-import { useLang } from '../context/LanguageContext';
+import { useLang } from '../context/langContext';
 import { t as translations } from '../translations';
 import workoutBanner from '../assets/workouttracker/workout_banner.webp';
 import wt5808 from '../assets/workouttracker/IMG_5808.webp';

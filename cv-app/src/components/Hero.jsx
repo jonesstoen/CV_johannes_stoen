@@ -9,7 +9,7 @@ import {
     ArrowDownTrayIcon,
 } from "@heroicons/react/24/outline";
 import Toast from './Toast';
-import { useLang } from '../context/LanguageContext';
+import { useLang } from '../context/langContext';
 import { t as translations } from '../translations';
 
 export default function Hero() {

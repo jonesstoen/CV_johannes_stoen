@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import {
     XMarkIcon,
@@ -15,8 +15,9 @@ export default function ProjectModal({ project, translations: tr, onClose }) {
     const hasGallery = gallery.length > 0;
     const multipleImages = gallery.length > 1;
 
-    const prev = () => setActiveIdx(i => (i - 1 + gallery.length) % gallery.length);
-    const next = () => setActiveIdx(i => (i + 1) % gallery.length);
+    const count = gallery.length;
+    const prev = useCallback(() => setActiveIdx(i => (i - 1 + count) % count), [count]);
+    const next = useCallback(() => setActiveIdx(i => (i + 1) % count), [count]);
 
     useEffect(() => {
         closeRef.current?.focus();
@@ -33,7 +34,7 @@ export default function ProjectModal({ project, translations: tr, onClose }) {
         };
         document.addEventListener('keydown', handle);
         return () => document.removeEventListener('keydown', handle);
-    }, [multipleImages, onClose]);
+    }, [multipleImages, onClose, prev, next]);
 
     return createPortal(
         <div

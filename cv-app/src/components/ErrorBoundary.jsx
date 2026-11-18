@@ -33,7 +33,7 @@ class ErrorBoundary extends Component {
                         >
                             Last inn på nytt
                         </button>
-                        {process.env.NODE_ENV === 'development' && this.state.error && (
+                        {import.meta.env.DEV && this.state.error && (
                             <details className="error-boundary__details">
                                 <summary>Tekniske detaljer</summary>
                                 <pre>{this.state.error.toString()}</pre>

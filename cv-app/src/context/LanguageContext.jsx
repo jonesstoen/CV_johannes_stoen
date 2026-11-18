@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-
-const LanguageContext = createContext({ lang: 'no', toggle: () => {} });
+import { useEffect, useState } from 'react';
+import { LanguageContext } from './langContext';
 
 export function LanguageProvider({ children }) {
     const [lang, setLang] = useState(
@@ -19,8 +18,4 @@ export function LanguageProvider({ children }) {
             {children}
         </LanguageContext.Provider>
     );
-}
-
-export function useLang() {
-    return useContext(LanguageContext);
 }
