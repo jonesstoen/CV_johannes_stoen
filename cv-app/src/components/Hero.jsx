@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import portrait from "../assets/portrait.jpg";
+import portrait from "../assets/portrait.webp";
 import {
     EnvelopeIcon,
     PhoneIcon,
@@ -53,9 +53,9 @@ export default function Hero() {
                         alt="Johannes Støen"
                         className="hero__portrait"
                         loading="eager"
-                        decoding="async"
-                        width="120"
-                        height="120"
+                        fetchpriority="high"
+                        width="210"
+                        height="260"
                     />
                 </div>
 

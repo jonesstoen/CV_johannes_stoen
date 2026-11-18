@@ -11,19 +11,6 @@
 .scroll-progress__bar {
     height: 100%;
     background: var(--accent);
-    background-size: 200% 100%;
-    animation: gradient-shift 3s ease infinite;
     transition: width 0.1s ease-out;
     box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
 }
-
-@keyframes gradient-shift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-

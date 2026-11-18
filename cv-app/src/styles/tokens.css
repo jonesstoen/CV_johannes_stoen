@@ -1,5 +1,5 @@
 :root {
-    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-family: 'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, sans-serif;
     color-scheme: light dark;
     --content-width: 1120px;
     --bg: radial-gradient(ellipse 110% 45% at 50% 0%, #111827 0%, #020617 55%);
