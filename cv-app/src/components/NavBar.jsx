@@ -2,8 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import {
     UserIcon,
     RocketLaunchIcon,
-    BriefcaseIcon,
-    AcademicCapIcon,
     EnvelopeIcon,
     SunIcon,
     MoonIcon,
@@ -49,9 +47,7 @@ export default function NavBar({ activeSection, theme, setTheme }) {
 
     const NAV_LINKS = [
         { id: 'projects',   label: tr.projects,   icon: RocketLaunchIcon, aria: tr.ariaProjects },
-        { id: 'about',      label: tr.about,      icon: UserIcon,         aria: tr.ariaAbout },
-        { id: 'education',  label: tr.education,  icon: AcademicCapIcon,  aria: tr.ariaEducation },
-        { id: 'experience', label: tr.experience, icon: BriefcaseIcon,    aria: tr.ariaExperience },
+        { id: 'background', label: tr.background, icon: UserIcon,         aria: tr.ariaBackground },
         { id: 'contact',    label: tr.contact,    icon: EnvelopeIcon,     aria: tr.ariaContact },
     ];
 

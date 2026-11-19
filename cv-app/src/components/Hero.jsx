@@ -61,7 +61,7 @@ export default function Hero() {
 
                 <div className="hero__body">
                     <h1 className="hero__name">Johannes Støen</h1>
-                    <p className="hero__title">{tr.subtitle}</p>
+                    <p className="hero__headline">{tr.headline}</p>
 
                     <p className="hero__status">
                         <span className="hero__status-dot" aria-hidden="true" />
@@ -69,6 +69,10 @@ export default function Hero() {
                     </p>
 
                     <p className="hero__summary">{tr.summary}</p>
+
+                    <ul className="hero__proof">
+                        {tr.proof.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
 
                     <div className="hero__links">
                         <button

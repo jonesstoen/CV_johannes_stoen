@@ -1,0 +1,73 @@
+.bg-intro {
+    max-width: 680px;
+    margin-bottom: 2.4rem;
+}
+
+.bg-intro p {
+    margin: 0 0 0.9rem;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.bg-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+}
+
+.bg-col__label {
+    margin: 0 0 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.bg-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-item {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--card-border);
+}
+
+.bg-item__period {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.1rem;
+}
+
+.bg-item--current .bg-item__period {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.bg-item__title {
+    margin: 0 !important;
+    font-weight: 600;
+    line-height: 1.45 !important;
+}
+
+.bg-item__place {
+    margin: 0.1rem 0 0 !important;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.bg-item__detail {
+    margin: 0.4rem 0 0 !important;
+    font-size: 0.9rem;
+    line-height: 1.55 !important;
+}
+
+@media (max-width: 760px) {
+    .bg-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+}

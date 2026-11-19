@@ -40,6 +40,7 @@ const PROJECT_META = [
         tech: ['Swift', 'SwiftUI', 'Swift Concurrency', 'OpenAPI', 'Keychain'],
         githubUrl: 'https://github.com/jonesstoen/bloom',
         caseStudyUrl: '/bloom/',
+        featured: true,
         gradient: 'linear-gradient(135deg, #0f172a 0%, #7c3aed 55%, #f472b6 100%)',
         bannerImage: bloomBanner,
         bannerPosition: 'center center',
@@ -59,6 +60,7 @@ const PROJECT_META = [
         tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
         githubUrl: 'https://github.com/jonesstoen/FiskeKlar',
         caseStudyUrl: '/fiskeklar/',
+        featured: true,
         gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 55%, #818cf8 100%)',
         bannerImage: fiskeklarBanner,
         bannerPosition: 'center center',
@@ -97,73 +99,63 @@ const PROJECT_META = [
 function Projects() {
     const { lang } = useLang();
     const tr = translations[lang].projects;
-    const [demoOpen, setDemoOpen] = useState(null);
     const [modalOpen, setModalOpen] = useState(null);
 
-    const projects = PROJECT_META.map((meta, i) => ({
-        ...meta,
-        case: tr.cases[i],
-    }));
+    // cases[i] belongs to PROJECT_META[i]: attach before filtering so the index stays right
+    const projects = PROJECT_META.map((meta, i) => ({ ...meta, case: tr.cases[i], index: i }));
+    const featured = projects.filter((p) => p.featured);
+    const more = projects.filter((p) => !p.featured);
 
-    const openModal = (i) => setModalOpen(i);
-
-    const handleCardKey = (e, i) => {
+    const stop = (e) => e.stopPropagation();
+    const onKey = (action) => (e) => {
         if (e.target !== e.currentTarget) return;
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal(i);
+            action();
         }
     };
 
     return (
         <section id="projects">
             <h2>{tr.heading}</h2>
+
             <div className="projects">
-                {projects.map((project, i) => (
-                    <article
-                        key={project.title}
-                        className={`project-card${i % 2 === 1 ? ' project-card--reverse' : ''}`}
-                        onClick={() => openModal(i)}
-                        onKeyDown={(e) => handleCardKey(e, i)}
-                        tabIndex={0}
-                        aria-label={`${tr.ariaDetails} ${project.title}`}
-                    >
-                        <div
-                            className="project-card__banner"
-                            style={{ background: project.gradient }}
+                {featured.map((project, i) => {
+                    const open = () => { window.location.href = project.caseStudyUrl; };
+                    return (
+                        <article
+                            key={project.title}
+                            className={`project-card${i % 2 === 1 ? ' project-card--reverse' : ''}`}
+                            onClick={open}
+                            onKeyDown={onKey(open)}
+                            tabIndex={0}
+                            aria-label={`${tr.caseStudy}: ${project.title}`}
                         >
-                            {project.bannerImage && (
-                                <img
-                                    src={project.bannerImage}
-                                    alt=""
-                                    aria-hidden="true"
-                                    className="project-card__banner-img"
-                                    style={{ objectPosition: project.bannerPosition }}
-                                    loading="lazy"
-                                />
-                            )}
-                        </div>
-                        <div className="project-card__body">
-                            <h3>{project.title}</h3>
-                            <p className="project-card__summary">{project.case.summary}</p>
-
-                            <div className="project-card__tech">
-                                {project.tech.map((tag) => (
-                                    <span key={tag} className="tag">{tag}</span>
-                                ))}
+                            <div className="project-card__banner" style={{ background: project.gradient }}>
+                                {project.bannerImage && (
+                                    <img
+                                        src={project.bannerImage}
+                                        alt=""
+                                        aria-hidden="true"
+                                        className="project-card__banner-img"
+                                        style={{ objectPosition: project.bannerPosition }}
+                                        loading="lazy"
+                                    />
+                                )}
                             </div>
+                            <div className="project-card__body">
+                                <h3>{project.title}</h3>
+                                <p className="project-card__summary">{project.case.summary}</p>
 
-                            <div className="project-card__links" onClick={(e) => e.stopPropagation()}>
-                                {project.caseStudyUrl && (
-                                    <a
-                                        href={project.caseStudyUrl}
-                                        className="project-card__link project-card__link--primary"
-                                    >
+                                <div className="project-card__tech">
+                                    {project.tech.map((tag) => <span key={tag} className="tag">{tag}</span>)}
+                                </div>
+
+                                <div className="project-card__links" onClick={stop}>
+                                    <a href={project.caseStudyUrl} className="project-card__link project-card__link--primary">
                                         <DocumentTextIcon className="project-card__link-icon" />
                                         <span>{tr.caseStudy}</span>
                                     </a>
-                                )}
-                                {project.githubUrl && (
                                     <a
                                         href={project.githubUrl}
                                         target="_blank"
@@ -174,50 +166,73 @@ function Projects() {
                                         <CodeBracketIcon className="project-card__link-icon" />
                                         <span>{tr.github}</span>
                                     </a>
+                                </div>
+                            </div>
+                        </article>
+                    );
+                })}
+            </div>
+
+            <h3 className="projects-more__heading">{tr.moreHeading}</h3>
+            <ul className="projects-more">
+                {more.map((project) => {
+                    const open = () => setModalOpen(project.index);
+                    return (
+                        <li
+                            key={project.title}
+                            className="project-row"
+                            onClick={open}
+                            onKeyDown={onKey(open)}
+                            tabIndex={0}
+                            aria-label={`${tr.ariaDetails} ${project.title}`}
+                        >
+                            <div className="project-row__thumb" style={{ background: project.gradient }}>
+                                {project.bannerImage && (
+                                    <img
+                                        src={project.bannerImage}
+                                        alt=""
+                                        aria-hidden="true"
+                                        style={{ objectPosition: project.bannerPosition }}
+                                        loading="lazy"
+                                    />
                                 )}
+                            </div>
+                            <div className="project-row__body">
+                                <h4>{project.title}</h4>
+                                <p>{project.case.summary}</p>
+                                <p className="project-row__tech">{project.tech.join(' · ')}</p>
+                            </div>
+                            <div className="project-row__links" onClick={stop}>
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="project-card__link"
+                                    aria-label={`${tr.github}: ${project.title}`}
+                                >
+                                    <CodeBracketIcon className="project-card__link-icon" />
+                                    <span>{tr.github}</span>
+                                </a>
                                 {project.demoUrl && (
-                                    <button
-                                        type="button"
-                                        className={`project-card__link${demoOpen === i ? ' project-card__link--active' : ''}`}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setDemoOpen(demoOpen === i ? null : i);
-                                        }}
-                                        aria-expanded={demoOpen === i}
+                                    <a
+                                        href={project.demoUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="project-card__link"
                                     >
                                         <ArrowTopRightOnSquareIcon className="project-card__link-icon" />
-                                        <span>{demoOpen === i ? tr.closeDemo : tr.demo}</span>
-                                    </button>
+                                        <span>{tr.demo}</span>
+                                    </a>
                                 )}
-                                <button
-                                    type="button"
-                                    className="project-card__link"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setModalOpen(i);
-                                    }}
-                                    aria-label={`${tr.ariaDetails} ${project.title}`}
-                                >
+                                <button type="button" className="project-card__link" onClick={open}>
                                     <ArrowsPointingOutIcon className="project-card__link-icon" />
                                     <span>{tr.details}</span>
                                 </button>
                             </div>
-                        </div>
-
-                        {demoOpen === i && project.demoUrl && (
-                            <div className="project-card__demo" onClick={(e) => e.stopPropagation()}>
-                                <iframe
-                                    src={project.demoUrl}
-                                    title={`Demo: ${project.title}`}
-                                    className="project-card__iframe"
-                                    loading="lazy"
-                                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                                />
-                            </div>
-                        )}
-                    </article>
-                ))}
-            </div>
+                        </li>
+                    );
+                })}
+            </ul>
 
             {modalOpen !== null && (
                 <ProjectModal

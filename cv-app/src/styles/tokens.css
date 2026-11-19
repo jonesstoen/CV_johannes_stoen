@@ -27,6 +27,12 @@ html[data-theme='light'] {
 
 html {
     scroll-behavior: smooth;
+    /* Solid base under the body gradient so long pages never show the default canvas colour */
+    background-color: #020617;
+}
+
+html[data-theme='light'] {
+    background-color: #f1f5f9;
 }
 
 /* Smooth theme transitions */

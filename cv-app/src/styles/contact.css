@@ -71,7 +71,7 @@ html[data-theme='light'] .contact-form__textarea:focus {
 .contact-form__submit {
     padding: 0.5rem 1.4rem;
     background: var(--accent);
-    color: #ffffff;
+    color: #111827;
     border: none;
     border-radius: 999px;
     font-family: inherit;

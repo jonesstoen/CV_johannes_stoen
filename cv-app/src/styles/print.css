@@ -1,12 +1,12 @@
+/* Print / Cmd+P. The real CV is the PDF; this just keeps a printed page clean. */
 @media print {
-    /* Override CSS variables so components render correctly */
     :root {
         --bg: white;
         --fg: #111827;
         --muted: #4b5563;
         --card-bg: white;
         --card-border: #e5e7eb;
-        --accent: #b45309;
+        --accent: #b45309; /* keep in sync with the accent in tokens.css */
         --accent-soft: #fef3c7;
         --chip-bg: #f3f4f6;
         --chip-fg: #111827;
@@ -26,73 +26,37 @@
         line-height: 1.5;
     }
 
-    /* Hide all UI chrome */
+    /* UI chrome */
     .navbar,
-    .back-to-top,
     .skip-to-content,
-    .scroll-progress,
     .hero__status,
     .hero__link--download,
-    body::before,
-    section::before {
-        display: none !important;
-    }
-
     #contact,
-    .contact-form {
+    .project-card__links,
+    .project-row__links,
+    .project-card__banner,
+    body::before {
         display: none !important;
     }
 
-    /* Hide section number labels — clean headings only */
-    section h2::before {
-        display: none !important;
-    }
-
-    .app {
-        padding: 0 !important;
-        z-index: auto !important;
-    }
-
-    .app > main {
-        margin-top: 0 !important;
-        counter-reset: none;
-    }
+    .app { padding: 0 !important; }
+    .app > main { margin-top: 0 !important; }
 
     section {
-        page-break-inside: avoid;
-        margin-bottom: 1.2rem !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 0.8rem 1rem !important;
-        border: 1px solid #e5e7eb !important;
-        border-radius: 0 !important;
-        background: white !important;
-        opacity: 1 !important;
-        transform: none !important;
+        margin: 0 0 1.4rem !important;
+        break-inside: auto;
+    }
+
+    section h2 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.6rem !important;
     }
 
     /* Hero */
-    .hero {
-        margin: 0 0 1.5rem !important;
-        padding: 0 !important;
-        text-align: left !important;
-    }
-
-    .hero::before { display: none !important; }
-
-    .hero__inner { display: flex; align-items: flex-start; gap: 1.2rem; }
-    .hero__body { flex: 1; }
-
-    .hero__portrait {
-        width: 80px !important;
-        height: 100px !important;
-        border-radius: 0.5rem !important;
-    }
-
-    .hero__links {
-        flex-wrap: wrap;
-        gap: 0.4rem;
-    }
+    .hero { margin: 0 0 1.2rem !important; padding: 0 !important; }
+    .hero__inner { display: flex; align-items: flex-start; gap: 1.2rem; text-align: left !important; }
+    .hero__portrait { width: 80px !important; height: 100px !important; border-radius: 0.5rem !important; }
+    .hero__headline { font-size: 1.1rem !important; }
 
     .hero__link {
         border: 1px solid #e5e7eb !important;
@@ -102,55 +66,26 @@
         padding: 0.25rem 0.7rem !important;
     }
 
-    /* Timeline */
-    .timeline__dot {
-        background: #b45309 !important;
-        border-color: white !important;
-        box-shadow: 0 0 0 2px #b45309 !important;
-    }
-
-    .timeline__connector {
-        background: #e5e7eb !important;
-    }
-
-    .timeline__period {
-        background: #f3f4f6 !important;
-        border-color: #e5e7eb !important;
-        color: #b45309 !important;
-    }
-
-    .timeline__title { color: #111827 !important; }
-    .timeline__subtitle { color: #4b5563 !important; }
-    .timeline__bullets { color: #374151 !important; }
-
-    /* About callout */
-    .about__now {
-        background: #fafaf9 !important;
-        border-color: #e7e5e4 !important;
-        border-left-color: #b45309 !important;
-    }
-
-    .about__now-label { color: #b45309 !important; }
-
     /* Projects */
     .project-card {
         display: block !important;
-        page-break-inside: avoid;
+        break-inside: avoid;
         border: 1px solid #e5e7eb !important;
         background: white !important;
-        box-shadow: none !important;
-        transform: none !important;
     }
-
-    .projects { gap: 0.5rem !important; }
 
     .project-card__body { padding: 0.6rem 0.9rem !important; }
     .project-card h3 { font-size: 1rem !important; }
     .project-card__summary { font-size: 0.85rem !important; }
-    .project-card__tech { margin-top: 0.4rem !important; }
 
-    .project-card__banner { display: none !important; }
-    .project-card__links { display: none !important; }
+    .project-row {
+        grid-template-columns: 1fr !important;
+        padding: 0.5rem 0 !important;
+        margin: 0 !important;
+        break-inside: avoid;
+    }
+
+    .project-row__thumb { display: none !important; }
 
     .tag {
         background: #f3f4f6 !important;
@@ -158,28 +93,11 @@
         color: #374151 !important;
     }
 
-    /* Skills */
-    .skill-category {
-        page-break-inside: avoid;
-        border: 1px solid #e5e7eb !important;
-        background: white !important;
-        opacity: 1 !important;
-    }
+    /* Background */
+    .bg-cols { grid-template-columns: 1fr 1fr !important; gap: 1.2rem !important; }
+    .bg-item { break-inside: avoid; padding: 0.5rem 0 !important; }
 
-    .skill-tag {
-        background: #f3f4f6 !important;
-        border-color: #e5e7eb !important;
-        color: #374151 !important;
-    }
-
-    .skill-group__fill {
-        width: var(--bar-target) !important;
-    }
-    .skill-group__track {
-        background: #e5e7eb !important;
-    }
-
-    /* Links — show URL for external links, skip tel/mailto */
+    /* Show URLs for external links, not for the hero buttons */
     a { color: #b45309 !important; text-decoration: none; }
 
     a[href^='https']:after {
@@ -188,37 +106,10 @@
         color: #6b7280;
     }
 
-    /* Don't expand hero contact links */
     .hero__link[href]:after,
     .hero__link:after { content: none !important; }
 
-    h1, h2, h3 { page-break-after: avoid; }
-
-    .timeline__item { page-break-inside: avoid; }
-
-    /* Education horizontal timeline → vertical for print */
-    .edu-timeline {
-        flex-direction: column !important;
-        overflow: visible !important;
-        gap: 0.75rem !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .edu-timeline::before { display: none !important; }
-
-    .edu-timeline__item {
-        padding-right: 0 !important;
-        padding-left: 1.5rem !important;
-        border-left: 2px solid #e5e7eb !important;
-        min-width: unset !important;
-        width: auto !important;
-    }
-
-    .edu-timeline__dot {
-        left: -7px !important;
-        top: 4px !important;
-    }
+    h1, h2, h3, h4 { break-after: avoid; }
 
     @page { margin: 1.8cm 2cm; }
 }

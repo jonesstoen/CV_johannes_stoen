@@ -1,9 +1,5 @@
 /* Case study pages (/bloom/ etc). Loaded on its own, together with tokens.css. */
 
-/* Solid base under the body gradient so long pages never show the default canvas colour */
-html { background-color: #020617; }
-html[data-theme='light'] { background-color: #f1f5f9; }
-
 .cs {
     --cs-text: 680px;
     --cs-wide: 1000px;
