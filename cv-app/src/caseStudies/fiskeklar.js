@@ -1,5 +1,5 @@
 // Case study content for /fiskeklar/. Facts come from the FiskeKlar repo's README and
-// ARCHITECTURE.md, plus commit stats (222 commits Mar–Jun 2025, ~127 by Johannes).
+// ARCHITECTURE.md, plus commit stats (222 commits Mar–Jun 2025).
 // It was a team project of six: keep "we" for team work and "I" only for Johannes' own role.
 import banner from '../assets/fiskeklar/grib_hero.webp';
 import warning from '../assets/fiskeklar/warning_screen.webp';
@@ -31,7 +31,6 @@ export const fiskeklar = {
         github: 'Se koden på GitHub',
         stats: [
             ['222', 'commits fra hele teamet'],
-            ['~57 %', 'av dem var mine'],
             ['173', 'Kotlin-filer'],
             ['4', 'API-er fra MET og BarentsWatch'],
         ],
@@ -142,7 +141,6 @@ export const fiskeklar = {
         github: 'View the code on GitHub',
         stats: [
             ['222', 'commits from the whole team'],
-            ['~57%', 'of them were mine'],
             ['173', 'Kotlin files'],
             ['4', 'APIs from MET and BarentsWatch'],
         ],
