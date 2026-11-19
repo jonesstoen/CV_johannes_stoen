@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CodeBracketIcon, ArrowTopRightOnSquareIcon, ArrowsPointingOutIcon } from "@heroicons/react/24/outline";
+import { CodeBracketIcon, ArrowTopRightOnSquareIcon, ArrowsPointingOutIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { useLang } from '../context/langContext';
 import { t as translations } from '../translations';
 import workoutBanner from '../assets/workouttracker/workout_banner.webp';
@@ -39,6 +39,7 @@ const PROJECT_META = [
         title: 'Bloom: iOS',
         tech: ['Swift', 'SwiftUI', 'Swift Concurrency', 'OpenAPI', 'Keychain'],
         githubUrl: 'https://github.com/jonesstoen/bloom',
+        caseStudyUrl: '/bloom/',
         gradient: 'linear-gradient(135deg, #0f172a 0%, #7c3aed 55%, #f472b6 100%)',
         bannerImage: bloomBanner,
         bannerPosition: 'center center',
@@ -152,6 +153,15 @@ function Projects() {
                             </div>
 
                             <div className="project-card__links" onClick={(e) => e.stopPropagation()}>
+                                {project.caseStudyUrl && (
+                                    <a
+                                        href={project.caseStudyUrl}
+                                        className="project-card__link project-card__link--primary"
+                                    >
+                                        <DocumentTextIcon className="project-card__link-icon" />
+                                        <span>{tr.caseStudy}</span>
+                                    </a>
+                                )}
                                 {project.githubUrl && (
                                     <a
                                         href={project.githubUrl}

@@ -1,0 +1,393 @@
+/* Case study pages (/bloom/ etc). Loaded on its own, together with tokens.css. */
+
+/* Solid base under the body gradient so long pages never show the default canvas colour */
+html { background-color: #020617; }
+html[data-theme='light'] { background-color: #f1f5f9; }
+
+.cs {
+    --cs-text: 680px;
+    --cs-wide: 1000px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+}
+
+/* Top bar */
+.cs-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem max(1rem, calc((100vw - var(--cs-wide)) / 2));
+    background: color-mix(in srgb, var(--card-bg) 82%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.cs-bar__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--fg);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.cs-bar__back:hover { color: var(--accent); }
+
+.cs-bar__controls { display: flex; gap: 0.5rem; }
+
+.cs-bar__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    height: 2.2rem;
+    padding: 0 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.cs-bar__btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Layout */
+.cs-main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--cs-wide);
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+    box-sizing: border-box;
+}
+
+.cs-intro,
+.cs-article {
+    max-width: var(--cs-text);
+}
+
+.cs-intro { padding-top: 3.5rem; }
+
+.cs-eyebrow {
+    margin: 0 0 0.6rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+}
+
+.cs-title {
+    margin: 0;
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.cs-lede {
+    margin: 1.2rem 0 0;
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.cs-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem 1.5rem;
+    margin: 2rem 0 1.5rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.cs-meta dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.cs-meta dd {
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.cs-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.6rem; }
+
+.cs-chip {
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    background: var(--chip-bg);
+    color: var(--chip-fg);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.cs-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.15rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #111827;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.cs-button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.cs-button--ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--card-border);
+}
+
+.cs-button--ghost:hover { border-color: var(--accent); color: var(--accent); filter: none; }
+
+/* Hero image */
+.cs-hero {
+    margin: 3rem 0 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+}
+
+.cs-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Stats */
+.cs-stats {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.cs-stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.cs-stats strong {
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    color: var(--accent);
+    letter-spacing: -0.02em;
+}
+
+.cs-stats span { font-size: 0.85rem; color: var(--muted); }
+
+/* Body text */
+.cs-article h2,
+.cs-cta h2 {
+    margin: 3.5rem 0 0.9rem;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+}
+
+.cs-article p,
+.cs-article li {
+    font-size: 1.04rem;
+    line-height: 1.7;
+}
+
+.cs-article p { margin: 0 0 1rem; }
+
+.cs-article ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.cs-article li { margin-bottom: 0.5rem; }
+
+.cs-article li::marker { color: var(--accent); }
+
+.cs-note {
+    margin-top: 1.4rem !important;
+    color: var(--muted);
+    font-size: 0.98rem !important;
+}
+
+/* Screenshots */
+.cs-screens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.cs-screens figure { margin: 0; }
+
+.cs-screens img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid var(--card-border);
+}
+
+.cs-screens figcaption {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Architecture diagram */
+.cs-arch {
+    max-width: var(--cs-text);
+    margin: 1.2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.cs-arch__layer {
+    position: relative;
+    padding: 0.95rem 1.1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--card-bg);
+}
+
+.cs-arch__layer + .cs-arch__layer { margin-top: 1.9rem; }
+
+/* Arrow between layers */
+.cs-arch__layer + .cs-arch__layer::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: calc(-1.9rem + 4px);
+    height: calc(1.9rem - 8px);
+    border-left: 2px solid var(--accent);
+}
+
+.cs-arch__layer + .cs-arch__layer::after {
+    content: '';
+    position: absolute;
+    left: calc(2rem - 5px);
+    top: -10px;
+    border: 6px solid transparent;
+    border-top-color: var(--accent);
+}
+
+.cs-arch__layer code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.cs-arch__layer p {
+    margin: 0.35rem 0 0;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.cs-arch__layer--server {
+    border-style: dashed;
+    background: transparent;
+}
+
+.cs-arch__layer--server code { color: var(--fg); }
+
+/* Decisions */
+.cs-decisions {
+    list-style: none;
+    counter-reset: decision;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.cs-decisions li {
+    counter-increment: decision;
+    padding: 1.3rem 1.3rem 1.1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: var(--card-bg);
+}
+
+.cs-decisions li::before {
+    content: '0' counter(decision);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.cs-decisions h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.12rem;
+}
+
+.cs-decisions p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+/* CTA */
+.cs-cta {
+    max-width: var(--cs-text);
+    margin-top: 4rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--card-border);
+}
+
+.cs-cta h2 { margin-top: 2rem; }
+
+.cs-cta p {
+    margin: 0 0 1.4rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.cs-cta__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+.cs-footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .cs-intro { padding-top: 2.2rem; }
+    .cs-stats { grid-template-columns: repeat(2, 1fr); }
+    .cs-screens { grid-template-columns: repeat(2, 1fr); }
+    .cs-decisions { grid-template-columns: 1fr; }
+    .cs-article h2, .cs-cta h2 { margin-top: 2.6rem; }
+}
+
+@media print {
+    .cs-bar, .cs-cta__actions { display: none; }
+    .cs-hero, .cs-screens { break-inside: avoid; }
+}

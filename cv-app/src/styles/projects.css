@@ -226,3 +226,19 @@ html[data-theme='light'] .project-card:hover {
     border-color: var(--accent);
     color: var(--accent);
 }
+
+/* Case study link: the primary action on cards that have one */
+.project-card__link--primary,
+html[data-theme='light'] .project-card__link--primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #111827;
+    font-weight: 600;
+}
+
+.project-card__link--primary:hover,
+html[data-theme='light'] .project-card__link--primary:hover {
+    background-color: var(--accent);
+    filter: brightness(1.08);
+}
+

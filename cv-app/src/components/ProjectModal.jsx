@@ -6,6 +6,7 @@ import {
     ChevronRightIcon,
     CodeBracketIcon,
     ArrowTopRightOnSquareIcon,
+    DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 
 export default function ProjectModal({ project, translations: tr, onClose }) {
@@ -136,6 +137,15 @@ export default function ProjectModal({ project, translations: tr, onClose }) {
                         </dl>
 
                         <div className="pm__links">
+                            {project.caseStudyUrl && (
+                                <a
+                                    href={project.caseStudyUrl}
+                                    className="project-card__link project-card__link--primary"
+                                >
+                                    <DocumentTextIcon className="project-card__link-icon" />
+                                    <span>{tr.caseStudy}</span>
+                                </a>
+                            )}
                             {project.githubUrl && (
                                 <a
                                     href={project.githubUrl}
