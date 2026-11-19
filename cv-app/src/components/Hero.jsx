@@ -70,9 +70,6 @@ export default function Hero() {
 
                     <p className="hero__summary">{tr.summary}</p>
 
-                    <ul className="hero__proof">
-                        {tr.proof.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
 
                     <div className="hero__links">
                         <button

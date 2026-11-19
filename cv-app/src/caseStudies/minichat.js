@@ -31,12 +31,6 @@ export const minichat = {
             ['Status', 'Åpen kildekode, bygges fra kildekoden'],
         ],
         github: 'Se koden på GitHub',
-        stats: [
-            ['2', 'assistenter i ett vindu'],
-            ['0', 'API-nøkler'],
-            ['14', 'Swift-filer'],
-            ['2', 'språk: norsk og engelsk'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -49,7 +43,7 @@ export const minichat = {
             {
                 type: 'figures',
                 title: 'Slik fungerer det',
-                body: 'Ett tastetrykk viser og skjuler vinduet. Etter en pause åpner ⌥Space en liten hurtiglinje i stedet. Skriv et spørsmål, trykk Retur, og linja vokser til hele vinduet.',
+                body: 'Ett tastetrykk viser og skjuler vinduet. Etter en pause åpner ⌥Space en liten hurtiglinje i stedet. Skriv et spørsmål, trykk Retur, og linja vokser til hele vinduet. Med ⌘⇧S tar den et skjermbilde du kan spørre om.',
                 images: [
                     { src: demoPoster, video: demoVideo, caption: '⌥Space åpner vinduet over editoren. Spørsmål går til ChatGPT eller Claude, og Esc skjuler vinduet igjen.' },
                     { src: quickbarPoster, video: quickbarVideo, caption: 'Hurtiglinja: ta et skjermbilde (⌘⇧S), spør om det, og linja vokser til hele vinduet.' },
@@ -74,11 +68,12 @@ export const minichat = {
                     'Kikkemodus (⌥⇧Space) viser vinduet uten å ta tastaturet fra appen du jobber i.',
                     'Varsel og merke på Dock-ikonet når et svar er ferdig mens vinduet er skjult.',
                     'Kommandopalett, nylige samtaler og bokmerker, og en knapp som skjuler chatten bak et nøytralt dekke når du deler skjermen.',
+                    'Følger systemspråket, med norsk og engelsk.',
                 ],
             },
             {
                 type: 'decisions',
-                title: 'Fire tekniske valg',
+                title: 'Valg i macOS-koden',
                 items: [
                     {
                         title: 'Et panel som ikke stjeler fokus',
@@ -89,18 +84,18 @@ export const minichat = {
                         body: 'Hurtigtasten er registrert med Carbons RegisterEventHotKey. Det gamle API-et virker over hele systemet uten at brukeren må gi appen tilgang til Tilgjengelighet.',
                     },
                     {
-                        title: 'Ekte innlogging i stedet for API',
+                        title: 'Innlogging med kontoene du allerede har',
                         body: 'Hver tjeneste har sin egen WKWebView som lever hele tiden, med et felles, varig datalager. Du holder deg innlogget, bruker abonnementet du allerede betaler for, og samtalene synkroniseres med kontoen din.',
                     },
                     {
-                        title: 'Fargen hentes fra pikslene, ikke CSS-en',
+                        title: 'Toppfargen hentes fra pikslene på siden',
                         body: 'Topplinja skal ha samme farge som siden, så vinduet ser ut som én flate. Appen tar et lite skjermbilde av den øverste stripen og bruker den vanligste pikselfargen. Det virker uansett hvordan nettstedet skriver CSS-en sin.',
                     },
                 ],
             },
             {
                 type: 'text',
-                title: 'Prinsippet: native framfor nettsiden',
+                title: 'Lite avhengighet av chatgpt.com og claude.ai',
                 body: [
                     'Alt som avhenger av den interne strukturen til chatgpt.com eller claude.ai kan slutte å virke når de oppdaterer sidene sine. Derfor er det meste bygget rent på macOS-siden.',
                     'Det eneste som leser selve siden, er sjekken for om et svar er ferdig. Et lite skript ser etter stopp-knappen hvert halve sekund og melder fra via en WKScriptMessageHandler. Hvis sidene endrer seg, slutter bare varslene å virke. Resten av appen fungerer som før.',
@@ -113,13 +108,13 @@ export const minichat = {
                 items: [
                     'Varsler, det pulserende menylinjeikonet og tidtakeren avhenger av stopp-knappen på sidene, og må oppdateres hvis OpenAI eller Anthropic endrer den.',
                     'Innlogging med Google kan bli blokkert i innebygde nettlesere. E-post eller «Fortsett med Apple» fungerer som regel.',
-                    'Appen er ikke notarisert, så den er laget for å bygges lokalt, ikke lastes ned ferdig.',
+                    'Appen er ikke notarisert, så den må bygges lokalt fra kildekoden.',
                     'MiniChat er et uavhengig prosjekt og ikke tilknyttet OpenAI eller Anthropic. Den viser bare de offisielle nettsidene i et eget vindu.',
                 ],
             },
         ],
         cta: {
-            title: 'Vil du høre mer?',
+            title: 'Kontakt',
             body: 'Jeg forteller gjerne om hvordan man får et macOS-vindu til å oppføre seg riktig, og om avveiningene ved å bygge på andres nettsider.',
             contact: 'Ta kontakt',
             back: 'Tilbake til prosjektene',
@@ -138,12 +133,6 @@ export const minichat = {
             ['Status', 'Open source, built from source'],
         ],
         github: 'View the code on GitHub',
-        stats: [
-            ['2', 'assistants in one window'],
-            ['0', 'API keys'],
-            ['14', 'Swift files'],
-            ['2', 'languages: English and Norwegian'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -156,7 +145,7 @@ export const minichat = {
             {
                 type: 'figures',
                 title: 'How it works',
-                body: 'One keystroke shows and hides the window. After a break, ⌥Space opens a small quick bar instead. Type a question, press Return, and the bar grows into the full window.',
+                body: 'One keystroke shows and hides the window. After a break, ⌥Space opens a small quick bar instead. Type a question, press Return, and the bar grows into the full window. With ⌘⇧S it takes a screenshot you can ask about.',
                 images: [
                     { src: demoPoster, video: demoVideo, caption: '⌥Space opens the window over the editor. Questions go to ChatGPT or Claude, and Esc hides the window again.' },
                     { src: quickbarPoster, video: quickbarVideo, caption: 'The quick bar: take a screenshot (⌘⇧S), ask about it, and the bar grows into the full window.' },
@@ -181,11 +170,12 @@ export const minichat = {
                     'Peek mode (⌥⇧Space) shows the window without taking the keyboard from the app you are working in.',
                     'A notification and a Dock badge when an answer finishes while the window is hidden.',
                     'A command palette, recent chats and bookmarks, and a button that hides the chat behind a neutral cover when you share your screen.',
+                    'Follows the system language, with English and Norwegian.',
                 ],
             },
             {
                 type: 'decisions',
-                title: 'Four technical decisions',
+                title: 'Choices in the macOS code',
                 items: [
                     {
                         title: 'A panel that does not steal focus',
@@ -196,18 +186,18 @@ export const minichat = {
                         body: 'The shortcut is registered with Carbon\'s RegisterEventHotKey. The old API works system-wide without the user having to grant the app Accessibility access.',
                     },
                     {
-                        title: 'Real sign-in instead of an API',
+                        title: 'Sign-in with the accounts you already have',
                         body: 'Each service has its own WKWebView that stays alive, with a shared, persistent data store. You stay signed in, use the subscription you already pay for, and your conversations sync with your account.',
                     },
                     {
-                        title: 'Colour from the pixels, not the CSS',
+                        title: 'The top colour comes from the page\'s pixels',
                         body: 'The top bar should match the page so the window reads as one surface. The app takes a tiny snapshot of the top strip and uses the most common pixel colour. That works regardless of how the site writes its CSS.',
                     },
                 ],
             },
             {
                 type: 'text',
-                title: 'The principle: native over the web page',
+                title: 'Little dependence on chatgpt.com and claude.ai',
                 body: [
                     'Anything that depends on the internal structure of chatgpt.com or claude.ai can break when they update their sites. So most of the app is built purely on the macOS side.',
                     'The only thing that reads the page itself is the check for whether an answer is done. A small script looks for the stop button every half second and reports through a WKScriptMessageHandler. If the sites change, only the notifications stop working. The rest of the app keeps going.',
@@ -220,13 +210,13 @@ export const minichat = {
                 items: [
                     'Notifications, the pulsing menu bar icon and the timer depend on the stop button on the sites, and need updating if OpenAI or Anthropic change it.',
                     'Signing in with Google can be blocked in embedded browsers. Email or "Continue with Apple" usually works.',
-                    'The app is not notarized, so it is meant to be built locally rather than downloaded as a binary.',
+                    'The app is not notarized, so it has to be built locally from source.',
                     'MiniChat is an independent project and not affiliated with OpenAI or Anthropic. It only shows the official websites in a native window.',
                 ],
             },
         ],
         cta: {
-            title: 'Want to hear more?',
+            title: 'Contact',
             body: 'I am happy to talk about making a macOS window behave properly, and about the trade-offs of building on top of other people\'s websites.',
             contact: 'Get in touch',
             back: 'Back to projects',

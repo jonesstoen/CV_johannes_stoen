@@ -28,12 +28,6 @@ export const bloom = {
             ['Status', 'Hobbyprosjekt, åpen kildekode'],
         ],
         github: 'Se koden på GitHub',
-        stats: [
-            ['~220', 'commits på én uke'],
-            ['275', 'Swift-filer'],
-            ['111', 'testfiler'],
-            ['~13 000', 'bilder i testbiblioteket'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -63,19 +57,19 @@ export const bloom = {
             },
             {
                 type: 'decisions',
-                title: 'Fire valg som betydde mest',
+                title: 'Arkitekturvalg',
                 items: [
                     {
-                        title: 'Eget rutenett i stedet for LazyVGrid',
+                        title: 'Et eget rutenett med eksakte posisjoner',
                         body: 'SwiftUIs lazy grids anslår høyden på rader de ikke har bygget ennå. Det er ikke presist nok til å hoppe til en måned, holde bildet under fingrene på plass mens du klyper, eller vise riktig dato i toppen. Derfor har biblioteket sin egen layout med eksakte posisjoner, og bygger bare radene nær skjermen.',
                     },
                     {
                         title: 'Endringer er av til du slår dem på',
-                        body: 'Appen starter i lesemodus. En egen tjeneste ligger rundt den ekte og avviser all skriving til du slår på «Tillat endringer». Selv da sletter appen aldri noe permanent, bare flytter til Immichs papirkurv, og bare hvis serveren faktisk har papirkurv slått på.',
+                        body: 'Appen starter i lesemodus. En egen tjeneste ligger rundt den ekte og avviser all skriving til du slår på «Tillat endringer». Selv da sletter appen aldri noe permanent, bare flytter til Immichs papirkurv, og bare hvis serveren har papirkurven slått på.',
                     },
                     {
                         title: 'Usikre resultater forblir usikre',
-                        body: 'Hvis en forespørsel kanskje nådde serveren og kanskje ikke, lagrer ikke appen det den viste, før en ny innlasting har bekreftet hva som faktisk skjedde. Når et svar mangler under flytting til papirkurven, leser appen tilstanden på nytt i stedet for å sende forespørselen igjen.',
+                        body: 'Hvis en forespørsel kanskje nådde serveren og kanskje ikke, lagrer ikke appen det den viste, før en ny innlasting har bekreftet hva som skjedde. Når et svar mangler under flytting til papirkurven, leser appen tilstanden på nytt i stedet for å sende forespørselen igjen.',
                     },
                     {
                         title: 'Et falskt bibliotek for alt',
@@ -90,7 +84,7 @@ export const bloom = {
                     'API-nøkkelen ligger bare i iOS Keychain og logges aldri.',
                     'Innloggingen forklarer hvordan man lager en nøkkel med bare de tillatelsene appen trenger, så en lekket nøkkel kan gjøre minst mulig.',
                     'Ukryptert http tillates bare på eget nettverk eller via Tailscale. Forespørsler med nøkkelen følger aldri en omdirigering til en annen server.',
-                    'Ugyldige eller altfor store svar fra serveren avvises i stedet for å krasje appen eller fylle minnet.',
+                    'Appen sjekker format og størrelse på alle svar fra serveren og avviser dem som er ugyldige eller for store.',
                     'Ingen analyse, krasjrapportering eller sporing. Appen snakker bare med din egen server.',
                 ],
             },
@@ -98,7 +92,7 @@ export const bloom = {
                 type: 'text',
                 title: 'Slik jobbet jeg med Claude Code',
                 body: [
-                    'Mesteparten av koden er skrevet med Claude Code, ut fra mine instruksjoner og min testing på en fysisk iPhone. Noen funksjoner kom fra OpenAI Codex.',
+                    'Prosjektet har rundt 220 commits fra én uke i november, og 111 av de 275 Swift-filene er tester. Mesteparten av koden er skrevet med Claude Code, ut fra mine instruksjoner og min testing på en fysisk iPhone. Noen funksjoner kom fra OpenAI Codex.',
                     'Jeg bestemmer hva som skal bygges, prøver hver endring på mitt eget bibliotek og leser diffene. Hver endring må gjennom tre sjekker før den blir værende: pakkebygg, enhetstester og bygg for iOS Simulator.',
                     'Det henger tett sammen med masteroppgaven min, som handler om hvordan AI-assistenter endrer koordineringen i utviklingsteam. Med Bloom fikk jeg kjenne på det selv: jobben flyttet seg fra å skrive kode til å beskrive, teste og vurdere.',
                 ],
@@ -107,14 +101,14 @@ export const bloom = {
                 type: 'list',
                 title: 'Kjente begrensninger',
                 items: [
-                    'Testet på én iPhone mot ett bibliotek. Andre serverversjoner, veldig store bibliotek, offline-bruk og VoiceOver er lite testet.',
+                    'Testet på én iPhone mot ett bibliotek med rundt 13 000 bilder. Andre serverversjoner, veldig store bibliotek, offline-bruk og VoiceOver er lite testet.',
                     'Sikkerhetskopien laster bare opp og sletter aldri. Den er avhengig av når iOS kjører bakgrunnsjobber, så tidspunktet varierer.',
                     'Ikke på App Store. Man bygger appen selv i Xcode.',
                 ],
             },
         ],
         cta: {
-            title: 'Vil du høre mer?',
+            title: 'Kontakt',
             body: 'Jeg forteller gjerne om valgene, og om hvordan det er å bygge en app sammen med en kodeagent.',
             contact: 'Ta kontakt',
             back: 'Tilbake til prosjektene',
@@ -133,12 +127,6 @@ export const bloom = {
             ['Status', 'Hobby project, open source'],
         ],
         github: 'View the code on GitHub',
-        stats: [
-            ['~220', 'commits in one week'],
-            ['275', 'Swift files'],
-            ['111', 'test files'],
-            ['~13,000', 'photos in the test library'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -168,19 +156,19 @@ export const bloom = {
             },
             {
                 type: 'decisions',
-                title: 'Four decisions that mattered most',
+                title: 'Architecture choices',
                 items: [
                     {
-                        title: 'A custom grid instead of LazyVGrid',
+                        title: 'A custom grid with exact positions',
                         body: 'SwiftUI\'s lazy grids estimate the height of rows they have not built yet. That is not exact enough to jump to a month, keep the photo under your fingers in place while pinching, or show the right date in the header. So the library has its own layout with exact positions, and builds only the rows near the screen.',
                     },
                     {
                         title: 'Changes are off until you turn them on',
-                        body: 'The app starts view-only. A separate service wraps the real one and refuses every write until "Allow Changes" is on. Even then it never deletes anything permanently, it only moves items to Immich\'s trash, and only if the server actually has the trash enabled.',
+                        body: 'The app starts view-only. A separate service wraps the real one and refuses every write until "Allow Changes" is on. Even then it never deletes anything permanently, it only moves items to Immich\'s trash, and only if the server has the trash enabled.',
                     },
                     {
                         title: 'Uncertain outcomes stay uncertain',
-                        body: 'If a request may or may not have reached the server, the app does not save what it showed until a fresh load confirms what really happened. When a response is lost while moving to trash, it re-reads the state instead of sending the request again.',
+                        body: 'If a request may or may not have reached the server, the app does not save what it showed until a fresh load confirms what happened. When a response is lost while moving to trash, it re-reads the state instead of sending the request again.',
                     },
                     {
                         title: 'A fake library for everything',
@@ -195,7 +183,7 @@ export const bloom = {
                     'The API key lives only in the iOS Keychain and is never logged.',
                     'The sign-in screen explains how to create a key with only the permissions the app needs, so a leaked key can do as little as possible.',
                     'Plain http is only allowed on your own network or over Tailscale. Requests carrying the key never follow a redirect to another server.',
-                    'Malformed or oversized server responses are rejected instead of crashing the app or filling memory.',
+                    'The app checks the format and size of every server response and rejects those that are malformed or too large.',
                     'No analytics, crash reporting or tracking. The app only talks to your own server.',
                 ],
             },
@@ -203,7 +191,7 @@ export const bloom = {
                 type: 'text',
                 title: 'How I worked with Claude Code',
                 body: [
-                    'Most of the code was written with Claude Code, from my instructions and my testing on a physical iPhone. A few features came from OpenAI Codex.',
+                    'The project has about 220 commits from one week in November, and 111 of its 275 Swift files are tests. Most of the code was written with Claude Code, from my instructions and my testing on a physical iPhone. A few features came from OpenAI Codex.',
                     'I decide what gets built, try every change on my own library and read the diffs. Every change has to pass three checks before it stays: the package build, the unit tests and an iOS Simulator build.',
                     'This ties closely to my master\'s thesis, which is about how AI assistants change coordination in software teams. With Bloom I got to experience it myself: the work moved from writing code to describing, testing and judging.',
                 ],
@@ -212,14 +200,14 @@ export const bloom = {
                 type: 'list',
                 title: 'Known limitations',
                 items: [
-                    'Tested on one iPhone with one library. Other server versions, very large libraries, offline use and VoiceOver have had little testing.',
+                    'Tested on one iPhone with one library of about 13,000 photos. Other server versions, very large libraries, offline use and VoiceOver have had little testing.',
                     'Backup only uploads and never deletes. It depends on when iOS runs background work, so timing varies.',
                     'Not on the App Store. You build the app yourself in Xcode.',
                 ],
             },
         ],
         cta: {
-            title: 'Want to hear more?',
+            title: 'Contact',
             body: 'I am happy to talk about the decisions, and about what it is like to build an app together with a coding agent.',
             contact: 'Get in touch',
             back: 'Back to projects',

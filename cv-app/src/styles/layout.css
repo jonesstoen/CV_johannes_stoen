@@ -45,6 +45,7 @@ section {
 }
 
 #contact {
+    box-sizing: border-box; /* keep the card on the same edges as the other sections */
     padding: 2rem 2.2rem;
     background-color: rgba(15, 23, 42, 0.94);
     border: 1px solid rgba(148, 163, 184, 0.22);

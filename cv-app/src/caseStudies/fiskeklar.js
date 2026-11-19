@@ -29,11 +29,6 @@ export const fiskeklar = {
             ['Utmerkelse', 'Nominert til MET-prisen 2025'],
         ],
         github: 'Se koden på GitHub',
-        stats: [
-            ['222', 'commits fra hele teamet'],
-            ['173', 'Kotlin-filer'],
-            ['4', 'API-er fra MET og BarentsWatch'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -46,7 +41,7 @@ export const fiskeklar = {
             {
                 type: 'figures',
                 title: 'Hva appen gjør',
-                body: 'Kartet er kjernen. Brukeren slår på lagene hen trenger, og resten av appen bygger rundt det.',
+                body: 'Kartet er kjernen. Farevarsler fra MetAlerts tegnes som områder, og appen spiller av en lyd når du er inne i et. Nødskjermen viser nærmeste fartøy fra AIS-data og nødnumre, og fangstloggen lagrer sted, art, vekt og bilde lokalt i Room.',
                 images: [
                     { src: warning, caption: 'Farevarsler fra MetAlerts tegnes som områder på kartet. Appen spiller av en lyd når du er inne i et område.', wide: true },
                     { src: sos, caption: 'Nødskjerm med nærmeste fartøy fra AIS-data, avstand, din posisjon og nødnumre.' },
@@ -58,7 +53,7 @@ export const fiskeklar = {
             {
                 type: 'arch',
                 title: 'Arkitektur',
-                body: 'Appen følger MVVM med enveis dataflyt, og koden er organisert etter funksjon (kart, fangstlogg, GRIB, profil, SOS, vær, favoritter) i stedet for etter lag.',
+                body: 'Appen følger MVVM med enveis dataflyt, og koden er organisert i én mappe per funksjon (kart, fangstlogg, GRIB, profil, SOS, vær, favoritter).',
                 layers: [
                     ['presentation', 'Jetpack Compose-skjermer og én ViewModel per funksjon. Skjermene observerer StateFlow og sender hendelser tilbake.'],
                     ['domain', 'Rene modeller og regler: AIS-fartøy, vind-, strøm- og bølgevektorer, nedbør og use cases.'],
@@ -69,14 +64,14 @@ export const fiskeklar = {
             },
             {
                 type: 'decisions',
-                title: 'Fire valg som betydde mest',
+                title: 'Valg rundt kart og GRIB-data',
                 items: [
                     {
                         title: 'Lese GRIB-filer direkte på telefonen',
                         body: 'Vind, strøm, bølger og nedbør kommer fra MET som GRIB-filer, et vitenskapelig format som vanlige Android-biblioteker ikke leser. Vi brukte NetCDF-Java fra Unidata, og en GribParser som gjør filene om til vektorer med posisjon, retning, styrke og tidspunkt. Filene caches, så værlagene virker også uten nett.',
                     },
                     {
-                        title: 'MapLibre i stedet for Google Maps',
+                        title: 'MapLibre for egne kartlag',
                         body: 'Vi trengte egne lag for fartøy, vindpiler, strøm, bølger, nedbør og farevarsler, med full kontroll over stil og rekkefølge. MapLibre er åpen kildekode og ga oss den kontrollen, med MapTiler som kartgrunnlag.',
                     },
                     {
@@ -93,7 +88,7 @@ export const fiskeklar = {
                 type: 'text',
                 title: 'Teamarbeid',
                 body: [
-                    'Vi var seks studenter og delte på kode, design, modellering og dokumentasjon. Teamet laget blant annet use case-, sekvens-, aktivitets- og klassediagrammer for de viktigste flytene.',
+                    'Repoet har 222 commits fra mars til juni 2025 og 173 Kotlin-filer. Vi var seks studenter og delte på kode, design, modellering og dokumentasjon. Teamet laget blant annet use case-, sekvens-, aktivitets- og klassediagrammer for de viktigste flytene.',
                     'Vi jobbet med GitHub Flow: hver funksjon i sin egen gren, inn i main via pull requests.',
                 ],
             },
@@ -110,7 +105,7 @@ export const fiskeklar = {
             {
                 type: 'list',
                 title: 'Det vi ikke rakk',
-                body: 'Arkitekturdokumentet vårt lister ærlig opp det som ikke ble ferdig. Det viktigste:',
+                body: 'Arkitekturdokumentet vårt lister opp det som ikke ble ferdig. Det viktigste:',
                 items: [
                     'Ytelsen faller når alle kartlag er på samtidig, særlig på svakere telefoner, og vindpilene blir for tette når man zoomer ut.',
                     'GRIB-området er låst til Vestlandskysten, selv om koden er laget for å kunne velge område.',
@@ -120,7 +115,7 @@ export const fiskeklar = {
             },
         ],
         cta: {
-            title: 'Vil du høre mer?',
+            title: 'Kontakt',
             body: 'Jeg forteller gjerne om GRIB-parsingen, kartlagene, eller hvordan det var å holde arkitekturen samlet i et team på seks.',
             contact: 'Ta kontakt',
             back: 'Tilbake til prosjektene',
@@ -139,11 +134,6 @@ export const fiskeklar = {
             ['Recognition', 'Nominated for the MET Prize 2025'],
         ],
         github: 'View the code on GitHub',
-        stats: [
-            ['222', 'commits from the whole team'],
-            ['173', 'Kotlin files'],
-            ['4', 'APIs from MET and BarentsWatch'],
-        ],
         blocks: [
             {
                 type: 'text',
@@ -156,7 +146,7 @@ export const fiskeklar = {
             {
                 type: 'figures',
                 title: 'What it does',
-                body: 'The map is the core. Users turn on the layers they need, and the rest of the app is built around it.',
+                body: 'The map is the core. MetAlerts warnings are drawn as areas, and the app plays a sound when you are inside one. The emergency screen shows the nearest vessels from AIS data and emergency numbers, and the catch log stores place, species, weight and photo locally in Room.',
                 images: [
                     { src: warning, caption: 'MetAlerts warnings are drawn as areas on the map. The app plays a sound when you are inside one.', wide: true },
                     { src: sos, caption: 'Emergency screen with the nearest vessels from AIS data, distance, your position and emergency numbers.' },
@@ -168,7 +158,7 @@ export const fiskeklar = {
             {
                 type: 'arch',
                 title: 'Architecture',
-                body: 'The app follows MVVM with unidirectional data flow, and the code is organised by feature (map, catch log, GRIB, profile, SOS, weather, favourites) rather than by layer.',
+                body: 'The app follows MVVM with unidirectional data flow, and the code is organised in one folder per feature (map, catch log, GRIB, profile, SOS, weather, favourites).',
                 layers: [
                     ['presentation', 'Jetpack Compose screens and one ViewModel per feature. Screens observe StateFlow and send events back.'],
                     ['domain', 'Plain models and rules: AIS vessels, wind, current and wave vectors, precipitation and use cases.'],
@@ -179,14 +169,14 @@ export const fiskeklar = {
             },
             {
                 type: 'decisions',
-                title: 'Four decisions that mattered most',
+                title: 'Choices around maps and GRIB data',
                 items: [
                     {
                         title: 'Reading GRIB files on the phone',
                         body: 'Wind, currents, waves and precipitation come from MET as GRIB files, a scientific format that normal Android libraries cannot read. We used Unidata\'s NetCDF-Java and a GribParser that turns the files into vectors with position, direction, strength and time. Files are cached, so the weather layers also work offline.',
                     },
                     {
-                        title: 'MapLibre instead of Google Maps',
+                        title: 'MapLibre for our own map layers',
                         body: 'We needed our own layers for vessels, wind arrows, currents, waves, precipitation and warnings, with full control over style and order. MapLibre is open source and gave us that control, with MapTiler for the base map.',
                     },
                     {
@@ -203,7 +193,7 @@ export const fiskeklar = {
                 type: 'text',
                 title: 'Teamwork',
                 body: [
-                    'We were six students and shared the code, design, modelling and documentation. Among other things the team produced use case, sequence, activity and class diagrams for the main flows.',
+                    'The repository has 222 commits from March to June 2025 and 173 Kotlin files. We were six students and shared the code, design, modelling and documentation. Among other things the team produced use case, sequence, activity and class diagrams for the main flows.',
                     'We used GitHub Flow: every feature on its own branch, merged into main through pull requests.',
                 ],
             },
@@ -220,7 +210,7 @@ export const fiskeklar = {
             {
                 type: 'list',
                 title: 'What we did not finish',
-                body: 'Our architecture document lists honestly what was left undone. The main points:',
+                body: 'Our architecture document lists what was left undone. The main points:',
                 items: [
                     'Performance drops when all map layers are on at once, especially on weaker phones, and wind arrows crowd the map when zoomed out.',
                     'The GRIB area is fixed to the west coast of Norway, even though the code is built to allow choosing a region.',
@@ -230,7 +220,7 @@ export const fiskeklar = {
             },
         ],
         cta: {
-            title: 'Want to hear more?',
+            title: 'Contact',
             body: 'I am happy to talk about the GRIB parsing, the map layers, or what it was like to keep the architecture together in a team of six.',
             contact: 'Get in touch',
             back: 'Back to projects',

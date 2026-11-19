@@ -95,41 +95,9 @@
     flex-wrap: wrap;
 }
 
-.project-card__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.85rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    text-decoration: none;
-    color: var(--fg);
-    background-color: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    cursor: pointer;
-    font: inherit;
-    font-size: 0.85rem;
-}
-
 .project-card__link-icon {
     width: 14px;
     height: 14px;
-}
-
-.project-card__link:hover {
-    background-color: rgba(15, 23, 42, 0.85);
-    border-color: var(--accent);
-}
-
-html[data-theme='light'] .project-card__link {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme='light'] .project-card__link:hover {
-    background-color: #ffffff;
-    border-color: var(--accent);
 }
 
 .project-card:hover {
@@ -156,11 +124,6 @@ html[data-theme='light'] .project-card:hover {
     .project-card:hover .project-card__banner-img {
         transform: none;
     }
-}
-
-.project-card__link:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
 }
 
 .project-card__banner {
@@ -200,21 +163,6 @@ html[data-theme='light'] .project-card:hover {
     margin-right: 0.3rem;
     margin-bottom: 0.25rem;
     border: 1px solid rgba(148, 163, 184, 0.4);
-}
-
-/* Case study link: the primary action on cards that have one */
-.project-card__link--primary,
-html[data-theme='light'] .project-card__link--primary {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: #111827;
-    font-weight: 600;
-}
-
-.project-card__link--primary:hover,
-html[data-theme='light'] .project-card__link--primary:hover {
-    background-color: var(--accent);
-    filter: brightness(1.08);
 }
 
 /* "More projects": compact rows, click opens the detail modal */

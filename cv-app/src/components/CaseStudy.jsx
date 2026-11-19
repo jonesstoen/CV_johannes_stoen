@@ -23,6 +23,7 @@ function useTheme() {
    text      { title, body: [p] }
    list      { title, body?: [p], items: [li] }
    screens   { title?, body?, images: [{ src, caption }] }          phone screenshots, 4 per row
+   (caption is used as alt text only: no visible captions under pictures, house rule from taste-skill)
    figures   { title?, body?, images: [{ src, video?, caption, wide?, phones? }] }  landscape images, 2 per row;
              video = mp4 that autoplays muted (src is then the poster image)
              phones = composite of phone screens, capped in width so it isn't too tall
@@ -84,7 +85,6 @@ function Block({ block }) {
                                 ) : (
                                     <img src={src} alt={caption} loading="lazy" />
                                 )}
-                                <figcaption>{caption}</figcaption>
                             </figure>
                         ))}
                     </div>
@@ -202,15 +202,6 @@ export default function CaseStudy({ content, meta }) {
                         fetchpriority="high"
                     />
                 </figure>
-
-                <ul className="cs-stats">
-                    {c.stats.map(([n, label]) => (
-                        <li key={label}>
-                            <strong>{n}</strong>
-                            <span>{label}</span>
-                        </li>
-                    ))}
-                </ul>
 
                 {c.blocks.map((block, i) => <Block key={i} block={block} />)}
 
