@@ -254,6 +254,36 @@ html[data-theme='light'] { background-color: #f1f5f9; }
     color: var(--muted);
 }
 
+/* Landscape figures (composite screenshots) */
+.cs-figures {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 1rem;
+    margin: 1.5rem 0 0.5rem;
+    align-items: start;
+}
+
+.cs-figures figure { margin: 0; }
+
+.cs-figures__wide { grid-column: 1 / -1; }
+
+.cs-figures__phones { max-width: 720px; }
+
+.cs-figures img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+}
+
+.cs-figures figcaption {
+    margin-top: 0.55rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
 /* Architecture diagram */
 .cs-arch {
     max-width: var(--cs-text);
@@ -306,12 +336,12 @@ html[data-theme='light'] { background-color: #f1f5f9; }
     color: var(--muted);
 }
 
-.cs-arch__layer--server {
+.cs-arch__layer--base {
     border-style: dashed;
     background: transparent;
 }
 
-.cs-arch__layer--server code { color: var(--fg); }
+.cs-arch__layer--base code { color: var(--fg); }
 
 /* Decisions */
 .cs-decisions {
@@ -384,6 +414,7 @@ html[data-theme='light'] { background-color: #f1f5f9; }
     .cs-stats { grid-template-columns: repeat(2, 1fr); }
     .cs-screens { grid-template-columns: repeat(2, 1fr); }
     .cs-decisions { grid-template-columns: 1fr; }
+    .cs-figures { grid-template-columns: 1fr; }
     .cs-article h2, .cs-cta h2 { margin-top: 2.6rem; }
 }
 

@@ -58,6 +58,7 @@ const PROJECT_META = [
         title: 'FiskeKlar: Maritime Weather',
         tech: ['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room', 'Coroutines/Flow', 'MVVM'],
         githubUrl: 'https://github.com/jonesstoen/FiskeKlar',
+        caseStudyUrl: '/fiskeklar/',
         gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 55%, #818cf8 100%)',
         bannerImage: fiskeklarBanner,
         bannerPosition: 'center center',

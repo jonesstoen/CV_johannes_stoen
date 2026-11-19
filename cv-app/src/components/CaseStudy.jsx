@@ -19,11 +19,118 @@ function useTheme() {
     return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))];
 }
 
+/* Block renderers. Each case study is a list of blocks in src/caseStudies/*.js:
+   text      { title, body: [p] }
+   list      { title, body?: [p], items: [li] }
+   screens   { title?, body?, images: [{ src, caption }] }          phone screenshots, 4 per row
+   figures   { title?, body?, images: [{ src, caption, wide?, phones? }] }  landscape images, 2 per row;
+             phones = composite of phone screens, capped in width so it isn't too tall
+   arch      { title, body, layers: [[name, desc]], base, note? }   layered diagram
+   decisions { title, items: [{ title, body }] }                     numbered cards */
+
+function Paragraphs({ body }) {
+    if (!body) return null;
+    return (Array.isArray(body) ? body : [body]).map((p) => <p key={p}>{p}</p>);
+}
+
+function Block({ block }) {
+    switch (block.type) {
+        case 'text':
+            return (
+                <article className="cs-article">
+                    <h2>{block.title}</h2>
+                    <Paragraphs body={block.body} />
+                </article>
+            );
+        case 'list':
+            return (
+                <article className="cs-article">
+                    <h2>{block.title}</h2>
+                    <Paragraphs body={block.body} />
+                    <ul>{block.items.map((i) => <li key={i}>{i}</li>)}</ul>
+                </article>
+            );
+        case 'screens':
+        case 'figures':
+            return (
+                <>
+                    {(block.title || block.body) && (
+                        <article className="cs-article">
+                            {block.title && <h2>{block.title}</h2>}
+                            <Paragraphs body={block.body} />
+                        </article>
+                    )}
+                    <div className={block.type === 'screens' ? 'cs-screens' : 'cs-figures'}>
+                        {block.images.map(({ src, caption, wide, phones }) => (
+                            <figure
+                                key={src}
+                                className={[wide && 'cs-figures__wide', phones && 'cs-figures__phones'].filter(Boolean).join(' ') || undefined}
+                            >
+                                <img src={src} alt={caption} loading="lazy" />
+                                <figcaption>{caption}</figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </>
+            );
+        case 'arch':
+            return (
+                <>
+                    <article className="cs-article">
+                        <h2>{block.title}</h2>
+                        <Paragraphs body={block.body} />
+                    </article>
+                    <div
+                        className="cs-arch"
+                        role="img"
+                        aria-label={[...block.layers.map(([n]) => n), block.base].join(' → ')}
+                    >
+                        {block.layers.map(([name, desc]) => (
+                            <div key={name} className="cs-arch__layer">
+                                <code>{name}</code>
+                                <p>{desc}</p>
+                            </div>
+                        ))}
+                        <div className="cs-arch__layer cs-arch__layer--base">
+                            <code>{block.base}</code>
+                        </div>
+                    </div>
+                    {block.note && (
+                        <article className="cs-article">
+                            <p className="cs-note">{block.note}</p>
+                        </article>
+                    )}
+                </>
+            );
+        case 'decisions':
+            return (
+                <>
+                    <article className="cs-article">
+                        <h2>{block.title}</h2>
+                    </article>
+                    <ol className="cs-decisions">
+                        {block.items.map((d) => (
+                            <li key={d.title}>
+                                <h3>{d.title}</h3>
+                                <p>{d.body}</p>
+                            </li>
+                        ))}
+                    </ol>
+                </>
+            );
+        default:
+            return null;
+    }
+}
+
 export default function CaseStudy({ content, meta }) {
     const { lang, toggle } = useLang();
     const [theme, toggleTheme] = useTheme();
     const c = content[lang];
-    const s = c.sections;
+
+    useEffect(() => {
+        document.title = c.pageTitle;
+    }, [c.pageTitle]);
 
     return (
         <div className="cs">
@@ -70,7 +177,13 @@ export default function CaseStudy({ content, meta }) {
                 </div>
 
                 <figure className="cs-hero">
-                    <img src={meta.banner} alt="" width="1000" height="640" fetchpriority="high" />
+                    <img
+                        src={meta.banner}
+                        alt=""
+                        width={meta.bannerSize[0]}
+                        height={meta.bannerSize[1]}
+                        fetchpriority="high"
+                    />
                 </figure>
 
                 <ul className="cs-stats">
@@ -82,65 +195,7 @@ export default function CaseStudy({ content, meta }) {
                     ))}
                 </ul>
 
-                <article className="cs-article">
-                    <h2>{s.problem.title}</h2>
-                    {s.problem.body.map((p) => <p key={p}>{p}</p>)}
-
-                    <h2>{s.screens.title}</h2>
-                    <p>{s.screens.body}</p>
-                </article>
-
-                <div className="cs-screens">
-                    {meta.screens.map((src, i) => (
-                        <figure key={src}>
-                            <img src={src} alt={s.screens.captions[i]} loading="lazy" width="450" height="979" />
-                            <figcaption>{s.screens.captions[i]}</figcaption>
-                        </figure>
-                    ))}
-                </div>
-
-                <article className="cs-article">
-                    <h2>{s.architecture.title}</h2>
-                    <p>{s.architecture.body}</p>
-                </article>
-
-                <div className="cs-arch" role="img" aria-label={s.architecture.layers.map(([n]) => n).join(' → ') + ' → ' + s.architecture.server}>
-                    {s.architecture.layers.map(([name, desc]) => (
-                        <div key={name} className="cs-arch__layer">
-                            <code>{name}</code>
-                            <p>{desc}</p>
-                        </div>
-                    ))}
-                    <div className="cs-arch__layer cs-arch__layer--server">
-                        <code>{s.architecture.server}</code>
-                    </div>
-                </div>
-
-                <article className="cs-article">
-                    <p className="cs-note">{s.architecture.note}</p>
-
-                    <h2>{s.decisions.title}</h2>
-                </article>
-
-                <ol className="cs-decisions">
-                    {s.decisions.items.map((d) => (
-                        <li key={d.title}>
-                            <h3>{d.title}</h3>
-                            <p>{d.body}</p>
-                        </li>
-                    ))}
-                </ol>
-
-                <article className="cs-article">
-                    <h2>{s.security.title}</h2>
-                    <ul>{s.security.items.map((i) => <li key={i}>{i}</li>)}</ul>
-
-                    <h2>{s.process.title}</h2>
-                    {s.process.body.map((p) => <p key={p}>{p}</p>)}
-
-                    <h2>{s.gaps.title}</h2>
-                    <ul>{s.gaps.items.map((i) => <li key={i}>{i}</li>)}</ul>
-                </article>
+                {c.blocks.map((block, i) => <Block key={i} block={block} />)}
 
                 <aside className="cs-cta">
                     <h2>{c.cta.title}</h2>

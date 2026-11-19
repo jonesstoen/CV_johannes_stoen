@@ -13,6 +13,7 @@ export default defineConfig({
             input: {
                 main: resolve(import.meta.dirname, 'index.html'),
                 bloom: resolve(import.meta.dirname, 'bloom/index.html'), // case-studie på /bloom/
+                fiskeklar: resolve(import.meta.dirname, 'fiskeklar/index.html'),
             },
         },
     },

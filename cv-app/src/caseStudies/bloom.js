@@ -10,12 +10,13 @@ import signin from '../assets/bloom/signin.webp';
 export const bloomMeta = {
     githubUrl: 'https://github.com/jonesstoen/bloom',
     banner,
-    screens: [library, collections, search, signin],
+    bannerSize: [1000, 640],
     stack: ['Swift', 'SwiftUI', 'Swift Concurrency', 'swift-openapi-generator', 'Keychain', 'ImageIO'],
 };
 
 export const bloom = {
     no: {
+        pageTitle: 'Bloom, case-studie | Johannes Støen',
         back: 'Alle prosjekter',
         eyebrow: 'Case-studie · iOS',
         title: 'Bloom',
@@ -33,20 +34,23 @@ export const bloom = {
             ['111', 'testfiler'],
             ['~13 000', 'bilder i testbiblioteket'],
         ],
-        sections: {
-            problem: {
+        blocks: [
+            {
+                type: 'text',
                 title: 'Problemet',
                 body: [
                     'Immich er et populært alternativ til iCloud Bilder for folk som vil eie bildene sine selv. Serveren er god, men den offisielle iOS-appen føles ikke som resten av iPhonen.',
                     'Jeg ville ha en klient som oppfører seg som Apples egen Bilder-app: ett sammenhengende rutenett, klyp for å zoome, sveip ned for å lukke, og som ikke kan ødelegge noe på serveren ved et uhell.',
                 ],
             },
-            screens: {
+            {
+                type: 'screens',
                 title: 'Hva appen gjør',
-                captions: ['Bibliotek', 'Samlinger', 'Søk', 'Innlogging'],
                 body: 'Bibliotek med 3, 5 eller 7 kolonner og år/måneder/alle, en visning med zoom, Live Photos og video, samlinger med minner, kart, album og personer, smart søk (CLIP) og sikkerhetskopi i bakgrunnen. Appen er på norsk og engelsk.',
+                images: [{ src: library, caption: 'Bibliotek' }, { src: collections, caption: 'Samlinger' }, { src: search, caption: 'Søk' }, { src: signin, caption: 'Innlogging' }],
             },
-            architecture: {
+            {
+                type: 'arch',
                 title: 'Arkitektur',
                 body: 'Appen er en Swift-pakke i tre lag. App-targetet i Xcode viser bare rotvisningen, så all logikk kan bygges og testes uten selve appen.',
                 layers: [
@@ -54,10 +58,11 @@ export const bloom = {
                     ['ImmichKit', 'ImmichService-protokollen med en live- og en mock-implementasjon, Timeline-actor, bildelaster med minne- og diskcache, prefetcher og Keychain-lagring.'],
                     ['ImmichAPI', 'Klient generert fra Immichs OpenAPI-spesifikasjon (v3.4.0).'],
                 ],
-                server: 'Immich-server',
+                base: 'Immich-server',
                 note: 'UI-et snakker bare med serveren gjennom ImmichService. Lesing går via den genererte klienten. Skriving går via små håndskrevne forespørsler der svaret sjekkes mot det som ble bedt om.',
             },
-            decisions: {
+            {
+                type: 'decisions',
                 title: 'Fire valg som betydde mest',
                 items: [
                     {
@@ -78,7 +83,8 @@ export const bloom = {
                     },
                 ],
             },
-            security: {
+            {
+                type: 'list',
                 title: 'Sikkerhet og personvern',
                 items: [
                     'API-nøkkelen ligger bare i iOS Keychain og logges aldri.',
@@ -88,7 +94,8 @@ export const bloom = {
                     'Ingen analyse, krasjrapportering eller sporing. Appen snakker bare med din egen server.',
                 ],
             },
-            process: {
+            {
+                type: 'text',
                 title: 'Slik jobbet jeg med Claude Code',
                 body: [
                     'Mesteparten av koden er skrevet med Claude Code, ut fra mine instruksjoner og min testing på en fysisk iPhone. Noen funksjoner kom fra OpenAI Codex.',
@@ -96,7 +103,8 @@ export const bloom = {
                     'Det henger tett sammen med masteroppgaven min, som handler om hvordan AI-assistenter endrer koordineringen i utviklingsteam. Med Bloom fikk jeg kjenne på det selv: jobben flyttet seg fra å skrive kode til å beskrive, teste og vurdere.',
                 ],
             },
-            gaps: {
+            {
+                type: 'list',
                 title: 'Kjente begrensninger',
                 items: [
                     'Testet på én iPhone mot ett bibliotek. Andre serverversjoner, veldig store bibliotek, offline-bruk og VoiceOver er lite testet.',
@@ -104,7 +112,7 @@ export const bloom = {
                     'Ikke på App Store. Man bygger appen selv i Xcode.',
                 ],
             },
-        },
+        ],
         cta: {
             title: 'Vil du høre mer?',
             body: 'Jeg forteller gjerne om valgene, og om hvordan det er å bygge en app sammen med en kodeagent.',
@@ -113,6 +121,7 @@ export const bloom = {
         },
     },
     en: {
+        pageTitle: 'Bloom, case study | Johannes Støen',
         back: 'All projects',
         eyebrow: 'Case study · iOS',
         title: 'Bloom',
@@ -130,20 +139,23 @@ export const bloom = {
             ['111', 'test files'],
             ['~13,000', 'photos in the test library'],
         ],
-        sections: {
-            problem: {
+        blocks: [
+            {
+                type: 'text',
                 title: 'The problem',
                 body: [
                     'Immich is a popular alternative to iCloud Photos for people who want to own their photos. The server is great, but the official iOS app does not feel like the rest of the iPhone.',
                     'I wanted a client that behaves like Apple\'s own Photos app: one continuous grid, pinch to zoom, swipe down to close, and no way to break anything on the server by accident.',
                 ],
             },
-            screens: {
+            {
+                type: 'screens',
                 title: 'What it does',
-                captions: ['Library', 'Collections', 'Search', 'Sign in'],
                 body: 'A library with 3, 5 or 7 columns and years/months/all, a viewer with zoom, Live Photos and video, collections with memories, map, albums and people, smart search (CLIP) and background backup. The app is in English and Norwegian.',
+                images: [{ src: library, caption: 'Library' }, { src: collections, caption: 'Collections' }, { src: search, caption: 'Search' }, { src: signin, caption: 'Sign in' }],
             },
-            architecture: {
+            {
+                type: 'arch',
                 title: 'Architecture',
                 body: 'The app is a Swift package in three layers. The Xcode app target only shows the root view, so all logic can be built and tested without the app itself.',
                 layers: [
@@ -151,10 +163,11 @@ export const bloom = {
                     ['ImmichKit', 'The ImmichService protocol with a live and a mock implementation, a Timeline actor, an image loader with memory and disk cache, a prefetcher and Keychain storage.'],
                     ['ImmichAPI', 'A client generated from Immich\'s OpenAPI spec (v3.4.0).'],
                 ],
-                server: 'Immich server',
+                base: 'Immich server',
                 note: 'The UI only reaches the server through ImmichService. Reads use the generated client. Writes use small hand-written requests whose responses are checked against what was asked for.',
             },
-            decisions: {
+            {
+                type: 'decisions',
                 title: 'Four decisions that mattered most',
                 items: [
                     {
@@ -175,7 +188,8 @@ export const bloom = {
                     },
                 ],
             },
-            security: {
+            {
+                type: 'list',
                 title: 'Security and privacy',
                 items: [
                     'The API key lives only in the iOS Keychain and is never logged.',
@@ -185,7 +199,8 @@ export const bloom = {
                     'No analytics, crash reporting or tracking. The app only talks to your own server.',
                 ],
             },
-            process: {
+            {
+                type: 'text',
                 title: 'How I worked with Claude Code',
                 body: [
                     'Most of the code was written with Claude Code, from my instructions and my testing on a physical iPhone. A few features came from OpenAI Codex.',
@@ -193,7 +208,8 @@ export const bloom = {
                     'This ties closely to my master\'s thesis, which is about how AI assistants change coordination in software teams. With Bloom I got to experience it myself: the work moved from writing code to describing, testing and judging.',
                 ],
             },
-            gaps: {
+            {
+                type: 'list',
                 title: 'Known limitations',
                 items: [
                     'Tested on one iPhone with one library. Other server versions, very large libraries, offline use and VoiceOver have had little testing.',
@@ -201,7 +217,7 @@ export const bloom = {
                     'Not on the App Store. You build the app yourself in Xcode.',
                 ],
             },
-        },
+        ],
         cta: {
             title: 'Want to hear more?',
             body: 'I am happy to talk about the decisions, and about what it is like to build an app together with a coding agent.',
