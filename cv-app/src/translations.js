@@ -13,7 +13,7 @@ export const t = {
         },
         hero: {
             headline: 'Jeg bygger apper, og forsker på hvordan AI endrer måten vi bygger dem på.',
-            status: 'Søker fast stilling fra sommeren 2027',
+            status: 'Begynner i Netcompany i august 2027',
             summary: 'Masterstudent i informatikk ved UiO og gruppelærer i IN2031. Masteroppgaven min handler om hvordan AI-assistenter endrer koordineringen i utviklingsteam, og selv bygger jeg apper med Claude Code. FiskeKlar, som jeg laget med fem medstudenter, ble nominert til MET-prisen 2025.',
             email: 'E-post',
             phone: 'Telefon',
@@ -122,7 +122,7 @@ export const t = {
         },
         hero: {
             headline: 'I build apps, and research how AI is changing the way we build them.',
-            status: 'Looking for a full-time role from summer 2027',
+            status: 'Joining Netcompany in August 2027',
             summary: 'MSc student in computer science at UiO and teaching assistant in IN2031. My thesis is about how AI assistants change coordination in software teams, and I build apps with Claude Code myself. FiskeKlar, which I built with five fellow students, was nominated for the MET Prize 2025.',
             email: 'Email',
             phone: 'Phone',
