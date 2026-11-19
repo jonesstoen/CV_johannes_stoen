@@ -23,10 +23,13 @@ function useTheme() {
    text      { title, body: [p] }
    list      { title, body?: [p], items: [li] }
    screens   { title?, body?, images: [{ src, caption }] }          phone screenshots, 4 per row
-   figures   { title?, body?, images: [{ src, caption, wide?, phones? }] }  landscape images, 2 per row;
+   figures   { title?, body?, images: [{ src, video?, caption, wide?, phones? }] }  landscape images, 2 per row;
+             video = mp4 that autoplays muted (src is then the poster image)
              phones = composite of phone screens, capped in width so it isn't too tall
    arch      { title, body, layers: [[name, desc]], base, note? }   layered diagram
    decisions { title, items: [{ title, body }] }                     numbered cards */
+
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function Paragraphs({ body }) {
     if (!body) return null;
@@ -61,12 +64,26 @@ function Block({ block }) {
                         </article>
                     )}
                     <div className={block.type === 'screens' ? 'cs-screens' : 'cs-figures'}>
-                        {block.images.map(({ src, caption, wide, phones }) => (
+                        {block.images.map(({ src, video, caption, wide, phones }) => (
                             <figure
                                 key={src}
                                 className={[wide && 'cs-figures__wide', phones && 'cs-figures__phones'].filter(Boolean).join(' ') || undefined}
                             >
-                                <img src={src} alt={caption} loading="lazy" />
+                                {video ? (
+                                    <video
+                                        src={video}
+                                        poster={src}
+                                        aria-label={caption}
+                                        muted
+                                        loop
+                                        playsInline
+                                        preload="metadata"
+                                        autoPlay={!REDUCED_MOTION}
+                                        controls={REDUCED_MOTION}
+                                    />
+                                ) : (
+                                    <img src={src} alt={caption} loading="lazy" />
+                                )}
                                 <figcaption>{caption}</figcaption>
                             </figure>
                         ))}

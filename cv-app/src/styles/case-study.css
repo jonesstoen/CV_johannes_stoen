@@ -265,6 +265,15 @@
 
 .cs-figures__phones { max-width: 720px; }
 
+.cs-figures video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: #000;
+}
+
 .cs-figures img {
     display: block;
     width: 100%;

@@ -92,12 +92,10 @@ export const fiskeklar = {
             },
             {
                 type: 'text',
-                title: 'Min rolle i teamet',
+                title: 'Teamarbeid',
                 body: [
                     'Vi var seks studenter og delte på kode, design, modellering og dokumentasjon. Teamet laget blant annet use case-, sekvens-, aktivitets- og klassediagrammer for de viktigste flytene.',
-                    'Jeg tok i praksis ansvaret for arkitekturen og skrev størstedelen av koden, rundt 127 av de 222 commitene, og var kontaktperson for alt som hadde med API-ene å gjøre.',
                     'Vi jobbet med GitHub Flow: hver funksjon i sin egen gren, inn i main via pull requests.',
-                    'I kursversjonen lå API-nøklene i koden. Da jeg publiserte prosjektet på min egen GitHub etter emnet, flyttet jeg dem ut til local.properties og BuildConfig, så ingen hemmeligheter ligger i repoet.',
                 ],
             },
             {
@@ -205,12 +203,10 @@ export const fiskeklar = {
             },
             {
                 type: 'text',
-                title: 'My role in the team',
+                title: 'Teamwork',
                 body: [
                     'We were six students and shared the code, design, modelling and documentation. Among other things the team produced use case, sequence, activity and class diagrams for the main flows.',
-                    'In practice I took responsibility for the architecture and wrote most of the code, about 127 of the 222 commits, and was the contact person for everything to do with the APIs.',
                     'We used GitHub Flow: every feature on its own branch, merged into main through pull requests.',
-                    'In the course version the API keys lived in the code. When I published the project on my own GitHub after the course, I moved them out to local.properties and BuildConfig, so no secrets are in the repository.',
                 ],
             },
             {

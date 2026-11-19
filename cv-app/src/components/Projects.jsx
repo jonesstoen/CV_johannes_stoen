@@ -50,6 +50,8 @@ const PROJECT_META = [
         title: 'MiniChat: macOS',
         tech: ['Swift', 'SwiftUI', 'AppKit', 'WebKit', 'Carbon'],
         githubUrl: 'https://github.com/jonesstoen/MiniChat',
+        caseStudyUrl: '/minichat/',
+        featured: true,
         gradient: 'linear-gradient(135deg, #1c1917 0%, #44403c 55%, #a8a29e 100%)',
         bannerImage: mcBanner,
         bannerPosition: 'center top',
